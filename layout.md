@@ -1,0 +1,271 @@
+# us — Skincare Brand Landing Page Layout
+
+---
+
+## Navigation (top bar)
+
+**Structure:** Full-width, sits on the ivory background
+- **Left:** "us" logo (logo_black.png) — the custom logomark with the two circles and overlapping s
+- **Center:** Nav links — Bestsellers, Skincare, Body + Hair, Sets, About
+- **Right:** Cart icon (Phosphor Icons) + CTA pill button — "Build My Regimen" with subtle 1px #1A1A1A border, no fill
+- **Icons:** All icons across the site use Phosphor Icons
+- **Interaction:** Underline animation on hover — line grows outward from center on hover, contracts inward on leave
+- **Style:** No background color, sits on the ivory page background. Text is #0D0D0D. Minimal, no borders or dividers between nav and hero
+
+**Reference:** reference-ordinary-nav.png
+
+---
+
+## Section 1 — Hero
+
+**Layout:** Two-column grid, equal width, contained in a rounded box
+
+**Left column — Copy (background #F7F5F0 ivory):**
+1. Tag pill — "Clinically tested · Dermatologist approved" — uppercase, 13px, DM Sans 500, #3A3A3A text on #1A1A1A0D background, full rounded
+2. Headline — DM Serif Display, ~46px, #0D0D0D, two lines: "Your skin deserves more than guesswork"
+3. Supporting copy — DM Sans 400, 15px, #6B6B65, max-width ~360px: "Formulated by dermatologists, made for us — every skin type, every concern, one standard of care."
+4. CTA row — Primary pill button only (#1A1A1A background, white text, "Shop now"). No secondary text link.
+5. Trust line — "★★★★★ 4,800+ reviews | Free shipping over $50" — 13px, #6B6B65, separated from above by a subtle 1px top border
+
+**Right column — Image area (background #E0DDD6):**
+- 3 images controlled by square navigation boxes at the bottom
+- Gradient blur fade at the bottom where navigation controls sit
+- **Image 1 (default):** Static shot — male and female model together, each holding a navy blue "us" serum bottle. Aspirational, relaxed, woman resting head on man's shoulder with eyes closed, man looking at camera. No slider.
+- **Image 2:** Female before/after with drag slider. Before = hoodie, comedones and congestion. After = braids, clear glowing skin, Spider-Man tee, peace sign, outdoors. No product in hand.
+- **Image 3:** Male before/after with drag slider. Before = tank top on couch, pockmarks, puffed cheeks. After = suit in car, clear smooth skin, confident smile.
+- Navigation: 3 small square boxes at bottom center over the gradient. Active square is filled (#1A1A1A), inactive squares are outlined/muted.
+
+**Interactions:**
+- Square box navigation switches between the 3 images
+- Drag slider only appears on Images 2 and 3
+- Image 1 is static — no slider interaction
+
+**References:** reference-kit-hero.png, reference-curology-hero.png
+
+**Assets:**
+- hero-couple.png (Image 1)
+- hero-female-before.png, hero-female-after.png (Image 2)
+- hero-male-before.png, hero-male-after.png (Image 3)
+
+---
+
+## Section 2 — Concerns
+
+**Layout:** Full-width section, centered content
+- Section heading at top left — "Common Concerns" or similar
+- Subheading — one line of supporting text
+
+**Content:** Horizontal row of 6 concern cards
+- Each card has a close-up skin photo (cropped face showing the concern area)
+- Concern label underneath — Aging, Congestion, Texture, Eye Care, Redness, Dryness
+- Arrow (→) beside each label indicating it's clickable
+- No product images in this section — purely about the problem
+
+**Card style:**
+- Rounded corners
+- Image fills the card
+- Text sits below the image, not overlaid
+- Even spacing between cards
+
+**Interaction:** Cards are clickable — link to bestsellers section or sign-up gate.
+
+**Reference:** reference-ordinary-concerns.png
+
+**Assets:** 6 concern close-up images (aging, congestion, texture, eye-care, redness, dryness)
+
+---
+
+## Section 3 — Bestsellers
+
+**Layout:** Full-width section
+- Header row: "Bestsellers" heading on the left, "View more products →" link on the right (leads to sign-up gate)
+- Product carousel below
+
+**Carousel structure:**
+- 5 products visible at once in a row
+- Chevron arrow on the right to scroll
+- Scrolling slides the first 2 products out, revealing the next 3 (8 products total)
+- Smooth horizontal scroll animation
+
+**Product card contents:**
+- Product image on a neutral white background (default state)
+- On hover: bold colorful patterned background reveals behind the product — each card has a unique accent color and pattern
+- Concern tag at top right corner of the card — e.g. "Aging", "Texture", "Redness", "Hydration", "Protection"
+- Below the image: product name, short description (1 line), price, star rating
+- "Add to cart" CTA button at the bottom of each card (bordered pill style, matching NIOD layout)
+
+**Product descriptions:**
+1. Brightening Vitamin C Serum — "Brightens, evens tone, fades dark spots"
+2. Hydrating Hyaluronic Moisturizer — "Hydrates, plumps, restores moisture barrier"
+3. Gentle Exfoliating Cleanser — "Smooths, unclogs pores, refines texture"
+4. Retinol Night Repair Cream — "Firms, repairs, reduces fine lines overnight"
+5. Daily Defense SPF 50 — "Shields, prevents damage, lightweight daily wear"
+
+**Chevron navigation:**
+- Circular frame with a chevron arrow inside (not rectangular)
+- Positioned at the right edge of the carousel
+- Uses Phosphor Icons for the chevron
+
+**Products:**
+1. Brightening Vitamin C Serum — navy blue pump bottle (hover: coral/orange wavy stripes)
+2. Hydrating Hyaluronic Moisturizer — matte white jar (hover: electric blue squiggles)
+3. Gentle Exfoliating Cleanser — sage green squeeze tube (hover: hot pink diagonal stripes)
+4. Retinol Night Repair Cream — matte black jar with gold lid (hover: deep purple confetti dots)
+5. Daily Defense SPF 50 — terracotta pump bottle (hover: bright yellow zigzags)
+
+**Card style:**
+- Rounded corners
+- Generous card height — image dominates
+- Name and price sit below the card, not inside it
+- Hover transition is smooth (~300ms)
+
+**References:** reference-drunkelephant-bestsellers.png, reference-ordinary-bestsellers.png
+
+**Assets:** 5 product images (normal) + 5 product images (hovered) = 10 total
+
+---
+
+## Section 4 — How We Operate
+
+**Layout:** Full-width section
+- Section heading: "How it works" — DM Serif Display, left-aligned
+- CTA button on the right: "Get started →" — bordered pill style
+
+**Content:** 4 steps in a horizontal row, each with an image above and numbered step below
+
+**Steps:**
+1. **"Tell us about your skin"** — User takes a skin assessment. Image: woman on couch answering quiz on her phone.
+2. **"We match your regimen"** — Brand recommends personalized products. Image: flat lay of curated product set on marble surface.
+3. **"Delivered to your door"** — Products ship. Image: man opening delivery box with products inside.
+4. **"Track your glow-up"** — Ongoing support and reminders. Image: woman checking progress tracker on phone in bathroom.
+
+**Each step card:**
+- Image fills the top portion (rounded corners)
+- Large number (1, 2, 3, 4) in DM Serif Display, ~42px, #0D0D0D
+- Step title in DM Sans 500, 17px, #0D0D0D
+- Short description in DM Sans 400, 14px, #6B6B65 (visible at all times, no hover required)
+
+**Assets:** 4 images in assets/how-it-works/ (how-it-works-1.png through how-it-works-4.png)
+
+---
+
+## Section 5 — Our Team / Why Trust Us
+
+**Layout:** Two parts stacked vertically
+
+**Part 1 — Copy block (top):**
+- Bold headline — DM Serif Display — "Grounded in Science. Driven by Purpose."
+- Short paragraph — DM Sans, secondary text color — about safety, clinical testing, dermatologist-formulated products. No specific ingredient lists.
+- CTA button — "Meet the team" or "Look inside our lab" — bordered pill style
+
+**Part 2 — Team carousel (below):**
+- Horizontal scrollable row of 5 team member cards
+- Each card is a portrait photo (professional, white lab coat with embroidered circular leaf logo, MD credentials)
+- Name and role overlaid at the bottom of each card with a small divider line above the text
+- Cards have slight overlap or peek effect at the edges to signal scrollability
+
+**Team members:**
+1. Dr. Amara Osei — Chief Dermatologist
+2. Dr. James Adebayo — Head of Research
+3. Leah Chen — Lead Cosmetic Chemist
+4. David Okonkwo — Product Development Director
+5. Sofia Mensah — Clinical Trials Manager
+
+**Card style:**
+- Tall portrait ratio
+- Rounded corners
+- Name in DM Sans medium, role in regular weight, both overlaid on the image
+- Subtle dark gradient at the bottom of each image for text legibility
+
+**Reference:** reference-ordinary-team-intro.png, reference-ordinary-team-carousel.png
+
+**Assets:** 5 team portrait images
+
+---
+
+## Section 6 — Testimonials
+
+**Layout:** Full-width section
+- Section heading at top — star rating + total review count + CTA button on the right ("Start your journey")
+
+**Content:** Horizontal row of 8 testimonial cards, scrollable
+
+**Each testimonial card contains:**
+- Side-by-side before/after photos of the same person (no labels — labels added in design, not on images)
+- "Results may vary" disclaimer text in small print below the photos
+- Quote mark icon (")
+- Person's first name — DM Sans medium
+- Short testimonial quote — DM Sans regular, secondary text color, 2–3 lines max
+
+**Testimonials:**
+1. Amara — acne, 1 month
+2. Marcus — cystic acne, 3 months
+3. Priya — hyperpigmentation, 6 months
+4. Tyler — congestion/whiteheads, 2 months
+5. Zara — redness/rosacea, 1 year
+6. Daniel — texture/pores, 4 months
+7. Nia — dryness/flaking, 8 months
+8. Andre — pockmarks/scarring, 5 months
+
+**Card style:**
+- No card border or background — clean, open layout
+- Before/after photos sit flush next to each other with a thin gap
+- Text content sits below the photo pair
+- Even spacing between testimonial groups
+
+**Interaction:** Scrollable with circular chevron navigation arrows (same style as bestsellers). Otherwise static — no drag sliders or interactive before/after. The hero handles that.
+
+**Reference:** reference-curology-testimonials.png
+
+**Assets:** 8 before/after testimonial image pairs
+
+---
+
+## Section 7 — Blog
+
+**Layout:** Full-width section
+- Section heading: "From the journal" — DM Serif Display, left-aligned
+- "Read more →" link on the right
+
+**Content:** 3 blog post cards in a horizontal row
+
+**Blog posts:**
+1. **"5 Ingredients Your Dermatologist Wants You to Avoid"** — Category: Ingredients. Image: flat lay of products with red X marks.
+2. **"How to Build a Morning Routine That Actually Works"** — Category: Routines. Image: bathroom countertop with products lined up in morning light.
+3. **"The Truth About Vitamin C Serums"** — Category: Ingredients. Image: orange slices with a dark glass dropper bottle on marble.
+
+**Each blog card:**
+- Featured image fills the top portion (rounded corners)
+- Category tag pill below the image (uppercase, small, same style as concern tags)
+- Blog post title in DM Sans 500, 17px, #0D0D0D
+- Short excerpt in DM Sans 400, 14px, #6B6B65, 2 lines max
+
+**Assets:** 3 images in assets/blog/ (blog-1.png, blog-2.png, blog-3.png)
+
+---
+
+## Section 8 — Footer
+
+**Layout:** Two parts stacked vertically
+
+**Part 1 — Pre-footer (top row, 3 columns):**
+- **Left column:** Large "us" logo (logo_black.png) — oversized
+- **Center column:** Email sign-up with incentive text ("Sign up and receive 15% off your first order"), email input field + "Subscribe" button
+- **Right column:** Looping images of 5 different people holding "us" products — auto-plays, changes every few seconds with a soft crossfade transition
+
+**Part 2 — Footer nav (bottom):**
+- Multiple columns of navigation links organized by category
+- Suggested columns: Skincare, Body Care, Sets, Learn, Connect
+- Each column has a bold category heading with regular-weight links underneath
+- Bottom row: copyright text ("© 2026 us Skincare"), privacy policy, terms links
+
+**Style:**
+- Pre-footer has a subtle background color shift or a top border to separate it from the section above
+- Footer nav text is small (13–14px), secondary color
+- Clean column alignment with even spacing
+
+**Reference:** reference-drunkelephant-footer.png
+
+**Assets:** 5 footer loop images (people holding products)
+
+---

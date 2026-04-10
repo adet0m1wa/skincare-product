@@ -1,0 +1,3057 @@
+{
+  "version": "2.10",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 1,
+      "name": "Landing Page",
+      "clip": true,
+      "width": 1440,
+      "fill": "$color.bg",
+      "layout": "vertical",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Yli6c",
+          "name": "Nav",
+          "width": "fill_container",
+          "fill": "$color.bg",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$color.border"
+          },
+          "padding": [
+            28,
+            40
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "V8Zik",
+              "name": "Nav/Left",
+              "width": "fill_container",
+              "gap": 2,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "hzIM3",
+                  "name": "Nav/Logo",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "/Users/mac/Documents/Projects/Coding Lifestyle/skincare-product/assets/logo/logo_black.png",
+                    "mode": "fit"
+                  },
+                  "width": 25,
+                  "height": 25,
+                  "stroke": {
+                    "thickness": 0
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "TL5eL",
+                  "name": "Headline",
+                  "fill": "$color.text",
+                  "textGrowth": "fixed-width-height",
+                  "width": 423,
+                  "height": "fit_content(28)",
+                  "content": "us",
+                  "lineHeight": 1.08,
+                  "textAlignVertical": "bottom",
+                  "fontFamily": "DM Serif Display",
+                  "fontSize": 30,
+                  "fontWeight": "normal",
+                  "letterSpacing": -1.04,
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "idatk",
+              "name": "Nav/Center",
+              "width": "fill_container",
+              "gap": 36,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "L2goj",
+                  "name": "Link/Bestsellers",
+                  "fill": "$color.text",
+                  "content": "Bestsellers",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "HxTdw",
+                  "name": "Link/Skincare",
+                  "fill": "$color.text",
+                  "content": "Skincare",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "DFXeI",
+                  "name": "Link/Body",
+                  "fill": "$color.text",
+                  "content": "Body + Hair",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "uVwY8",
+                  "name": "Link/Sets",
+                  "fill": "$color.text",
+                  "content": "Sets",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "V5MJe",
+                  "name": "Link/About",
+                  "fill": "$color.text",
+                  "content": "About",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XFD3u",
+              "name": "Nav/Right",
+              "width": "fill_container",
+              "gap": 8,
+              "justifyContent": "end",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "mpjdC",
+                  "name": "Nav/CartIcon",
+                  "width": 22,
+                  "height": 22,
+                  "iconFontName": "shopping-bag",
+                  "iconFontFamily": "phosphor",
+                  "weight": 400,
+                  "fill": "$color.text"
+                },
+                {
+                  "type": "frame",
+                  "id": "FnJNF",
+                  "name": "CTA/BuildRegimen",
+                  "cornerRadius": 9999,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color.accent"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GGN6g",
+                      "name": "CTA/Label",
+                      "fill": "$color.text",
+                      "content": "Build My Regimen",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yl2HW",
+          "name": "Hero",
+          "clip": true,
+          "width": 1360,
+          "height": "fit_content(533)",
+          "children": [
+            {
+              "type": "frame",
+              "id": "oJBiz",
+              "name": "Hero/Left",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "$color.bg",
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "padding": 56,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eSMGq",
+                  "name": "Hero/Left/Top",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "7OIkw",
+                      "name": "TagPill",
+                      "fill": "$color.tagBg",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        7,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Nm6z8",
+                          "name": "TagPill/Text",
+                          "fill": "$color.tagText",
+                          "content": "CLINICALLY TESTED · DERMATOLOGIST APPROVED",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 11,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.44
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "8UPKC",
+                      "name": "Headline",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Your skin deserves\nmore than guesswork",
+                      "lineHeight": 1.08,
+                      "fontFamily": "DM Serif Display",
+                      "fontSize": 52,
+                      "fontWeight": "normal",
+                      "letterSpacing": -1.04
+                    },
+                    {
+                      "type": "text",
+                      "id": "LvHgq",
+                      "name": "Body",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": 420,
+                      "content": "Formulated by dermatologists, made for us — every skin type, every concern, one standard of care.",
+                      "lineHeight": 1.65,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "mUkdP",
+                      "name": "CTA/Wrap",
+                      "layout": "vertical",
+                      "padding": [
+                        8,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sX5z0",
+                          "name": "CTA/ShopNow",
+                          "fill": "$color.accent",
+                          "cornerRadius": 9999,
+                          "gap": 8,
+                          "padding": [
+                            16,
+                            32
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "waMbV",
+                              "name": "CTA/Label",
+                              "fill": "$color.white",
+                              "content": "Shop now",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5AHua",
+                  "name": "TrustLine",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "top": 1
+                    },
+                    "fill": "$color.border"
+                  },
+                  "layout": "vertical",
+                  "padding": [
+                    20,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zUR8R",
+                      "name": "TrustLine/Text",
+                      "fill": "$color.textSecondary",
+                      "content": "★★★★★   4,800+ reviews   |   Free shipping over $50",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "S3rOL",
+              "name": "Hero/Right",
+              "clip": true,
+              "width": 680,
+              "height": "fill_container",
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "C9yK6",
+                  "name": "Hero/Right/Image",
+                  "width": "fill_container",
+                  "height": "fill_container"
+                },
+                {
+                  "type": "frame",
+                  "id": "RuXWF",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 397,
+                  "name": "Hero/Right/DotFade",
+                  "width": 680,
+                  "height": 136,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 0,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#E0DDD6",
+                        "position": 0
+                      },
+                      {
+                        "color": "#E0DDD600",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "layout": "vertical",
+                  "padding": [
+                    80,
+                    0,
+                    20,
+                    0
+                  ],
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "1tulF",
+                      "name": "Hero/Right/Dots",
+                      "gap": 20,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 8,
+                          "id": "aUrIr",
+                          "name": "Dot/1",
+                          "opacity": 0.5,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "/Users/mac/Documents/Projects/Coding Lifestyle/skincare-product/assets/hero/hero-couple.png",
+                            "mode": "fill"
+                          },
+                          "width": 40,
+                          "height": 40,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": {
+                              "type": "color",
+                              "color": "#1a1a1a66",
+                              "enabled": false
+                            }
+                          }
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 8,
+                          "id": "AmOqU",
+                          "name": "Dot/2",
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "/Users/mac/Documents/Projects/Coding Lifestyle/skincare-product/assets/hero/hero-female-before.png",
+                            "mode": "fill"
+                          },
+                          "width": 40,
+                          "height": 40,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "#1A1A1A66"
+                          }
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 8,
+                          "id": "MoRF7",
+                          "name": "Dot/3",
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "/Users/mac/Documents/Projects/Coding Lifestyle/skincare-product/assets/hero/hero-male-before.png",
+                            "mode": "fill"
+                          },
+                          "width": 40,
+                          "height": 40,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "#1A1A1A66"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "65bGX",
+          "name": "Concerns",
+          "width": 1360,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            100,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "adbMp",
+              "name": "Concerns/Header",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "AV7Jr",
+                  "name": "Concerns/Header/Left",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hkJt6",
+                      "name": "Concerns/Title",
+                      "fill": "$color.text",
+                      "content": "Common concerns, considered",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Serif Display",
+                      "fontSize": 36,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.72
+                    },
+                    {
+                      "type": "text",
+                      "id": "qJUq1",
+                      "name": "Concerns/Subtitle",
+                      "fill": "$color.textSecondary",
+                      "content": "Start with what your skin is telling you. We'll take it from there.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "TpMHa",
+                  "name": "Bestsellers/ViewMore",
+                  "fill": "$color.text",
+                  "content": "Got a unique concern?  →",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mb7yM",
+              "name": "Concerns/Cards",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XNgyC",
+                  "name": "Concern/Aging",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "X6a77",
+                      "name": "Concern/Aging/Image",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "EKvpQ",
+                      "name": "Concern/Aging/Label",
+                      "fill": "$color.text",
+                      "content": "Aging  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A9x9e",
+                  "name": "Concern/Congestion",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zpaWP",
+                      "name": "Concern/Congestion/Image",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "KTviX",
+                      "name": "Concern/Congestion/Label",
+                      "fill": "$color.text",
+                      "content": "Congestion  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "OLSlU",
+                  "name": "Concern/Texture",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "7N0ZI",
+                      "name": "Concern/Texture/Image",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "uLQ1A",
+                      "name": "Concern/Texture/Label",
+                      "fill": "$color.text",
+                      "content": "Texture  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "6kuUq",
+                  "name": "Concern/EyeCare",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zv2QC",
+                      "name": "Concern/EyeCare/Image",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "FKHYJ",
+                      "name": "Concern/EyeCare/Label",
+                      "fill": "$color.text",
+                      "content": "Eye Care  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "D4rCA",
+                  "name": "Concern/Redness",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "GQ7u7",
+                      "name": "Concern/Redness/Image",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "bstjN",
+                      "name": "Concern/Redness/Label",
+                      "fill": "$color.text",
+                      "content": "Redness  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CJeO6",
+                  "name": "Concern/Dryness",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "32kHR",
+                      "name": "Concern/Dryness/Image",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "qgI9M",
+                      "name": "Concern/Dryness/Label",
+                      "fill": "$color.text",
+                      "content": "Dryness  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pCxZP",
+          "name": "Bestsellers",
+          "width": 1360,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            100,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "0v1Ys",
+              "name": "Bestsellers/Header",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Xwzzc",
+                  "name": "Bestsellers/Header/Left",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qJ4os",
+                      "name": "Bestsellers/Title",
+                      "fill": "$color.text",
+                      "content": "Bestsellers",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Serif Display",
+                      "fontSize": 36,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.72
+                    },
+                    {
+                      "type": "text",
+                      "id": "iTtsW",
+                      "name": "Bestsellers/Subtitle",
+                      "fill": "$color.textSecondary",
+                      "content": "Loved most. Repeat purchased more than anything else we make.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jfbIj",
+                  "name": "Bestsellers/Header/Right",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jSzT1",
+                      "name": "Bestsellers/ViewMore",
+                      "fill": "$color.text",
+                      "content": "View more products  →",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bffBq",
+              "name": "Bestsellers/Cards",
+              "width": "fill_container",
+              "gap": 40,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Qwsoi",
+                  "name": "Product/Serum",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "oa9WB",
+                      "name": "Product/Serum/Image",
+                      "clip": true,
+                      "width": 400,
+                      "height": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "padding": 16,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "K36vd",
+                          "name": "Product/Serum/Tag",
+                          "fill": "$color.tagBg",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "zLLIc",
+                              "name": "Product/Serum/Tag/Text",
+                              "fill": "$color.tagText",
+                              "content": "BRIGHTENING",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "500",
+                              "letterSpacing": 0.4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "C7KtB",
+                      "name": "Product/Serum/Name",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Brightening Vitamin C Serum",
+                      "lineHeight": 1.3,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XJVOr",
+                      "name": "Product/Serum/Desc",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Brightens, evens tone, fades dark spots",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "HNeo2",
+                      "name": "Product/Serum/Meta",
+                      "fill": "$color.textSecondary",
+                      "content": "$48   ★★★★★  4.8",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hmOKn",
+                      "name": "Product/Serum/AddBtn",
+                      "width": "fill_container",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dm6eA",
+                          "name": "Product/Serum/AddBtn/Text",
+                          "fill": "$color.text",
+                          "content": "Add to cart",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2mt12",
+                  "name": "Product/Moisturizer",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "UbnCY",
+                      "name": "Product/Moisturizer/Image",
+                      "clip": true,
+                      "width": 400,
+                      "height": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "padding": 16,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "i7Zf3",
+                          "name": "Product/Moisturizer/Tag",
+                          "fill": "$color.tagBg",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "2OtbA",
+                              "name": "Product/Moisturizer/Tag/Text",
+                              "fill": "$color.tagText",
+                              "content": "HYDRATION",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "500",
+                              "letterSpacing": 0.4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "JI6tK",
+                      "name": "Product/Moisturizer/Name",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Hydrating Hyaluronic Moisturizer",
+                      "lineHeight": 1.3,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Km7zz",
+                      "name": "Product/Moisturizer/Desc",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Hydrates, plumps, restores moisture barrier",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "n63rn",
+                      "name": "Product/Moisturizer/Meta",
+                      "fill": "$color.textSecondary",
+                      "content": "$42   ★★★★★  4.9",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zqO8O",
+                      "name": "Product/Moisturizer/AddBtn",
+                      "width": "fill_container",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hhPrI",
+                          "name": "Product/Moisturizer/AddBtn/Text",
+                          "fill": "$color.text",
+                          "content": "Add to cart",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5NKDy",
+                  "name": "Product/Cleanser",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "9aUvO",
+                      "name": "Product/Cleanser/Image",
+                      "clip": true,
+                      "width": 400,
+                      "height": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "padding": 16,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Wg8m0",
+                          "name": "Product/Cleanser/Tag",
+                          "fill": "$color.tagBg",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Bsmeo",
+                              "name": "Product/Cleanser/Tag/Text",
+                              "fill": "$color.tagText",
+                              "content": "CLARITY",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "500",
+                              "letterSpacing": 0.4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "GqiwL",
+                      "name": "Product/Cleanser/Name",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Gentle Exfoliating Cleanser",
+                      "lineHeight": 1.3,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "SE5UW",
+                      "name": "Product/Cleanser/Desc",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Smooths, unclogs pores, refines texture",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jqpON",
+                      "name": "Product/Cleanser/Meta",
+                      "fill": "$color.textSecondary",
+                      "content": "$32   ★★★★★  4.7",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hGqEC",
+                      "name": "Product/Cleanser/AddBtn",
+                      "width": "fill_container",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "O6lTq",
+                          "name": "Product/Cleanser/AddBtn/Text",
+                          "fill": "$color.text",
+                          "content": "Add to cart",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j2q6j",
+                  "name": "Product/Retinol",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zTZeq",
+                      "name": "Product/Retinol/Image",
+                      "clip": true,
+                      "width": 400,
+                      "height": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "padding": 16,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "wXCRJ",
+                          "name": "Product/Retinol/Tag",
+                          "fill": "$color.tagBg",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "CSXct",
+                              "name": "Product/Retinol/Tag/Text",
+                              "fill": "$color.tagText",
+                              "content": "RENEWAL",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "500",
+                              "letterSpacing": 0.4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "3H63m",
+                      "name": "Product/Retinol/Name",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Retinol Night Repair Cream",
+                      "lineHeight": 1.3,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "0oqQg",
+                      "name": "Product/Retinol/Desc",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Firms, repairs, reduces fine lines overnight",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZA0nk",
+                      "name": "Product/Retinol/Meta",
+                      "fill": "$color.textSecondary",
+                      "content": "$58   ★★★★★  4.9",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DxMws",
+                      "name": "Product/Retinol/AddBtn",
+                      "width": "fill_container",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "4kssx",
+                          "name": "Product/Retinol/AddBtn/Text",
+                          "fill": "$color.text",
+                          "content": "Add to cart",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hG9by",
+                  "name": "Product/SPF",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "MKXgx",
+                      "name": "Product/SPF/Image",
+                      "clip": true,
+                      "width": 400,
+                      "height": 400,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "layout": "vertical",
+                      "padding": 16,
+                      "alignItems": "end",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "3KxIT",
+                          "name": "Product/SPF/Tag",
+                          "fill": "$color.tagBg",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "7661U",
+                              "name": "Product/SPF/Tag/Text",
+                              "fill": "$color.tagText",
+                              "content": "PROTECTION",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 10,
+                              "fontWeight": "500",
+                              "letterSpacing": 0.4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "wVFwI",
+                      "name": "Product/SPF/Name",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Daily Defense SPF 50",
+                      "lineHeight": 1.3,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Vm2QG",
+                      "name": "Product/SPF/Desc",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Shields, prevents damage, lightweight daily wear",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "y4y50",
+                      "name": "Product/SPF/Meta",
+                      "fill": "$color.textSecondary",
+                      "content": "$36   ★★★★★  4.8",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XuYaN",
+                      "name": "Product/SPF/AddBtn",
+                      "width": "fill_container",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "padding": [
+                        12,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nb6LN",
+                          "name": "Product/SPF/AddBtn/Text",
+                          "fill": "$color.text",
+                          "content": "Add to cart",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GF9ZD",
+                  "layoutPosition": "absolute",
+                  "x": 1313,
+                  "y": 276,
+                  "name": "Bestsellers/Chevron",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$color.bg",
+                  "cornerRadius": 9999,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$color.accent"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "e6m8L",
+                      "name": "Bestsellers/Chevron/Icon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "caret-right",
+                      "iconFontFamily": "phosphor",
+                      "weight": 400,
+                      "fill": "$color.text"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MPByG",
+          "name": "Team",
+          "width": 1360,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 56,
+          "padding": [
+            100,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "dXNlb",
+              "name": "Team/Intro",
+              "layout": "vertical",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "G6vM0",
+                  "name": "Team/Heading",
+                  "fill": "$color.text",
+                  "textGrowth": "fixed-width",
+                  "width": 720,
+                  "content": "Grounded in science.\nDriven by purpose.",
+                  "lineHeight": 1.08,
+                  "textAlign": "center",
+                  "fontFamily": "DM Serif Display",
+                  "fontSize": 48,
+                  "fontWeight": "normal",
+                  "letterSpacing": -0.96
+                },
+                {
+                  "type": "text",
+                  "id": "Mzjjf",
+                  "name": "Team/Description",
+                  "fill": "$color.textSecondary",
+                  "textGrowth": "fixed-width",
+                  "width": 620,
+                  "content": "Every formula passes through a team of licensed dermatologists, certified chemists, and clinical-trial leads before it reaches your shelf. Transparent, tested, and made in small batches by people who use it themselves.",
+                  "lineHeight": 1.7,
+                  "textAlign": "center",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "22JK2",
+                  "name": "Team/CTAWrap",
+                  "layout": "vertical",
+                  "padding": [
+                    8,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "VxIZr",
+                      "name": "Team/CTA",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "padding": [
+                        14,
+                        28
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dMAlX",
+                          "name": "Team/CTA/Text",
+                          "fill": "$color.text",
+                          "content": "Meet the team",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EVWys",
+              "name": "Team/Cards",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Ace3F",
+                  "name": "Team/Amara",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 480,
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "tB3DX",
+                      "name": "Team/Amara/Info",
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0D0D0DCC",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0D0D0D00",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        32,
+                        20,
+                        24,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "4vCo0",
+                          "name": "Team/Amara/Rule",
+                          "fill": "#FFFFFF80",
+                          "width": 32,
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "BS1pu",
+                          "name": "Team/Amara/Name",
+                          "fill": "$color.white",
+                          "content": "Dr. Amara Osei",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "sZwaj",
+                          "name": "Team/Amara/Role",
+                          "fill": "#FFFFFFCC",
+                          "content": "Chief Dermatologist",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nxZRp",
+                  "name": "Team/James",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 480,
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "4Jaxp",
+                      "name": "Team/James/Info",
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0D0D0DCC",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0D0D0D00",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        32,
+                        20,
+                        24,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "wXYaz",
+                          "name": "Team/James/Rule",
+                          "fill": "#FFFFFF80",
+                          "width": 32,
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "v0fNZ",
+                          "name": "Team/James/Name",
+                          "fill": "$color.white",
+                          "content": "Dr. James Adebayo",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bfV4x",
+                          "name": "Team/James/Role",
+                          "fill": "#FFFFFFCC",
+                          "content": "Head of Research",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2v3Js",
+                  "name": "Team/Leah",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 480,
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "MNsuc",
+                      "name": "Team/Leah/Info",
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0D0D0DCC",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0D0D0D00",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        32,
+                        20,
+                        24,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "JaRQi",
+                          "name": "Team/Leah/Rule",
+                          "fill": "#FFFFFF80",
+                          "width": 32,
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "jE09F",
+                          "name": "Team/Leah/Name",
+                          "fill": "$color.white",
+                          "content": "Leah Chen",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Xr4CX",
+                          "name": "Team/Leah/Role",
+                          "fill": "#FFFFFFCC",
+                          "content": "Lead Cosmetic Chemist",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "v7MRe",
+                  "name": "Team/David",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 480,
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "BsBmC",
+                      "name": "Team/David/Info",
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0D0D0DCC",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0D0D0D00",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        32,
+                        20,
+                        24,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "og3W0",
+                          "name": "Team/David/Rule",
+                          "fill": "#FFFFFF80",
+                          "width": 32,
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "Rb6zv",
+                          "name": "Team/David/Name",
+                          "fill": "$color.white",
+                          "content": "David Okonkwo",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Cn1Xh",
+                          "name": "Team/David/Role",
+                          "fill": "#FFFFFFCC",
+                          "content": "Product Development Director",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "togaE",
+                  "name": "Team/Sofia",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 480,
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "kGbzG",
+                      "name": "Team/Sofia/Info",
+                      "width": "fill_container",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0D0D0DCC",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0D0D0D00",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": [
+                        32,
+                        20,
+                        24,
+                        20
+                      ],
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "rFDFk",
+                          "name": "Team/Sofia/Rule",
+                          "fill": "#FFFFFF80",
+                          "width": 32,
+                          "height": 1
+                        },
+                        {
+                          "type": "text",
+                          "id": "WXBlw",
+                          "name": "Team/Sofia/Name",
+                          "fill": "$color.white",
+                          "content": "Sofia Mensah",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "1BRTa",
+                          "name": "Team/Sofia/Role",
+                          "fill": "#FFFFFFCC",
+                          "content": "Clinical Trials Manager",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Gv5yy",
+          "name": "Testimonials",
+          "width": 1360,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            100,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Dj9dY",
+              "name": "Testimonials/Header",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "NU1GK",
+                  "name": "Testimonials/Header/Left",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kVYmA",
+                      "name": "Testimonials/Title",
+                      "fill": "$color.text",
+                      "content": "Real skin. Real results.",
+                      "lineHeight": 1.1,
+                      "fontFamily": "DM Serif Display",
+                      "fontSize": 36,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.72
+                    },
+                    {
+                      "type": "text",
+                      "id": "rmSbk",
+                      "name": "Testimonials/Meta",
+                      "fill": "$color.textSecondary",
+                      "content": "★★★★★   4.8 out of 5   ·   4,800+ verified reviews",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "eOy02",
+                  "name": "Testimonials/CTA",
+                  "fill": "$color.accent",
+                  "cornerRadius": 9999,
+                  "padding": [
+                    14,
+                    28
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ClhvB",
+                      "name": "Testimonials/CTA/Text",
+                      "fill": "$color.white",
+                      "content": "Start your journey",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6raoY",
+              "name": "Testimonials/Cards",
+              "clip": true,
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VEljj",
+                  "name": "Testimonial/Amara",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "SvN58",
+                      "name": "Testimonial/Amara/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "hlJtE",
+                      "name": "Testimonial/Amara/Name",
+                      "fill": "$color.text",
+                      "content": "Amara  ·  1 month",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pd0ww",
+                      "name": "Testimonial/Amara/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“I'd tried everything for my acne. This was the first routine that actually stuck, and my skin looks like mine again.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nBSIs",
+                  "name": "Testimonial/Marcus",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "stlEs",
+                      "name": "Testimonial/Marcus/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "syuhm",
+                      "name": "Testimonial/Marcus/Name",
+                      "fill": "$color.text",
+                      "content": "Marcus  ·  3 months",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BWdgI",
+                      "name": "Testimonial/Marcus/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“Cystic acne ran my confidence. Three months in and I don't flinch at the mirror anymore.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nPnXF",
+                  "name": "Testimonial/Priya",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rBbaO",
+                      "name": "Testimonial/Priya/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "QyOni",
+                      "name": "Testimonial/Priya/Name",
+                      "fill": "$color.text",
+                      "content": "Priya  ·  6 months",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KzDbk",
+                      "name": "Testimonial/Priya/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“My hyperpigmentation finally faded evenly. No patchy overnight miracle, just steady, real change.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2OPue",
+                  "name": "Testimonial/Tyler",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HQdZm",
+                      "name": "Testimonial/Tyler/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "v8bDN",
+                      "name": "Testimonial/Tyler/Name",
+                      "fill": "$color.text",
+                      "content": "Tyler  ·  2 months",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "5kpIx",
+                      "name": "Testimonial/Tyler/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“The cleanser and retinol combo cleared whiteheads I've had for years. Low effort, high payoff.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "FTJHL",
+                  "name": "Testimonial/Zara",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "s3Mlt",
+                      "name": "Testimonial/Zara/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "ldsOh",
+                      "name": "Testimonial/Zara/Name",
+                      "fill": "$color.text",
+                      "content": "Zara  ·  1 year",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "8kHNG",
+                      "name": "Testimonial/Zara/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“My rosacea used to flare at the smallest trigger. A year in and I go out without foundation for the first time.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UrqsD",
+                  "name": "Testimonial/Daniel",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rNCT6",
+                      "name": "Testimonial/Daniel/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "aEPdn",
+                      "name": "Testimonial/Daniel/Name",
+                      "fill": "$color.text",
+                      "content": "Daniel  ·  4 months",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "a1e53",
+                      "name": "Testimonial/Daniel/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“Pores are smaller, texture is smoother, and I finally look like I actually sleep. Wild.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wU1nH",
+                  "name": "Testimonial/Nia",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "kNDfQ",
+                      "name": "Testimonial/Nia/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "LEIm9",
+                      "name": "Testimonial/Nia/Name",
+                      "fill": "$color.text",
+                      "content": "Nia  ·  8 months",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wmdlH",
+                      "name": "Testimonial/Nia/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“Winter used to mean flaky, tight skin. This routine carries me through the driest months without a crack.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qS8pq",
+                  "name": "Testimonial/Andre",
+                  "width": 302,
+                  "layout": "vertical",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "cl95B",
+                      "name": "Testimonial/Andre/Photo",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 240,
+                      "cornerRadius": 12
+                    },
+                    {
+                      "type": "text",
+                      "id": "5nchd",
+                      "name": "Testimonial/Andre/Name",
+                      "fill": "$color.text",
+                      "content": "Andre  ·  5 months",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "7Qjsy",
+                      "name": "Testimonial/Andre/Quote",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "“Old pockmarks finally filling in. Didn't expect this much change from something you can just put on at night.”",
+                      "lineHeight": 1.6,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "PYqZ6",
+              "name": "Testimonials/Note",
+              "fill": "$color.textSecondary",
+              "content": "Results may vary.  Drag to see more stories  →",
+              "fontFamily": "DM Sans",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "kQa7k",
+              "layoutPosition": "absolute",
+              "x": 1312,
+              "y": 332,
+              "name": "Testimonials/ChevronRight",
+              "width": 48,
+              "height": 48,
+              "fill": "$color.bg",
+              "cornerRadius": 9999,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$color.accent"
+              },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "c0mMV",
+                  "name": "Testimonials/ChevronRight/Icon",
+                  "width": 20,
+                  "height": 20,
+                  "iconFontName": "caret-right",
+                  "iconFontFamily": "phosphor",
+                  "weight": 400,
+                  "fill": "$color.text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lYV8k",
+          "name": "Footer",
+          "width": 1440,
+          "fill": "$color.bg",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "$color.border"
+          },
+          "layout": "vertical",
+          "padding": [
+            100,
+            40
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "KHku0",
+              "name": "Footer/Pre",
+              "width": "fill_container",
+              "gap": 128,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "caB1i",
+                  "name": "Footer/LogoCol",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "oPHe2",
+                      "name": "Frame 1",
+                      "height": 65,
+                      "gap": 4,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "CS1na",
+                          "name": "Footer/BigLogo",
+                          "width": 55,
+                          "height": 55,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "/Users/mac/Documents/Projects/Coding Lifestyle/skincare-product/assets/logo/logo_black.png",
+                            "mode": "fit"
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "gXe7d",
+                          "name": "Testimonials/Title",
+                          "fill": "$color.text",
+                          "textGrowth": "fixed-width-height",
+                          "width": 95,
+                          "height": 89,
+                          "content": "us",
+                          "lineHeight": 1.1,
+                          "textAlignVertical": "bottom",
+                          "fontFamily": "DM Serif Display",
+                          "fontSize": 100,
+                          "fontWeight": "normal",
+                          "letterSpacing": -0.72,
+                          "fontStyle": "italic"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "vEhQj",
+                      "name": "Footer/LogoTagline",
+                      "fill": "$color.textSecondary",
+                      "content": "Every skin type.\nEvery concern. One standard.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "9PxV0",
+                  "name": "Footer/SignupCol",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": [
+                    16,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rie04",
+                      "name": "Footer/Signup/Head",
+                      "fill": "$color.text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sign up and receive 15% off your first order.",
+                      "lineHeight": 1.2,
+                      "textAlign": "center",
+                      "fontFamily": "DM Serif Display",
+                      "fontSize": 24,
+                      "fontWeight": "normal",
+                      "letterSpacing": -0.48
+                    },
+                    {
+                      "type": "text",
+                      "id": "YjBL5",
+                      "name": "Footer/Signup/Sub",
+                      "fill": "$color.textSecondary",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Early access to new formulas, clinical trial invites, and the occasional honest letter from our team.",
+                      "lineHeight": 1.6,
+                      "textAlign": "center",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qhteU",
+                      "name": "Footer/Signup/Input",
+                      "width": "fill_container",
+                      "cornerRadius": 9999,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$color.accent"
+                      },
+                      "gap": 12,
+                      "padding": [
+                        6,
+                        6,
+                        6,
+                        20
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "lkV05",
+                          "name": "Footer/Signup/Input/Placeholder",
+                          "fill": "$color.textSecondary",
+                          "content": "Enter your email",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "9BDiG",
+                          "name": "Footer/Signup/Subscribe",
+                          "fill": "$color.accent",
+                          "cornerRadius": 9999,
+                          "padding": [
+                            12,
+                            24
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "US4K8",
+                              "name": "Footer/Signup/Subscribe/Text",
+                              "fill": "$color.white",
+                              "content": "Subscribe",
+                              "fontFamily": "DM Sans",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bTqx4",
+                  "name": "Footer/ImageCol",
+                  "height": 344,
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "UyzU1",
+                      "name": "Footer/LoopImage",
+                      "clip": true,
+                      "width": 373,
+                      "height": 333,
+                      "fill": "$color.imageBg",
+                      "cornerRadius": 12
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OJrcV",
+              "name": "Footer/Spacer1",
+              "width": "fill_container",
+              "height": 80,
+              "fill": "#00000000"
+            },
+            {
+              "type": "rectangle",
+              "id": "2Rq4b",
+              "name": "Footer/Divider",
+              "fill": "$color.border",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "sRbvk",
+              "name": "Footer/NavWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                48,
+                0,
+                32,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "K7Vpy",
+                  "name": "Footer/Nav",
+                  "width": "fill_container",
+                  "gap": 40,
+                  "justifyContent": "space_between",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "2cy3E",
+                      "name": "Footer/Col/Shop",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ryWbY",
+                          "name": "Col/Shop/Heading",
+                          "fill": "$color.text",
+                          "content": "SHOP",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.48
+                        },
+                        {
+                          "type": "text",
+                          "id": "U2AT3",
+                          "name": "Col/Shop/Link1",
+                          "fill": "$color.textSecondary",
+                          "content": "Bestsellers",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yiwFC",
+                          "name": "Col/Shop/Link2",
+                          "fill": "$color.textSecondary",
+                          "content": "Skincare",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "aA2op",
+                          "name": "Col/Shop/Link3",
+                          "fill": "$color.textSecondary",
+                          "content": "Body + Hair",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "haBUt",
+                          "name": "Col/Shop/Link4",
+                          "fill": "$color.textSecondary",
+                          "content": "Sets",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "X3sts",
+                      "name": "Footer/Col/Learn",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Ms5CY",
+                          "name": "Col/Learn/Heading",
+                          "fill": "$color.text",
+                          "content": "LEARN",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.48
+                        },
+                        {
+                          "type": "text",
+                          "id": "3xQaq",
+                          "name": "Col/Learn/Link1",
+                          "fill": "$color.textSecondary",
+                          "content": "Ingredient index",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "h1P0S",
+                          "name": "Col/Learn/Link2",
+                          "fill": "$color.textSecondary",
+                          "content": "Routines by concern",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "AWJRY",
+                          "name": "Col/Learn/Link3",
+                          "fill": "$color.textSecondary",
+                          "content": "Journal",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "t2iqw",
+                          "name": "Col/Learn/Link4",
+                          "fill": "$color.textSecondary",
+                          "content": "Clinical studies",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DwWvs",
+                      "name": "Footer/Col/Company",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ItyDv",
+                          "name": "Col/Company/Heading",
+                          "fill": "$color.text",
+                          "content": "COMPANY",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.48
+                        },
+                        {
+                          "type": "text",
+                          "id": "yeEch",
+                          "name": "Col/Company/Link1",
+                          "fill": "$color.textSecondary",
+                          "content": "About us",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ny5XO",
+                          "name": "Col/Company/Link2",
+                          "fill": "$color.textSecondary",
+                          "content": "Our team",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XHNUw",
+                          "name": "Col/Company/Link3",
+                          "fill": "$color.textSecondary",
+                          "content": "Sustainability",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XMSqy",
+                          "name": "Col/Company/Link4",
+                          "fill": "$color.textSecondary",
+                          "content": "Press",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lw5gV",
+                      "name": "Footer/Col/Support",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "n6OTf",
+                          "name": "Col/Support/Heading",
+                          "fill": "$color.text",
+                          "content": "SUPPORT",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.48
+                        },
+                        {
+                          "type": "text",
+                          "id": "kEAYZ",
+                          "name": "Col/Support/Link1",
+                          "fill": "$color.textSecondary",
+                          "content": "Shipping & returns",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "jVIfR",
+                          "name": "Col/Support/Link2",
+                          "fill": "$color.textSecondary",
+                          "content": "Contact",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "aAMbR",
+                          "name": "Col/Support/Link3",
+                          "fill": "$color.textSecondary",
+                          "content": "Help center",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CkmT3",
+                          "name": "Col/Support/Link4",
+                          "fill": "$color.textSecondary",
+                          "content": "Gift cards",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TNxGB",
+                      "name": "Footer/Col/Connect",
+                      "layout": "vertical",
+                      "gap": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "iMzBI",
+                          "name": "Col/Connect/Heading",
+                          "fill": "$color.text",
+                          "content": "CONNECT",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 12,
+                          "fontWeight": "500",
+                          "letterSpacing": 0.48
+                        },
+                        {
+                          "type": "text",
+                          "id": "ID8A9",
+                          "name": "Col/Connect/Link1",
+                          "fill": "$color.textSecondary",
+                          "content": "Instagram",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "eNXQD",
+                          "name": "Col/Connect/Link2",
+                          "fill": "$color.textSecondary",
+                          "content": "TikTok",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ta5ih",
+                          "name": "Col/Connect/Link3",
+                          "fill": "$color.textSecondary",
+                          "content": "YouTube",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "liZuL",
+                          "name": "Col/Connect/Link4",
+                          "fill": "$color.textSecondary",
+                          "content": "Newsletter",
+                          "fontFamily": "DM Sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "cX7iY",
+              "name": "Footer/BottomDivider",
+              "fill": "$color.border",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "mGvRo",
+              "name": "Footer/Bottom",
+              "width": "fill_container",
+              "gap": 24,
+              "padding": [
+                24,
+                0,
+                0,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qlP4l",
+                  "name": "Footer/Copyright",
+                  "fill": "$color.textSecondary",
+                  "content": "© 2026 us Skincare. Made in small batches, in California.",
+                  "fontFamily": "DM Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "ev7LW",
+                  "name": "Footer/BottomLinks",
+                  "gap": 24,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yjJHa",
+                      "name": "Footer/Privacy",
+                      "fill": "$color.textSecondary",
+                      "content": "Privacy",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KjZTS",
+                      "name": "Footer/Terms",
+                      "fill": "$color.textSecondary",
+                      "content": "Terms",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "IowYl",
+                      "name": "Footer/Accessibility",
+                      "fill": "$color.textSecondary",
+                      "content": "Accessibility",
+                      "fontFamily": "DM Sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "color.accent": {
+      "type": "color",
+      "value": "#1A1A1A"
+    },
+    "color.bg": {
+      "type": "color",
+      "value": "#F7F5F0"
+    },
+    "color.border": {
+      "type": "color",
+      "value": "#0D0D0D0D"
+    },
+    "color.imageBg": {
+      "type": "color",
+      "value": "#E0DDD6"
+    },
+    "color.tagBg": {
+      "type": "color",
+      "value": "#1A1A1A0D"
+    },
+    "color.tagText": {
+      "type": "color",
+      "value": "#3A3A3A"
+    },
+    "color.text": {
+      "type": "color",
+      "value": "#0D0D0D"
+    },
+    "color.textSecondary": {
+      "type": "color",
+      "value": "#6B6B65"
+    },
+    "color.white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "font.body": {
+      "type": "string",
+      "value": "DM Sans"
+    },
+    "font.headline": {
+      "type": "string",
+      "value": "DM Serif Display"
+    }
+  }
+}

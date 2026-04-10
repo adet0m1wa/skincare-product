@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+ * Design tokens — Obsidian & Ivory
+ * Source of truth: design-system.md
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Colors */
+  --color-bg: #f7f5f0;
+  --color-accent: #1a1a1a;
+  --color-ink: #0d0d0d;
+  --color-muted: #6b6b65;
+  --color-image-bg: #e0ddd6;
+  --color-tag: rgba(26, 26, 26, 0.05);
+  --color-tag-ink: #3a3a3a;
+  --color-border: rgba(13, 13, 13, 0.05);
+
+  /* Font families */
+  --font-headline: "DM Serif Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+
+  /* Radii — matches design-system.md */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* ------------------------------------------------------------------
+ * Base layer
+ * ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+/* Minimum font size rule — nothing below 13px */
+:where(p, span, li, button, a, label, time, small) {
+  font-size: max(0.8125rem, 1em);
+}
+
+/* Sensible focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Image defaults */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
