@@ -42,7 +42,7 @@ export function Nav() {
             <li key={label}>
               <a
                 href={href}
-                className="group relative inline-block py-1 text-[15px] font-medium text-ink"
+                className="group relative inline-block whitespace-nowrap py-1 text-[15px] font-medium text-ink"
               >
                 {label}
                 <span
