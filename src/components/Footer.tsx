@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import logoBlack from '../assets/logo/logo_black.png';
 import loop1 from '../assets/footer/footer-loop-1.webp';
 import loop2 from '../assets/footer/footer-loop-2.webp';
 import loop3 from '../assets/footer/footer-loop-3.webp';
@@ -86,16 +85,15 @@ export function Footer() {
       <div className="mx-auto w-full max-w-[1360px] px-10 pb-10 pt-24">
         {/* Pre-footer — 3 columns */}
         <div className="grid grid-cols-[1fr_1fr_1fr] items-start gap-12">
-          {/* Logo column */}
-          <div className="flex flex-col gap-4">
-            <img
-              src={logoBlack}
-              alt="us"
-              width={200}
-              height={200}
-              className="h-[200px] w-[200px] select-none"
-              draggable={false}
-            />
+          {/* Logo column — oversized "us" wordmark in DM Serif Display Italic
+              per CLAUDE.md brand rule (nav/footer wordmark = italic serif) */}
+          <div className="flex flex-col items-start gap-6">
+            <span
+              aria-label="us"
+              className="font-headline italic text-[200px] leading-[0.8] tracking-[-0.04em] text-ink"
+            >
+              us
+            </span>
             <p className="text-[14px] leading-[1.5] text-muted">
               Every skin type.
               <br />

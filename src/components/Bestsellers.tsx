@@ -114,18 +114,15 @@ export function Bestsellers() {
       <div className="relative">
         <div
           ref={scrollerRef}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-10 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {PRODUCTS.map((product) => (
             <article
               key={product.id}
-              className="group flex w-[calc((100%-80px)/5)] min-w-[220px] shrink-0 snap-start flex-col gap-4"
+              className="group flex w-[calc((100%-160px)/5)] min-w-[220px] shrink-0 snap-start flex-col gap-4"
             >
               <div
-                className="relative overflow-hidden rounded-xl transition-colors duration-300"
-                style={{
-                  ['--hover-bg' as string]: product.hoverBg,
-                }}
+                className="relative aspect-square overflow-hidden rounded-xl"
               >
                 <div className="absolute inset-0 bg-white transition-opacity duration-300 group-hover:opacity-0" />
                 <div
@@ -139,12 +136,12 @@ export function Bestsellers() {
                 <img
                   src={product.image}
                   alt={`${product.name} bottle`}
-                  className="relative z-0 h-[360px] w-full object-contain p-6"
+                  className="absolute inset-0 h-full w-full object-contain p-8"
                   loading="lazy"
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 pt-1">
                 <h3 className="text-[16px] font-medium leading-tight text-ink">
                   {product.name}
                 </h3>
@@ -175,7 +172,7 @@ export function Bestsellers() {
           type="button"
           onClick={scrollNext}
           aria-label="Next products"
-          className="absolute -right-2 top-[180px] inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent bg-bg text-ink transition-colors duration-200 hover:bg-accent hover:text-white"
+          className="absolute right-0 top-[112px] inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-accent bg-bg text-ink transition-colors duration-200 hover:bg-accent hover:text-white"
         >
           <CaretRight size={20} weight="regular" />
         </button>

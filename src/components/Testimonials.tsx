@@ -82,7 +82,7 @@ export function Testimonials() {
 
   const scroll = (direction: -1 | 1) => {
     scrollerRef.current?.scrollBy({
-      left: direction * 326,
+      left: direction * 248,
       behavior: 'smooth',
     });
   };
@@ -125,19 +125,19 @@ export function Testimonials() {
           {STORIES.map((story) => (
             <figure
               key={story.name}
-              className="flex w-[302px] shrink-0 snap-start flex-col gap-5"
+              className="flex w-[224px] shrink-0 snap-start flex-col gap-5"
             >
-              <div className="overflow-hidden rounded-xl bg-image-bg">
+              <div className="aspect-[5/4] w-full overflow-hidden rounded-xl bg-image-bg">
                 <img
                   src={story.image}
                   alt={`${story.name} before and after ${story.duration} of use`}
-                  className="h-[240px] w-full object-cover"
+                  className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </div>
               <figcaption className="flex flex-col gap-3">
                 <p className="text-[16px] font-medium text-ink">
-                  {story.name}
+                  <span>{story.name}</span>
                   <span className="mx-2 text-muted" aria-hidden>
                     ·
                   </span>
@@ -156,7 +156,7 @@ export function Testimonials() {
           type="button"
           onClick={() => scroll(-1)}
           aria-label="Previous testimonials"
-          className="absolute -left-2 top-[100px] inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent bg-bg text-ink transition-colors duration-200 hover:bg-accent hover:text-white"
+          className="absolute -left-2 top-[90px] inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-accent bg-bg text-ink transition-colors duration-200 hover:bg-accent hover:text-white"
         >
           <CaretLeft size={20} weight="regular" />
         </button>
@@ -164,14 +164,14 @@ export function Testimonials() {
           type="button"
           onClick={() => scroll(1)}
           aria-label="Next testimonials"
-          className="absolute -right-2 top-[100px] inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent bg-bg text-ink transition-colors duration-200 hover:bg-accent hover:text-white"
+          className="absolute -right-2 top-[90px] inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-accent bg-bg text-ink transition-colors duration-200 hover:bg-accent hover:text-white"
         >
           <CaretRight size={20} weight="regular" />
         </button>
       </div>
 
-      <p className="mt-6 text-[13px] text-muted">
-        Results may vary. Drag to see more stories →
+      <p className="mt-6 whitespace-nowrap text-[13px] text-muted">
+        Results may vary.  Drag to see more stories  →
       </p>
     </section>
   );
