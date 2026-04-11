@@ -1,79 +1,67 @@
 // Nav — pixel-for-pixel port of pencil-new.pen "Landing Page- new" → Nav (P5EOr).
 // All measurements and colors read directly from the .pen file.
-import { lazy, Suspense, useState } from 'react';
 import { ShoppingBag } from '@phosphor-icons/react';
 import logoBlack from '../assets/logo/logo_black.png';
-import { NAV_DIAL_DEFAULTS, type NavDials } from './nav-dials';
-
-// Dev-only: lazy-import the DialKit host for the Nav underline. In prod,
-// `import.meta.env.DEV` is statically `false`, so the ternary resolves to
-// `null` and Rollup eliminates the dynamic import along with the entire
-// dialkit graph. Verified by grepping the prod bundle for registerPanel /
-// updateValue / Nav Underline.
-const NavDialsHost = import.meta.env.DEV
-  ? lazy(() => import('./nav-dials-dev'))
-  : null;
 
 const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
 
-// Y-alignment math:
-// - Nav padding [38, 40, 50, 40] + alignItems center
-// - Button (Nav/CTA) is 39px tall (12 + 15 text + 12), tallest child
-//   so content area is 39px. With alignItems center, button and link
-//   text both center on y = top_padding + 19.5
-// - Link text (15px) sits at text_top = 38 + (39−15)/2 = 50
-// - Underline sits at the Build My Regimen button bottom = top_padding
-//   + button_height = 38 + 39 = 77 → that's text_top + 27, or equivalently
-//   12px below the link text's bottom edge. Encoded as `bottom: -12px`
-//   relative to the link's text box.
-// - Nav height = 38 + 39 + 50 = 127
-// - Top breathing room (nav top → text top): 50
-// - Bottom breathing room (underline → nav bottom): 127 − 77 = 50 ✓
-const UNDERLINE_BASE_BOTTOM = 12;
+// Each NavLink wraps text in a container with equal top/bottom padding.
+// The underline sits at the container's bottom edge, so LINK_PAD_Y is also
+// the distance from the text to the underline.
+//
+// Container height = LINK_PAD_Y + 15 (text) + LINK_PAD_Y
+// With LINK_PAD_Y = 12 → container is 39px, same as the Build My Regimen
+// button (12 + 15 + 12). With alignItems center on the parent Nav, the
+// container and the button share identical top/bottom y-values, so the
+// underline at y = container_bottom aligns pixel-exactly with the button's
+// bottom border.
+//
+// Animation is intentionally not wired yet — this step is for verifying
+// the spacing structure. The underline renders statically at full width so
+// the bottom edge of each container is visible.
+const LINK_PAD_Y = 12;
 
-function NavLink({ label, dials }: { label: string; dials: NavDials }) {
-  // onMouseEnter/Leave drives hover; onFocus/Blur keeps keyboard users
-  // in sync with the same animation.
-  const [active, setActive] = useState(false);
-
+function NavLink({ label }: { label: string }) {
   return (
     <a
       href="#"
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-      onFocus={() => setActive(true)}
-      onBlur={() => setActive(false)}
       style={{
         position: 'relative',
-        display: 'inline-block',
-        fontFamily: '"DM Sans", system-ui, sans-serif',
-        fontWeight: 500,
-        fontSize: 15,
-        lineHeight: 1,
-        color: '#0D0D0D',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // Equal top/bottom padding, zero horizontal → container width =
+        // text width, so gap: 36 on Nav/Center still reads as text-edge
+        // to text-edge exactly as before.
+        padding: `${LINK_PAD_Y}px 0`,
         textDecoration: 'none',
-        whiteSpace: 'nowrap',
       }}
     >
-      {label}
-      {/* Underline bar — lineThickness / duration / easing are driven by
-          DialKit in dev, static defaults in prod. transform-origin center
-          + scaleX(0→1) gives the grow-outward-from-center, shrink-inward-
-          to-center behavior. CSS transitions are bidirectional so a single
-          transition rule handles both the hover-in and mouse-leave phases. */}
+      <span
+        style={{
+          fontFamily: '"DM Sans", system-ui, sans-serif',
+          fontWeight: 500,
+          fontSize: 15,
+          lineHeight: 1,
+          color: '#0D0D0D',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {label}
+      </span>
+      {/* Static underline at the container's bottom edge. No animation,
+          no hover — visible at all times so the spacing can be verified.
+          Will be re-animated (scaleX grow from center + DialKit) once the
+          user confirms the structure is right. */}
       <span
         aria-hidden
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
-          // Aligned to Build My Regimen bottom border (see alignment math above)
-          bottom: -UNDERLINE_BASE_BOTTOM,
-          height: dials.lineThickness,
+          bottom: 0,
+          height: 1.5,
           backgroundColor: '#1A1A1A',
-          transform: `scaleX(${active ? 1 : 0})`,
-          transformOrigin: 'center',
-          transition: `transform ${dials.duration}s ${dials.easing}`,
           pointerEvents: 'none',
         }}
       />
@@ -82,19 +70,12 @@ function NavLink({ label, dials }: { label: string; dials: NavDials }) {
 }
 
 export function Nav() {
-  // Dev: NavDialsHost (lazy) feeds live values into this state on every
-  // slider change. Prod: state stays locked at NAV_DIAL_DEFAULTS forever
-  // because NavDialsHost is null.
-  const [dials, setDials] = useState<NavDials>(NAV_DIAL_DEFAULTS);
-
   return (
     // P5EOr — horizontal, alignItems center, justifyContent space-around,
-    // fill #F7F5F0. Padding is 38 top / 40 horizontal / 50 bottom so the
-    // link text's top breathing room (50px) matches the underline's bottom
-    // breathing room (50px). See UNDERLINE_BASE_BOTTOM comment for the full
-    // derivation — this is an intentional deviation from the Pencil file's
-    // uniform 50/40 padding, per the user's equal-breathing-room rule.
-    // Bottom stroke exists in the file but is disabled → no border rendered.
+    // fill #F7F5F0. Padding 38/40/50/40 keeps equal breathing room on the
+    // nav level: 50px from nav-top to link-text-top and 50px from underline
+    // to nav-bottom (see LINK_PAD_Y comment block for the full derivation).
+    // Bottom stroke exists in the .pen file but is disabled → no border.
     <header
       style={{
         display: 'flex',
@@ -105,12 +86,6 @@ export function Nav() {
         padding: '38px 40px 50px 40px',
       }}
     >
-      {NavDialsHost && (
-        <Suspense fallback={null}>
-          <NavDialsHost onChange={setDials} />
-        </Suspense>
-      )}
-
       {/* E2bh1 — Nav/Left: horizontal, gap 4, width fill_container */}
       <div
         style={{
@@ -157,7 +132,7 @@ export function Nav() {
         }}
       >
         {LINKS.map((label) => (
-          <NavLink key={label} label={label} dials={dials} />
+          <NavLink key={label} label={label} />
         ))}
       </nav>
 
