@@ -16,14 +16,19 @@ const NavDialsHost = import.meta.env.DEV
 
 const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
 
-// Y-alignment math (see commit message for full derivation):
-// - Nav padding [50, 40] + alignItems center
-// - Button (Nav/CTA) is 39px tall (12 + 15 + 12), so its bottom edge sits
-//   19.5px below the nav's content center
-// - Link text is 15px tall, so its bottom edge sits 7.5px below center
-// - Gap = 19.5 - 7.5 = 12px → underline base position is `bottom: -12px`
-//   on each link, which matches the "Build My Regimen" bottom border.
-// DialKit's `lineOffset` adjusts this base position for live tuning.
+// Y-alignment math:
+// - Nav padding [38, 40, 50, 40] + alignItems center
+// - Button (Nav/CTA) is 39px tall (12 + 15 text + 12), tallest child
+//   so content area is 39px. With alignItems center, button and link
+//   text both center on y = top_padding + 19.5
+// - Link text (15px) sits at text_top = 38 + (39−15)/2 = 50
+// - Underline sits at the Build My Regimen button bottom = top_padding
+//   + button_height = 38 + 39 = 77 → that's text_top + 27, or equivalently
+//   12px below the link text's bottom edge. Encoded as `bottom: -12px`
+//   relative to the link's text box.
+// - Nav height = 38 + 39 + 50 = 127
+// - Top breathing room (nav top → text top): 50
+// - Bottom breathing room (underline → nav bottom): 127 − 77 = 50 ✓
 const UNDERLINE_BASE_BOTTOM = 12;
 
 function NavLink({ label, dials }: { label: string; dials: NavDials }) {
@@ -51,23 +56,24 @@ function NavLink({ label, dials }: { label: string; dials: NavDials }) {
       }}
     >
       {label}
-      {/* Underline bar — all five values are driven by DialKit in dev,
-          static defaults in prod. transform-origin center + scaleX gives
-          the grow-outward-from-center, shrink-inward-to-center behavior. */}
+      {/* Underline bar — lineThickness / duration / easing are driven by
+          DialKit in dev, static defaults in prod. transform-origin center
+          + scaleX(0→1) gives the grow-outward-from-center, shrink-inward-
+          to-center behavior. CSS transitions are bidirectional so a single
+          transition rule handles both the hover-in and mouse-leave phases. */}
       <span
         aria-hidden
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
-          // Base offset from the "Build My Regimen" alignment math, plus
-          // DialKit's live offset (range -20..20 around 0)
-          bottom: -(UNDERLINE_BASE_BOTTOM + dials.lineOffset),
-          height: dials.lineHeight,
+          // Aligned to Build My Regimen bottom border (see alignment math above)
+          bottom: -UNDERLINE_BASE_BOTTOM,
+          height: dials.lineThickness,
           backgroundColor: '#1A1A1A',
-          transform: `scaleX(${active ? dials.scaleTo : dials.scaleFrom})`,
+          transform: `scaleX(${active ? 1 : 0})`,
           transformOrigin: 'center',
-          transition: `transform ${dials.duration}s ease-out`,
+          transition: `transform ${dials.duration}s ${dials.easing}`,
           pointerEvents: 'none',
         }}
       />
@@ -82,7 +88,12 @@ export function Nav() {
   const [dials, setDials] = useState<NavDials>(NAV_DIAL_DEFAULTS);
 
   return (
-    // P5EOr — horizontal, alignItems center, justifyContent space-around, padding 50/40, fill #F7F5F0.
+    // P5EOr — horizontal, alignItems center, justifyContent space-around,
+    // fill #F7F5F0. Padding is 38 top / 40 horizontal / 50 bottom so the
+    // link text's top breathing room (50px) matches the underline's bottom
+    // breathing room (50px). See UNDERLINE_BASE_BOTTOM comment for the full
+    // derivation — this is an intentional deviation from the Pencil file's
+    // uniform 50/40 padding, per the user's equal-breathing-room rule.
     // Bottom stroke exists in the file but is disabled → no border rendered.
     <header
       style={{
@@ -91,7 +102,7 @@ export function Nav() {
         alignItems: 'center',
         justifyContent: 'space-around',
         backgroundColor: '#F7F5F0',
-        padding: '50px 40px',
+        padding: '38px 40px 50px 40px',
       }}
     >
       {NavDialsHost && (

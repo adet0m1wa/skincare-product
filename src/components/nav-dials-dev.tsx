@@ -6,11 +6,14 @@
 // graph) is dead code that Rollup eliminates.
 //
 // The component renders nothing — it exists purely to host the DialKit
-// panel for the Nav underline. The values flow out via `setDials`.
+// panel for the Nav underline. The values flow out via `onChange`.
 import { useEffect } from 'react';
 import { useDialKit } from 'dialkit';
 import type { NavDials } from './nav-dials';
 
+// Slider tuple shape: [default, min, max]. TS widens inline numeric tuples
+// to `number[]`, which breaks DialKit's conditional type mapping — cast so
+// the inferred return type stays narrow.
 type Slider = [number, number, number];
 
 export default function NavDialsHost({
@@ -18,27 +21,31 @@ export default function NavDialsHost({
 }: {
   onChange: (dials: NavDials) => void;
 }) {
-  // [default, min, max] per DialKit slider convention
   const dials = useDialKit('Nav Underline', {
     duration: [0.25, 0.05, 1.0] as Slider,
-    scaleFrom: [0, 0, 1] as Slider,
-    scaleTo: [1, 0, 1.5] as Slider,
-    lineHeight: [1.5, 0.5, 4] as Slider,
-    lineOffset: [0, -20, 20] as Slider,
+    lineThickness: [1.5, 0.5, 4] as Slider,
+    easing: {
+      type: 'select' as const,
+      options: [
+        'ease-out',
+        'ease-in-out',
+        'ease',
+        'linear',
+        'cubic-bezier(0.4, 0, 0.2, 1)',
+      ],
+      default: 'ease-out',
+    },
   });
 
   // Flow values up to Nav on every change. useEffect deps track the
-  // individual numbers so we don't re-run on object-identity churn.
+  // individual fields so we don't re-run on object-identity churn.
   useEffect(() => {
-    onChange(dials);
-  }, [
-    dials.duration,
-    dials.scaleFrom,
-    dials.scaleTo,
-    dials.lineHeight,
-    dials.lineOffset,
-    onChange,
-  ]);
+    onChange({
+      duration: dials.duration,
+      lineThickness: dials.lineThickness,
+      easing: dials.easing,
+    });
+  }, [dials.duration, dials.lineThickness, dials.easing, onChange]);
 
   return null;
 }
