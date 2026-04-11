@@ -1,19 +1,66 @@
 // Nav — pixel-for-pixel port of pencil-new.pen "Landing Page- new" → Nav (P5EOr).
 // All measurements and colors read directly from the .pen file.
+import { useState } from 'react';
 import { ShoppingBag } from '@phosphor-icons/react';
 import logoBlack from '../assets/logo/logo_black.png';
 
 const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
 
-const LINK_STYLE: React.CSSProperties = {
-  fontFamily: '"DM Sans", system-ui, sans-serif',
-  fontWeight: 500,
-  fontSize: 15,
-  lineHeight: 1,
-  color: '#0D0D0D',
-  textDecoration: 'none',
-  whiteSpace: 'nowrap',
-};
+// Y-alignment math (see commit message for full derivation):
+// - Nav padding [50, 40] + alignItems center
+// - Button (Nav/CTA) is 39px tall (12 + 15 + 12), so its bottom edge sits
+//   19.5px below the nav's content center
+// - Link text is 15px tall, so its bottom edge sits 7.5px below center
+// - Gap = 19.5 - 7.5 = 12px → underline lives at `bottom: -12px`
+//   on each link, which matches the "Build My Regimen" bottom border
+const UNDERLINE_OFFSET_PX = 12;
+
+function NavLink({ label }: { label: string }) {
+  // onMouseEnter/Leave drives hover; onFocus/Blur keeps keyboard users
+  // in sync with the same animation.
+  const [active, setActive] = useState(false);
+
+  return (
+    <a
+      href="#"
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+      onFocus={() => setActive(true)}
+      onBlur={() => setActive(false)}
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        fontFamily: '"DM Sans", system-ui, sans-serif',
+        fontWeight: 500,
+        fontSize: 15,
+        lineHeight: 1,
+        color: '#0D0D0D',
+        textDecoration: 'none',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {label}
+      {/* Underline: 1px #1A1A1A bar sitting 12px below the text box.
+          transform-origin center + scaleX(0→1) gives the grow-outward,
+          shrink-inward animation on hover/leave; 250ms ease-out. */}
+      <span
+        aria-hidden
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: -UNDERLINE_OFFSET_PX,
+          height: 1,
+          backgroundColor: '#1A1A1A',
+          transform: active ? 'scaleX(1)' : 'scaleX(0)',
+          transformOrigin: 'center',
+          transition: 'transform 250ms ease-out',
+          pointerEvents: 'none',
+        }}
+      />
+    </a>
+  );
+}
 
 export function Nav() {
   return (
@@ -75,9 +122,7 @@ export function Nav() {
         }}
       >
         {LINKS.map((label) => (
-          <a key={label} href="#" style={LINK_STYLE}>
-            {label}
-          </a>
+          <NavLink key={label} label={label} />
         ))}
       </nav>
 
