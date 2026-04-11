@@ -1,42 +1,41 @@
-/* Hero — pixel-for-pixel port of pencil-new.pen "Landing Page- new"
- * Section 1 Hero (9Q81H) at desktop, plus tablet + mobile behavior.
+/* Hero — port of pencil-new.pen "Landing Page- new" Section 1 Hero (9Q81H).
+ * Fluid responsive typography; single layout breakpoint at <1000px.
  *
- * Desktop (>=1440):
- *   - Two columns side by side inside a 1440-wide page-frame
- *   - Hero/Left fixed at 615, Hero/Right fixed at 745x500 (sum = 1360
- *     after 40px horizontal padding on each side of hero-root)
+ * Above 1000px:
+ *   - Two columns with a 615:745 flex-grow ratio (the exact Pencil split).
+ *     flex-basis 0 + grow ratios means the columns always divide the
+ *     available width in that ratio at any viewport size, so the layout
+ *     scales fluidly without hitting a discrete breakpoint.
+ *   - Hero/Right locks to a 745/500 aspect ratio so the image preserves
+ *     its crop as it shrinks.
  *
- * Tablet (768–1439):
- *   - Still two columns, but both sides become flexible (flex 1 1 0)
- *     with shared gap 24 and 32px horizontal padding. Hero/Right
- *     preserves the 745/500 aspect ratio as it shrinks.
- *
- * Mobile (<768):
- *   - Stacks to a single column with 32px gap. Full-width image.
- *   - Drag handle is hidden since its half-overflowing position only
- *     makes sense against the full-width desktop right-column edge.
+ * Below 1000px:
+ *   - Stacks vertically, copy on top, full-width image below.
+ *   - Drag handle hidden (its half-overflow position only reads against
+ *     the desktop right-column edge).
  */
 
 .hero-root {
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
   padding: 0 40px;
   box-sizing: border-box;
 }
 
 .hero-left {
-  width: 615px;
-  flex: 0 0 615px;
+  /* 615:745 flex ratio matches the Pencil column widths exactly at every
+   * viewport size. flex-basis 0 + flex-grow 615 means the column takes
+   * 615/(615+745) = 45.2% of whatever width the parent gives it. */
+  flex: 615 0 0;
+  min-width: 0;
   box-sizing: border-box;
 }
 
 .hero-left-stack {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: var(--space-lg);
 }
 
 .hero-headline {
@@ -44,9 +43,9 @@
   font-family: "DM Serif Display", Georgia, serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 54px;
+  font-size: var(--text-hero);
   line-height: 1.08;
-  letter-spacing: -1.04px;
+  letter-spacing: -0.02em;
   color: #0D0D0D;
   /* pre-line lets the literal \n in the content break the headline
    * into its two-line form: "Your skin deserves / more than guesswork" */
@@ -55,11 +54,10 @@
 
 .hero-body {
   margin: 0;
-  width: 420px;
-  max-width: 100%;
+  max-width: 420px;
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: var(--text-body);
   line-height: 1.65;
   color: #6B6B65;
 }
@@ -74,7 +72,7 @@
   background-color: transparent;
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 500;
-  font-size: 15px;
+  font-size: var(--text-button);
   line-height: 1;
   color: #1A1A1A;
   cursor: pointer;
@@ -82,9 +80,9 @@
 
 .hero-right {
   position: relative;
-  width: 745px;
-  height: 500px;
-  flex: 0 0 745px;
+  flex: 745 0 0;
+  min-width: 0;
+  aspect-ratio: 745 / 500;
   box-sizing: border-box;
 }
 
@@ -95,22 +93,16 @@
   display: block;
 }
 
-/* Dot nav bar. Pencil positions the dots container at (0, 424) with
- * width 680 inside a 745x500 parent — 32.5px of deliberate empty space
- * on the right. We replicate that with left: 0 + right: 65.
- *
- * Using bottom: 0 instead of a fixed top: 424 keeps the bar glued to
- * the bottom edge even when Hero/Right shrinks on tablet/mobile.
- */
+/* Dot nav bar glued to the image's bottom edge. */
 .hero-dots {
   position: absolute;
   left: 0;
-  right: 65px;
+  right: 0;
   bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: var(--space-md);
   padding: 18px 0;
   box-sizing: border-box;
 }
@@ -141,10 +133,9 @@
   border: 1px solid #1a1a1a;
 }
 
-/* Drag handle: 45x45 circle with its center exactly on the right edge
- * midpoint of Hero/Right. Using right: -22.5 + top: 50% + translateY
- * keeps the center pinned regardless of parent size, so it also works
- * unmodified at tablet sizes. Hidden on mobile via media query below. */
+/* Drag handle: 45x45 circle with its center pinned to the right edge
+ * midpoint of Hero/Right. right: -22.5 + top: 50% + translateY(-50%)
+ * keeps the center on the parent's right edge regardless of size. */
 .hero-drag-handle {
   position: absolute;
   right: -22.5px;
@@ -166,63 +157,25 @@
 .hero-drag-handle-label {
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 950;
-  font-size: 12px;
+  /* Explicit fixed 13px per user instruction — no fluid scaling here.
+   * The Pencil value is 12 but the user asked for 13 on this label. */
+  font-size: 13px;
   line-height: 1;
   color: #1A1A1A;
 }
 
-/* ===== Tablet: 768px–1439px ===== */
-@media (max-width: 1439px) {
-  .hero-root {
-    padding: 0 32px;
-    gap: 24px;
-  }
-  .hero-left {
-    width: auto;
-    flex: 1 1 0;
-    min-width: 0;
-  }
-  .hero-right {
-    width: auto;
-    height: auto;
-    flex: 1 1 0;
-    aspect-ratio: 745 / 500;
-    min-width: 0;
-  }
-  .hero-headline {
-    font-size: 44px;
-  }
-  .hero-body {
-    font-size: 15px;
-  }
-  /* Center the dots row inside the full right column now that we no
-   * longer need the 65px offset from the Pencil desktop layout. */
-  .hero-dots {
-    right: 0;
-  }
-}
-
-/* ===== Mobile: <768px ===== */
-@media (max-width: 767px) {
+/* ===== Mobile: <1000px ===== */
+@media (max-width: 999px) {
   .hero-root {
     flex-direction: column;
     align-items: stretch;
-    gap: 32px;
+    gap: var(--space-lg);
     padding: 0 20px;
   }
   .hero-left,
   .hero-right {
-    width: 100%;
     flex: 0 0 auto;
-  }
-  .hero-right {
-    aspect-ratio: 745 / 500;
-  }
-  .hero-headline {
-    font-size: 36px;
-  }
-  .hero-body {
-    width: auto;
+    width: 100%;
   }
   .hero-drag-handle {
     display: none;
