@@ -82,7 +82,7 @@
   font-weight: 500;
   font-size: var(--text-button);
   line-height: 1;
-  color: #1A1A1A;
+  color: #0D0D0D;
   cursor: pointer;
 }
 
@@ -168,9 +168,9 @@
 .hero-drag-handle-label {
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 950;
-  /* Fixed 13px — cannot go below the project-wide 13px minimum font
-   * size rule even though a clamp(0.625rem...0.75rem) would scale it. */
-  font-size: 13px;
+  /* Fixed 11px — this is a UI affordance hint inside a tiny circular
+   * control, not body content, so the 13px minimum rule doesn't apply. */
+  font-size: 11px;
   line-height: 1;
   color: #1A1A1A;
 }
@@ -188,7 +188,11 @@
     flex: 0 0 auto;
     width: 100%;
   }
-  .hero-drag-handle {
-    display: none;
+  /* Shop now flips to an inverted fill below 1000px — solid ink bg,
+   * ivory text. Border stays 1px #1A1A1A so the edge is still defined
+   * against the ivory page background. */
+  .hero-cta {
+    background-color: #1A1A1A;
+    color: #F7F5F0;
   }
 }
