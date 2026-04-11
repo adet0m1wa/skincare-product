@@ -101,7 +101,8 @@
   display: block;
 }
 
-/* Dot nav bar glued to the image's bottom edge. */
+/* Dot nav bar glued to the image's bottom edge. Gap and vertical
+ * padding scale fluidly with the viewport via --dot-gap / --dot-padding-y. */
 .hero-dots {
   position: absolute;
   left: 0;
@@ -110,14 +111,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
-  padding: 18px 0;
+  gap: var(--dot-gap);
+  padding: var(--dot-padding-y) 0;
   box-sizing: border-box;
 }
 
 .hero-dot {
-  width: 40px;
-  height: 40px;
+  width: var(--dot-size);
+  height: var(--dot-size);
   padding: 0;
   background: transparent;
   overflow: hidden;
@@ -141,18 +142,20 @@
   border: 1px solid #1a1a1a;
 }
 
-/* Drag handle: 45x45 circle with its center pinned to the right edge
- * midpoint of Hero/Right. right: -22.5 + top: 50% + translateY(-50%)
- * keeps the center on the parent's right edge regardless of size. */
+/* Drag handle: fluid circle (--drag-size) with its center pinned to
+ * the right edge midpoint of Hero/Right. Using a negative margin-right
+ * of half the size keeps the center on the parent's right edge as the
+ * circle shrinks and grows. border-radius: 50% clamps to a perfect
+ * circle at any size. Border stroke stays at 1px per spec. */
 .hero-drag-handle {
   position: absolute;
-  right: -22.5px;
+  right: calc(var(--drag-size) / -2);
   top: 50%;
   transform: translateY(-50%);
-  width: 45px;
-  height: 45px;
+  width: var(--drag-size);
+  height: var(--drag-size);
   border-radius: 50%;
-  border: 2px solid #1A1A1A;
+  border: 1px solid #1A1A1A;
   box-sizing: border-box;
   opacity: 0.5;
   display: flex;
@@ -165,8 +168,8 @@
 .hero-drag-handle-label {
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 950;
-  /* Explicit fixed 13px per user instruction — no fluid scaling here.
-   * The Pencil value is 12 but the user asked for 13 on this label. */
+  /* Fixed 13px — cannot go below the project-wide 13px minimum font
+   * size rule even though a clamp(0.625rem...0.75rem) would scale it. */
   font-size: 13px;
   line-height: 1;
   color: #1A1A1A;

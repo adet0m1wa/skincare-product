@@ -57,6 +57,15 @@
   /* Hero "Shop now" button padding (Hero/Left/CTA only) */
   --btn-padding-x: clamp(1.5rem, calc(1.324rem + 0.751vw), 2rem);
   --btn-padding-y: clamp(0.75rem, calc(0.662rem + 0.376vw), 1rem);
+
+  /* Hero thumbnail dots (before/after preview row at bottom of image) */
+  --dot-size: clamp(1.75rem, calc(1.574rem + 0.751vw), 2.5rem);
+  --dot-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --dot-padding-y: clamp(0.75rem, calc(0.662rem + 0.376vw), 1.125rem);
+
+  /* Hero drag handle — circle scales fluidly, label stays fixed at
+   * 13px to honor the 13px project-wide minimum font-size rule. */
+  --drag-size: clamp(2rem, calc(1.824rem + 0.751vw), 2.813rem);
 }
 
 html {
