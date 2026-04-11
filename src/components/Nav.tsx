@@ -1,8 +1,18 @@
 // Nav — pixel-for-pixel port of pencil-new.pen "Landing Page- new" → Nav (P5EOr).
 // All measurements and colors read directly from the .pen file.
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { ShoppingBag } from '@phosphor-icons/react';
 import logoBlack from '../assets/logo/logo_black.png';
+import { NAV_DIAL_DEFAULTS, type NavDials } from './nav-dials';
+
+// Dev-only: lazy-import the DialKit host for the Nav underline. In prod,
+// `import.meta.env.DEV` is statically `false`, so the ternary resolves to
+// `null` and Rollup eliminates the dynamic import along with the entire
+// dialkit graph. Verified by grepping the prod bundle for registerPanel /
+// updateValue / Nav Underline.
+const NavDialsHost = import.meta.env.DEV
+  ? lazy(() => import('./nav-dials-dev'))
+  : null;
 
 const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
 
@@ -11,11 +21,12 @@ const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
 // - Button (Nav/CTA) is 39px tall (12 + 15 + 12), so its bottom edge sits
 //   19.5px below the nav's content center
 // - Link text is 15px tall, so its bottom edge sits 7.5px below center
-// - Gap = 19.5 - 7.5 = 12px → underline lives at `bottom: -12px`
-//   on each link, which matches the "Build My Regimen" bottom border
-const UNDERLINE_OFFSET_PX = 12;
+// - Gap = 19.5 - 7.5 = 12px → underline base position is `bottom: -12px`
+//   on each link, which matches the "Build My Regimen" bottom border.
+// DialKit's `lineOffset` adjusts this base position for live tuning.
+const UNDERLINE_BASE_BOTTOM = 12;
 
-function NavLink({ label }: { label: string }) {
+function NavLink({ label, dials }: { label: string; dials: NavDials }) {
   // onMouseEnter/Leave drives hover; onFocus/Blur keeps keyboard users
   // in sync with the same animation.
   const [active, setActive] = useState(false);
@@ -40,21 +51,23 @@ function NavLink({ label }: { label: string }) {
       }}
     >
       {label}
-      {/* Underline: 1px #1A1A1A bar sitting 12px below the text box.
-          transform-origin center + scaleX(0→1) gives the grow-outward,
-          shrink-inward animation on hover/leave; 250ms ease-out. */}
+      {/* Underline bar — all five values are driven by DialKit in dev,
+          static defaults in prod. transform-origin center + scaleX gives
+          the grow-outward-from-center, shrink-inward-to-center behavior. */}
       <span
         aria-hidden
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
-          bottom: -UNDERLINE_OFFSET_PX,
-          height: 1,
+          // Base offset from the "Build My Regimen" alignment math, plus
+          // DialKit's live offset (range -20..20 around 0)
+          bottom: -(UNDERLINE_BASE_BOTTOM + dials.lineOffset),
+          height: dials.lineHeight,
           backgroundColor: '#1A1A1A',
-          transform: active ? 'scaleX(1)' : 'scaleX(0)',
+          transform: `scaleX(${active ? dials.scaleTo : dials.scaleFrom})`,
           transformOrigin: 'center',
-          transition: 'transform 250ms ease-out',
+          transition: `transform ${dials.duration}s ease-out`,
           pointerEvents: 'none',
         }}
       />
@@ -63,6 +76,11 @@ function NavLink({ label }: { label: string }) {
 }
 
 export function Nav() {
+  // Dev: NavDialsHost (lazy) feeds live values into this state on every
+  // slider change. Prod: state stays locked at NAV_DIAL_DEFAULTS forever
+  // because NavDialsHost is null.
+  const [dials, setDials] = useState<NavDials>(NAV_DIAL_DEFAULTS);
+
   return (
     // P5EOr — horizontal, alignItems center, justifyContent space-around, padding 50/40, fill #F7F5F0.
     // Bottom stroke exists in the file but is disabled → no border rendered.
@@ -76,6 +94,12 @@ export function Nav() {
         padding: '50px 40px',
       }}
     >
+      {NavDialsHost && (
+        <Suspense fallback={null}>
+          <NavDialsHost onChange={setDials} />
+        </Suspense>
+      )}
+
       {/* E2bh1 — Nav/Left: horizontal, gap 4, width fill_container */}
       <div
         style={{
@@ -122,7 +146,7 @@ export function Nav() {
         }}
       >
         {LINKS.map((label) => (
-          <NavLink key={label} label={label} />
+          <NavLink key={label} label={label} dials={dials} />
         ))}
       </nav>
 
