@@ -1,132 +1,201 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+// Hero — pixel-for-pixel port of pencil-new.pen "Landing Page- new" → section 1 - Hero (9Q81H).
+// All measurements and colors read directly from the .pen file.
+// Per user instruction: no before/after slider yet — the uzHxA drag handle node is skipped.
 import heroCouple from '../assets/hero/hero-couple.webp';
 import heroFemaleBefore from '../assets/hero/hero-female-before.webp';
 import heroMaleBefore from '../assets/hero/hero-male-before.webp';
 
-type HeroState = {
-  src: string;
-  alt: string;
-  thumbLabel: string;
-};
-
-const STATES: HeroState[] = [
-  {
-    src: heroCouple,
-    alt: 'Two models holding us serum bottles, resting together in warm natural light.',
-    thumbLabel: 'Our story',
-  },
-  {
-    src: heroFemaleBefore,
-    alt: 'Before and after of a womans skincare journey from congested to clear.',
-    thumbLabel: 'Her journey',
-  },
-  {
-    src: heroMaleBefore,
-    alt: 'Before and after of a mans skincare journey from pockmarks to smooth skin.',
-    thumbLabel: 'His journey',
-  },
-];
-
-const FADE_EASE = [0.22, 1, 0.36, 1] as const;
-
 export function Hero() {
-  const [active, setActive] = useState(0);
-
   return (
+    // 9Q81H — section 1 - Hero: width 1360, horizontal (default), alignItems center
     <section
-      id="top"
-      aria-labelledby="hero-heading"
-      className="mx-auto flex w-full max-w-[1360px] overflow-hidden"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        width: 1360,
+        margin: '0 auto',
+      }}
+      aria-labelledby="hero-headline"
     >
-      {/* Left — copy column */}
-      <div className="flex flex-1 flex-col justify-between border border-border bg-bg p-14">
-        <div className="flex flex-col items-start gap-7">
-          <span className="inline-flex items-center rounded-full bg-tag px-[14px] py-[7px] text-[13px] font-medium uppercase tracking-[0.04em] text-tag-ink">
-            Clinically tested · Dermatologist approved
-          </span>
-
+      {/* VHI4l — Hero/Left: width fit_content(615) */}
+      <div style={{ width: 615 }}>
+        {/* V5VS2 — Frame 3: vertical, gap 40, width fill_container */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 40,
+          }}
+        >
+          {/* T7EqY — Hero/Left/Headline: DM Serif Display 54/400, #0D0D0D,
+              ls -1.04, lh 1.08, textGrowth fixed-width */}
           <h1
-            id="hero-heading"
-            className="font-headline text-[54px] font-normal leading-[1.08] tracking-[-0.02em] text-ink"
+            id="hero-headline"
+            style={{
+              margin: 0,
+              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontWeight: 400,
+              fontStyle: 'normal',
+              fontSize: 54,
+              lineHeight: 1.08,
+              letterSpacing: '-1.04px',
+              color: '#0D0D0D',
+              whiteSpace: 'pre-line',
+            }}
           >
-            Your skin deserves
-            <br />
-            more than guesswork
+            {'Your skin deserves\nmore than guesswork'}
           </h1>
 
-          <p className="max-w-[420px] text-[16px] leading-[1.65] text-muted">
-            Formulated by dermatologists, made for us — every skin type, every concern,
-            one standard of care.
+          {/* W8V99 — Hero/Left/Body: DM Sans 16/400, #6B6B65, lh 1.65, width 420 */}
+          <p
+            style={{
+              margin: 0,
+              width: 420,
+              fontFamily: '"DM Sans", system-ui, sans-serif',
+              fontWeight: 400,
+              fontSize: 16,
+              lineHeight: 1.65,
+              color: '#6B6B65',
+            }}
+          >
+            Formulated by dermatologists, made for us — every skin type, every
+            concern, one standard of care.
           </p>
 
-          <a
-            href="#shop"
-            className="mt-2 inline-flex items-center rounded-full bg-accent px-8 py-4 text-[15px] font-medium text-white transition-opacity duration-200 hover:opacity-90"
+          {/* Z9T6d — Hero/Left/CTA: alignItems center, gap 8, padding 16/32,
+              1px inside stroke #1A1A1A, NO cornerRadius, NO fill */}
+          <button
+            type="button"
+            style={{
+              alignSelf: 'flex-start',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '16px 32px',
+              border: '1px solid #1A1A1A',
+              backgroundColor: 'transparent',
+              fontFamily: '"DM Sans", system-ui, sans-serif',
+              fontWeight: 500,
+              fontSize: 15,
+              lineHeight: 1,
+              color: '#1A1A1A',
+              cursor: 'pointer',
+            }}
           >
             Shop now
-          </a>
-        </div>
-
-        <div className="mt-10 border-t border-border pt-5">
-          <p className="flex flex-wrap items-center gap-x-3 text-[13px] text-muted">
-            <span aria-hidden>★★★★★</span>
-            <span className="sr-only">5 out of 5 stars,</span>
-            <span>4,800+ reviews</span>
-            <span aria-hidden className="text-muted/50">|</span>
-            <span>Free shipping over $50</span>
-          </p>
+          </button>
         </div>
       </div>
 
-      {/* Right — image column */}
-      <div className="relative flex-1 overflow-hidden bg-image-bg" style={{ minHeight: 533 }}>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.img
-            key={active}
-            src={STATES[active].src}
-            alt={STATES[active].alt}
-            className="absolute inset-0 h-full w-full object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: FADE_EASE }}
-          />
-        </AnimatePresence>
+      {/* kZjmW — Hero/Right: width 745, height fit_content(500), vertical layout */}
+      <div
+        style={{
+          position: 'relative',
+          width: 745,
+          height: 500,
+          overflow: 'hidden',
+        }}
+      >
+        {/* N7tAr — Hero/Right/Image: fill_container × fill_container, image mode fill */}
+        <img
+          src={heroCouple}
+          alt="A couple holding us serum bottles, leaning together in warm natural light."
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
 
-        {/* Bottom fade + thumbnail navigation */}
-        <div className="absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-image-bg via-image-bg/70 to-transparent pb-5 pt-20">
-          <div
-            role="tablist"
-            aria-label="Hero image navigation"
-            className="flex gap-5"
+        {/* EyVnF — Hero/Right/Dots: absolute (0, 424), width 680 (fill_container fallback),
+            horizontal, justifyContent center, alignItems center, gap 20, padding 18/0 */}
+        <div
+          role="tablist"
+          aria-label="Hero image navigation"
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 424,
+            width: 680,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 20,
+            padding: '18px 0',
+          }}
+        >
+          {/* WVxD4 — Dot/1: 40×40, image hero-couple fill, opacity 0.3, stroke disabled */}
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-label="Couple"
+            style={{
+              width: 40,
+              height: 40,
+              padding: 0,
+              border: 'none',
+              background: 'transparent',
+              opacity: 0.3,
+              overflow: 'hidden',
+              cursor: 'pointer',
+            }}
           >
-            {STATES.map((state, i) => {
-              const isActive = i === active;
-              return (
-                <button
-                  key={state.thumbLabel}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  aria-label={`Show ${state.thumbLabel}`}
-                  onClick={() => setActive(i)}
-                  className={`h-10 w-10 overflow-hidden rounded-lg border transition-opacity duration-200 ${
-                    isActive
-                      ? 'border-accent opacity-100'
-                      : 'border-ink/30 opacity-60 hover:opacity-90'
-                  }`}
-                >
-                  <img
-                    src={state.src}
-                    alt=""
-                    aria-hidden
-                    className="h-full w-full object-cover"
-                  />
-                </button>
-              );
-            })}
-          </div>
+            <img
+              src={heroCouple}
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </button>
+
+          {/* 2ahNG — Dot/2: 40×40, image hero-female-before fill, 1px inside stroke #1a1a1a */}
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-label="Female before/after"
+            style={{
+              width: 40,
+              height: 40,
+              padding: 0,
+              border: '1px solid #1a1a1a',
+              background: 'transparent',
+              overflow: 'hidden',
+              cursor: 'pointer',
+              boxSizing: 'border-box',
+            }}
+          >
+            <img
+              src={heroFemaleBefore}
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </button>
+
+          {/* u4fmO — Dot/3: 40×40, image hero-male-before fill, 1px inside stroke #1a1a1a */}
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-label="Male before/after"
+            style={{
+              width: 40,
+              height: 40,
+              padding: 0,
+              border: '1px solid #1a1a1a',
+              background: 'transparent',
+              overflow: 'hidden',
+              cursor: 'pointer',
+              boxSizing: 'border-box',
+            }}
+          >
+            <img
+              src={heroMaleBefore}
+              alt=""
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </button>
         </div>
       </div>
     </section>

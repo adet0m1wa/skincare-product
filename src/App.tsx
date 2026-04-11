@@ -1,27 +1,23 @@
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
-import { Concerns } from './components/Concerns';
-import { Bestsellers } from './components/Bestsellers';
-import { HowItWorks } from './components/HowItWorks';
-import { Team } from './components/Team';
-import { Testimonials } from './components/Testimonials';
-import { Blog } from './components/Blog';
-import { Footer } from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-bg font-body text-ink antialiased">
-      <Nav />
-      <main>
-        <Hero />
-        <Concerns />
-        <Bestsellers />
-        <HowItWorks />
-        <Team />
-        <Testimonials />
-        <Blog />
-      </main>
-      <Footer />
+    // Landing Page- new frame: 1440 wide, fill #F7F5F0, vertical, alignItems center
+    <div
+      style={{
+        minHeight: '100vh',
+        backgroundColor: '#F7F5F0',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
+      <div style={{ width: 1440 }}>
+        <Nav />
+        <main>
+          <Hero />
+        </main>
+      </div>
     </div>
   );
 }
