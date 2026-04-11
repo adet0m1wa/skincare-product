@@ -1,18 +1,14 @@
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
+import './App.css';
 
 export default function App() {
   return (
-    // Landing Page- new frame: 1440 wide, fill #F7F5F0, vertical, alignItems center
-    <div
-      style={{
-        minHeight: '100vh',
-        backgroundColor: '#F7F5F0',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      <div style={{ width: 1440 }}>
+    // Full-width ivory background on .app-root so viewports wider than
+    // 1440 show the bg edge-to-edge. .page-frame caps page content at
+    // 1440 and centers it.
+    <div className="app-root">
+      <div className="page-frame">
         <Nav />
         <main>
           <Hero />

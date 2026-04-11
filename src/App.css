@@ -1,0 +1,17 @@
+/* Page-level layout wrapper.
+ *
+ * .app-root carries the full-width ivory background so on screens wider
+ * than 1440 the bg extends edge-to-edge.
+ * .page-frame caps content at 1440px and centers it with auto margins.
+ */
+
+.app-root {
+  min-height: 100vh;
+  background-color: #F7F5F0;
+}
+
+.page-frame {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}

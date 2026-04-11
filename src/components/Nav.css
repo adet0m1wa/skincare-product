@@ -1,0 +1,167 @@
+/* Nav — pixel-for-pixel port of pencil-new.pen "Landing Page- new" Nav (P5EOr)
+ * at desktop, with tablet + mobile breakpoints layered on top.
+ *
+ * Breakpoints (matching project convention):
+ *   - Desktop:  >=1440px (base rules)
+ *   - Tablet:   768px–1439px
+ *   - Mobile:   <768px
+ *
+ * All measurements pulled directly from the .pen file. Padding at desktop
+ * is asymmetric (38 top / 50 bottom) so link text top-breathing equals
+ * underline bottom-breathing — see LINK_PAD_Y derivation in Nav.tsx.
+ */
+
+.nav-root {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #F7F5F0;
+  padding: 38px 40px 50px 40px;
+  box-sizing: border-box;
+}
+
+.nav-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-logo {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.nav-wordmark {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.08;
+  letter-spacing: -1.04px;
+  color: #0D0D0D;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  text-decoration: none;
+}
+
+.nav-link-text {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  color: #0D0D0D;
+  white-space: nowrap;
+}
+
+/* Underline sits at the container's bottom edge but is fully hidden
+ * (opacity 0). Kept in the DOM so animation wiring can come back later
+ * without restructuring. */
+.nav-link-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: #1A1A1A;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1px solid #1A1A1A;
+  background-color: transparent;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  color: #0D0D0D;
+  cursor: pointer;
+}
+
+.nav-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #0D0D0D;
+}
+
+/* Hidden by default; revealed at mobile breakpoint. Display gets set to
+ * inline-flex inside the media query so desktop doesn't render it. */
+.nav-mobile-toggle {
+  display: none;
+}
+
+/* ===== Tablet: 768px–1439px ===== */
+@media (max-width: 1439px) {
+  .nav-root {
+    padding: 32px 32px 44px 32px;
+  }
+  .nav-center {
+    gap: 24px;
+  }
+}
+
+/* ===== Mobile: <768px ===== */
+@media (max-width: 767px) {
+  .nav-root {
+    padding: 24px 20px 32px 20px;
+    justify-content: space-between;
+  }
+  .nav-left,
+  .nav-right {
+    flex: 0 0 auto;
+  }
+  .nav-center {
+    display: none;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .nav-mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #0D0D0D;
+  }
+}

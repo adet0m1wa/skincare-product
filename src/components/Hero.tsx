@@ -1,243 +1,92 @@
-// Hero — pixel-for-pixel port of pencil-new.pen "Landing Page- new" → section 1 - Hero (9Q81H).
-// All measurements and colors read directly from the .pen file.
-// Per user instruction: no before/after slider yet — the uzHxA drag handle node is skipped.
+// Hero — port of pencil-new.pen "Landing Page- new" Section 1 Hero (9Q81H)
+// with responsive behavior layered on top. Pixel-exact values live in Hero.css.
+// Per the initial port instructions, no before/after drag interaction yet —
+// the uzHxA drag handle is visual-only.
 import heroCouple from '../assets/hero/hero-couple.webp';
 import heroFemaleBefore from '../assets/hero/hero-female-before.webp';
 import heroMaleBefore from '../assets/hero/hero-male-before.webp';
+import './Hero.css';
 
 export function Hero() {
   return (
-    // 9Q81H — section 1 - Hero: width 1360, horizontal (default), alignItems center
-    <section
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        width: 1360,
-        margin: '0 auto',
-      }}
-      aria-labelledby="hero-headline"
-    >
-      {/* VHI4l — Hero/Left: width fit_content(615) */}
-      <div style={{ width: 615 }}>
-        {/* V5VS2 — Frame 3: vertical, gap 40, width fill_container */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 40,
-          }}
-        >
-          {/* T7EqY — Hero/Left/Headline: DM Serif Display 54/400, #0D0D0D,
-              ls -1.04, lh 1.08, textGrowth fixed-width */}
-          <h1
-            id="hero-headline"
-            style={{
-              margin: 0,
-              fontFamily: '"DM Serif Display", Georgia, serif',
-              fontWeight: 400,
-              fontStyle: 'normal',
-              fontSize: 54,
-              lineHeight: 1.08,
-              letterSpacing: '-1.04px',
-              color: '#0D0D0D',
-              whiteSpace: 'pre-line',
-            }}
-          >
+    // 9Q81H — Hero section. Layout + responsive rules in Hero.css.
+    <section className="hero-root" aria-labelledby="hero-headline">
+      {/* VHI4l — Hero/Left: copy column */}
+      <div className="hero-left">
+        {/* V5VS2 — vertical stack, gap 40 */}
+        <div className="hero-left-stack">
+          {/* T7EqY — Hero/Left/Headline */}
+          <h1 id="hero-headline" className="hero-headline">
             {'Your skin deserves\nmore than guesswork'}
           </h1>
 
-          {/* W8V99 — Hero/Left/Body: DM Sans 16/400, #6B6B65, lh 1.65, width 420 */}
-          <p
-            style={{
-              margin: 0,
-              width: 420,
-              fontFamily: '"DM Sans", system-ui, sans-serif',
-              fontWeight: 400,
-              fontSize: 16,
-              lineHeight: 1.65,
-              color: '#6B6B65',
-            }}
-          >
+          {/* W8V99 — Hero/Left/Body */}
+          <p className="hero-body">
             Formulated by dermatologists, made for us — every skin type, every
             concern, one standard of care.
           </p>
 
-          {/* Z9T6d — Hero/Left/CTA: alignItems center, gap 8, padding 16/32,
-              1px inside stroke #1A1A1A, NO cornerRadius, NO fill */}
-          <button
-            type="button"
-            style={{
-              alignSelf: 'flex-start',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              padding: '16px 32px',
-              border: '1px solid #1A1A1A',
-              backgroundColor: 'transparent',
-              fontFamily: '"DM Sans", system-ui, sans-serif',
-              fontWeight: 500,
-              fontSize: 15,
-              lineHeight: 1,
-              color: '#1A1A1A',
-              cursor: 'pointer',
-            }}
-          >
+          {/* Z9T6d — Hero/Left/CTA (bordered pill, no fill per Pencil) */}
+          <button type="button" className="hero-cta">
             Shop now
           </button>
         </div>
       </div>
 
-      {/* kZjmW — Hero/Right: width 745, height fit_content(500), vertical layout.
-          No clip in Pencil — the drag handle (uzHxA) is intentionally positioned
-          so its center sits on the right edge of the image, half overflowing. */}
-      <div
-        style={{
-          position: 'relative',
-          width: 745,
-          height: 500,
-        }}
-      >
-        {/* N7tAr — Hero/Right/Image: fill_container × fill_container, image mode fill */}
+      {/* kZjmW — Hero/Right: image column with dots overlay + drag handle */}
+      <div className="hero-right">
+        {/* N7tAr — Hero/Right/Image */}
         <img
           src={heroCouple}
           alt="A couple holding us serum bottles, leaning together in warm natural light."
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            display: 'block',
-          }}
+          className="hero-image"
         />
 
-        {/* EyVnF — Hero/Right/Dots: absolute (0, 424), width 680 (fill_container fallback),
-            horizontal, justifyContent center, alignItems center, gap 20, padding 18/0 */}
+        {/* EyVnF — Hero/Right/Dots. Absolute at the bottom edge. */}
         <div
           role="tablist"
           aria-label="Hero image navigation"
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 424,
-            width: 680,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 20,
-            padding: '18px 0',
-          }}
+          className="hero-dots"
         >
-          {/* WVxD4 — Dot/1: 40×40, image hero-couple fill, opacity 0.3, stroke disabled */}
+          {/* WVxD4 — Dot/1: couple (active, opacity 0.3, no border) */}
           <button
             type="button"
             role="tab"
             aria-selected="true"
             aria-label="Couple"
-            style={{
-              width: 40,
-              height: 40,
-              padding: 0,
-              border: 'none',
-              background: 'transparent',
-              opacity: 0.3,
-              overflow: 'hidden',
-              cursor: 'pointer',
-            }}
+            className="hero-dot hero-dot-active"
           >
-            <img
-              src={heroCouple}
-              alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
+            <img src={heroCouple} alt="" />
           </button>
 
-          {/* 2ahNG — Dot/2: 40×40, image hero-female-before fill, 1px inside stroke #1a1a1a */}
+          {/* 2ahNG — Dot/2: female before/after */}
           <button
             type="button"
             role="tab"
             aria-selected="false"
             aria-label="Female before/after"
-            style={{
-              width: 40,
-              height: 40,
-              padding: 0,
-              border: '1px solid #1a1a1a',
-              background: 'transparent',
-              overflow: 'hidden',
-              cursor: 'pointer',
-              boxSizing: 'border-box',
-            }}
+            className="hero-dot hero-dot-inactive"
           >
-            <img
-              src={heroFemaleBefore}
-              alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
+            <img src={heroFemaleBefore} alt="" />
           </button>
 
-          {/* u4fmO — Dot/3: 40×40, image hero-male-before fill, 1px inside stroke #1a1a1a */}
+          {/* u4fmO — Dot/3: male before/after */}
           <button
             type="button"
             role="tab"
             aria-selected="false"
             aria-label="Male before/after"
-            style={{
-              width: 40,
-              height: 40,
-              padding: 0,
-              border: '1px solid #1a1a1a',
-              background: 'transparent',
-              overflow: 'hidden',
-              cursor: 'pointer',
-              boxSizing: 'border-box',
-            }}
+            className="hero-dot hero-dot-inactive"
           >
-            <img
-              src={heroMaleBefore}
-              alt=""
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
+            <img src={heroMaleBefore} alt="" />
           </button>
         </div>
 
-        {/* uzHxA — Drag handle: 45×45, cornerRadius 50, 2px inside stroke #1A1A1A,
-            opacity 0.5, absolute (722.5, 227.5). Half-overflows Hero/Right's
-            right edge by design (center lands exactly on x=745, the parent edge).
-            Visual only — the before/after drag interaction will be wired in the
-            animation phase. */}
-        <div
-          aria-hidden
-          style={{
-            position: 'absolute',
-            left: 722.5,
-            top: 227.5,
-            width: 45,
-            height: 45,
-            borderRadius: 50,
-            border: '2px solid #1A1A1A',
-            boxSizing: 'border-box',
-            opacity: 0.5,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'transparent',
-            pointerEvents: 'none',
-          }}
-        >
-          {/* dREdS — "Drag" text: DM Sans 12, #1A1A1A.
-              Pencil node sets fontWeight: 950. Google Fonts loads DM Sans at
-              400/500 only, so 950 falls back to the nearest loaded weight (500).
-              Matching the Pencil value verbatim per pixel-for-pixel mandate. */}
-          <span
-            style={{
-              fontFamily: '"DM Sans", system-ui, sans-serif',
-              fontWeight: 950,
-              fontSize: 12,
-              lineHeight: 1,
-              color: '#1A1A1A',
-            }}
-          >
-            Drag
-          </span>
+        {/* uzHxA — Drag handle. Visual only, no interaction wired yet.
+            Hidden on mobile via CSS since its half-overflow position only
+            makes sense against the desktop right-column edge. */}
+        <div aria-hidden className="hero-drag-handle">
+          <span className="hero-drag-handle-label">Drag</span>
         </div>
       </div>
     </section>
