@@ -87,13 +87,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* kZjmW — Hero/Right: width 745, height fit_content(500), vertical layout */}
+      {/* kZjmW — Hero/Right: width 745, height fit_content(500), vertical layout.
+          No clip in Pencil — the drag handle (uzHxA) is intentionally positioned
+          so its center sits on the right edge of the image, half overflowing. */}
       <div
         style={{
           position: 'relative',
           width: 745,
           height: 500,
-          overflow: 'hidden',
         }}
       >
         {/* N7tAr — Hero/Right/Image: fill_container × fill_container, image mode fill */}
@@ -196,6 +197,47 @@ export function Hero() {
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           </button>
+        </div>
+
+        {/* uzHxA — Drag handle: 45×45, cornerRadius 50, 2px inside stroke #1A1A1A,
+            opacity 0.5, absolute (722.5, 227.5). Half-overflows Hero/Right's
+            right edge by design (center lands exactly on x=745, the parent edge).
+            Visual only — the before/after drag interaction will be wired in the
+            animation phase. */}
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            left: 722.5,
+            top: 227.5,
+            width: 45,
+            height: 45,
+            borderRadius: 50,
+            border: '2px solid #1A1A1A',
+            boxSizing: 'border-box',
+            opacity: 0.5,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'transparent',
+            pointerEvents: 'none',
+          }}
+        >
+          {/* dREdS — "Drag" text: DM Sans 12, #1A1A1A.
+              Pencil node sets fontWeight: 950. Google Fonts loads DM Sans at
+              400/500 only, so 950 falls back to the nearest loaded weight (500).
+              Matching the Pencil value verbatim per pixel-for-pixel mandate. */}
+          <span
+            style={{
+              fontFamily: '"DM Sans", system-ui, sans-serif',
+              fontWeight: 950,
+              fontSize: 12,
+              lineHeight: 1,
+              color: '#1A1A1A',
+            }}
+          >
+            Drag
+          </span>
         </div>
       </div>
     </section>
