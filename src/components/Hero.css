@@ -19,6 +19,10 @@
   display: flex;
   align-items: center;
   width: 100%;
+  /* Fluid gap between the copy column and the image column. The two
+   * columns use flex: 615 0 0 / 745 0 0 so they divide whatever width
+   * remains after this gap in the exact 615:745 ratio from Pencil. */
+  gap: var(--hero-gap);
   padding: 0 40px;
   box-sizing: border-box;
 }
@@ -67,7 +71,11 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 16px 32px;
+  /* Fluid padding — --btn-padding-y / --btn-padding-x are specific to
+   * this "Shop now" button, not a global button token. The Nav CTA
+   * keeps its literal 12/24 padding since the alignment math with the
+   * nav underline is tied to exact pixel values. */
+  padding: var(--btn-padding-y) var(--btn-padding-x);
   border: 1px solid #1A1A1A;
   background-color: transparent;
   font-family: "DM Sans", system-ui, sans-serif;

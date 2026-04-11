@@ -11,14 +11,19 @@
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-around;
+  /* Three-group layout with a fluid gap between each group (see
+   * --nav-group-gap in index.css). Nav/Left and Nav/Right hug their
+   * content; Nav/Center takes the remaining space and centers its
+   * links inside itself. The result: a deterministic minimum gap on
+   * each side of the links, no runaway space distribution. */
+  gap: var(--nav-group-gap);
   background-color: #F7F5F0;
   padding: 38px 40px 50px 40px;
   box-sizing: border-box;
 }
 
 .nav-left {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -41,7 +46,8 @@
 }
 
 .nav-center {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +87,7 @@
 }
 
 .nav-right {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
