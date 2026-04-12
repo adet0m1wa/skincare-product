@@ -3,14 +3,11 @@
 import { useState } from 'react';
 import { List, ShoppingBag } from '@phosphor-icons/react';
 import logoBlack from '../assets/logo/logo_black.png';
+import type { BtnDials } from './btn-dials';
 import './Nav.css';
 
 const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
 
-// Each NavLink wraps text in a container with equal top/bottom padding
-// (12px each side of 15px text → 39px tall container). The underline
-// sits at the container's bottom edge, aligned to the Build My Regimen
-// button's bottom border.
 function NavLink({ label }: { label: string }) {
   const [hovered, setHovered] = useState(false);
 
@@ -24,8 +21,6 @@ function NavLink({ label }: { label: string }) {
       onBlur={() => setHovered(false)}
     >
       <span className="nav-link-text">{label}</span>
-      {/* Underline bar — final values baked in:
-          duration 0.19s, thickness 1.5px, offset 0, easing ease-in-out */}
       <span
         aria-hidden
         className="nav-link-underline"
@@ -38,7 +33,10 @@ function NavLink({ label }: { label: string }) {
   );
 }
 
-export function Nav() {
+export function Nav({ btnDials }: { btnDials: BtnDials }) {
+  const fillTransition = `transform ${btnDials.fillDuration}ms ${btnDials.fillEasing}`;
+  const clipTransition = `clip-path ${btnDials.fillDuration}ms ${btnDials.fillEasing}`;
+
   return (
     <header className="nav-root">
       {/* E2bh1 — Nav/Left: logo + italic wordmark */}
@@ -68,12 +66,14 @@ export function Nav() {
           className="nav-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent px-6 py-3 cursor-pointer [transform:translateZ(0)]"
         >
           <span
-            className="absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:translate-y-0"
+            className="absolute inset-0 bg-[#1A1A1A] translate-y-full group-hover:translate-y-0"
+            style={{ transition: fillTransition }}
             aria-hidden="true"
           />
           <span className="relative z-10 text-[#0D0D0D]">Build My Regimen</span>
           <span
-            className="absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+            className="absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0_0_0_0)]"
+            style={{ transition: clipTransition }}
             aria-hidden="true"
           >
             Build My Regimen

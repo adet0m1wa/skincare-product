@@ -1,17 +1,27 @@
+import { lazy, Suspense, useState } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
+import { BTN_DIAL_DEFAULTS, type BtnDials } from './components/btn-dials';
 import './App.css';
 
+const BtnDialsHost = import.meta.env.DEV
+  ? lazy(() => import('./components/btn-dials-dev'))
+  : null;
+
 export default function App() {
+  const [btnDials, setBtnDials] = useState<BtnDials>(BTN_DIAL_DEFAULTS);
+
   return (
-    // Full-width ivory background on .app-root so viewports wider than
-    // 1440 show the bg edge-to-edge. .page-frame caps page content at
-    // 1440 and centers it.
     <div className="app-root">
       <div className="page-frame">
-        <Nav />
+        {BtnDialsHost && (
+          <Suspense fallback={null}>
+            <BtnDialsHost onChange={setBtnDials} />
+          </Suspense>
+        )}
+        <Nav btnDials={btnDials} />
         <main>
-          <Hero />
+          <Hero btnDials={btnDials} />
         </main>
       </div>
     </div>
