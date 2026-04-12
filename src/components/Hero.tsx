@@ -2,39 +2,15 @@
 // with responsive behavior layered on top. Pixel-exact values live in Hero.css.
 // Per the initial port instructions, no before/after drag interaction yet —
 // the uzHxA drag handle is visual-only.
-//
-// DialKit: the "Button Hover" panel controls fillDuration and fillEasing
-// on the Shop now button in dev. In prod, static defaults from btn-dials.ts
-// are used and dialkit is tree-shaken out.
-import { lazy, Suspense, useState } from 'react';
 import heroCouple from '../assets/hero/hero-couple.webp';
 import heroFemaleBefore from '../assets/hero/hero-female-before.webp';
 import heroMaleBefore from '../assets/hero/hero-male-before.webp';
-import { BTN_DIAL_DEFAULTS, type BtnDials } from './btn-dials';
 import './Hero.css';
 
-const BtnDialsHost = import.meta.env.DEV
-  ? lazy(() => import('./btn-dials-dev'))
-  : null;
-
 export function Hero() {
-  const [dials, setDials] = useState<BtnDials>(BTN_DIAL_DEFAULTS);
-
-  // Inline transition style applied to both the fill and the clone so
-  // they stay perfectly synced. Overrides the Tailwind duration/easing
-  // classes so DialKit values take effect in real-time.
-  const fillTransition = `transform ${dials.fillDuration}ms ${dials.fillEasing}`;
-  const clipTransition = `clip-path ${dials.fillDuration}ms ${dials.fillEasing}`;
-
   return (
     // 9Q81H — Hero section. Layout + responsive rules in Hero.css.
     <section className="hero-root" aria-labelledby="hero-headline">
-      {BtnDialsHost && (
-        <Suspense fallback={null}>
-          <BtnDialsHost onChange={setDials} />
-        </Suspense>
-      )}
-
       {/* VHI4l — Hero/Left: copy column */}
       <div className="hero-left">
         <div className="hero-left-stack">
@@ -49,23 +25,20 @@ export function Hero() {
             concern, one standard of care.
           </p>
 
-          {/* Z9T6d — Hero/Left/CTA */}
+          {/* Z9T6d — Hero/Left/CTA. Exact same structure as Build My Regimen
+              in Nav.tsx: fill + black text + white text clone, all Tailwind,
+              duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]. */}
           <button
             type="button"
             className="hero-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)]"
           >
-            {/* Fill layer — rises from bottom */}
             <span
-              className="hero-cta-fill absolute inset-0 bg-[#1A1A1A] translate-y-full group-hover:translate-y-0"
-              style={{ transition: fillTransition }}
+              className="hero-cta-fill absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:translate-y-0"
               aria-hidden="true"
             />
-            {/* Black text — always visible */}
             <span className="hero-cta-text relative z-10 text-[#0D0D0D]">Shop now</span>
-            {/* White text clone — clipped to fill area */}
             <span
-              className="hero-cta-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] group-hover:[clip-path:inset(0_0_0_0)]"
-              style={{ transition: clipTransition }}
+              className="hero-cta-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:[clip-path:inset(0_0_0_0)]"
               aria-hidden="true"
             >
               Shop now
