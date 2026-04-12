@@ -67,11 +67,10 @@
   color: #5E5E5E;
 }
 
-/* Approach 2 — "Shop now": wavy blobby fill from bottom.
- * A ::before pseudo with 150% height and 50% top border-radius
- * creates a curved wave that rises from below on hover. Only
- * active above 1000px since below 1000px the button is already
- * filled black with white text. */
+/* "Shop now" — same fill-from-bottom pattern as Build My Regimen.
+ * Text uses mix-blend-mode: difference for instant black→white
+ * inversion as the fill sweeps over it. Hover animation is scoped
+ * to >=1000px since below 1000px the button is already filled. */
 .hero-cta {
   position: relative;
   align-self: flex-start;
@@ -86,41 +85,36 @@
   font-weight: 500;
   font-size: var(--text-button);
   line-height: 1;
-  color: #0D0D0D;
+  color: #1A1A1A;
   cursor: pointer;
   overflow: hidden;
-  transition: color 0.35s ease-out;
 }
 
-/* Button label stays above the wave fill */
 .hero-cta-label {
   position: relative;
   z-index: 1;
+  color: #1A1A1A;
+  mix-blend-mode: difference;
 }
 
-/* Wave hover only above 1000px — below 1000px the button is already
- * filled #1A1A1A with #F7F5F0 text so no hover animation needed. */
+/* Hover fill only above 1000px — below 1000px the button is already
+ * filled #1A1A1A with #F7F5F0 text via the mobile media query. */
 @media (min-width: 1000px) {
   .hero-cta::before {
     content: "";
     position: absolute;
+    top: 0;
     left: 0;
-    bottom: 0;
     width: 100%;
-    height: 150%;
+    height: 100%;
     background: #1A1A1A;
-    border-radius: 50% 50% 0 0;
-    transform: translateY(100%);
+    transform: scaleY(0);
+    transform-origin: bottom;
     transition: transform 0.35s ease-out;
-    z-index: 0;
-  }
-
-  .hero-cta:hover {
-    color: #F7F5F0;
   }
 
   .hero-cta:hover::before {
-    transform: translateY(0);
+    transform: scaleY(1);
   }
 }
 
