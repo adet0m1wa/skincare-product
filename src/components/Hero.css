@@ -39,7 +39,8 @@
 .hero-left-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
+  /* No shared gap — headline→body and body→button have different fluid
+   * scales, so spacing is applied individually via margin-top. */
 }
 
 .hero-headline {
@@ -57,13 +58,13 @@
 }
 
 .hero-body {
-  margin: 0;
+  margin: var(--hero-headline-to-body) 0 0 0;
   max-width: 420px;
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 400;
   font-size: var(--text-body);
   line-height: 1.65;
-  color: #6B6B65;
+  color: #5E5E5E;
 }
 
 .hero-cta {
@@ -71,6 +72,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-top: var(--hero-body-to-button);
   /* Fluid padding — --btn-padding-y / --btn-padding-x are specific to
    * this "Shop now" button, not a global button token. The Nav CTA
    * keeps its literal 12/24 padding since the alignment math with the

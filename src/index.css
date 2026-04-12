@@ -54,6 +54,10 @@
   --nav-group-gap: clamp(1rem, calc(0.296rem + 3.005vw), 3rem);
   --hero-gap: clamp(0.5rem, calc(-0.204rem + 3.005vw), 2.5rem);
 
+  /* Hero left-column internal gaps (finalized from DialKit tuning) */
+  --hero-headline-to-body: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --hero-body-to-button: clamp(1.75rem, calc(1.486rem + 1.127vw), 2.5rem);
+
   /* Hero "Shop now" button padding (Hero/Left/CTA only) */
   --btn-padding-x: clamp(1.5rem, calc(1.324rem + 0.751vw), 2rem);
   --btn-padding-y: clamp(0.75rem, calc(0.662rem + 0.376vw), 1rem);
