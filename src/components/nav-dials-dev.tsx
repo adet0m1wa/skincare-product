@@ -1,19 +1,10 @@
-// Dev-only DialKit host for the Nav underline animation.
-//
-// This file imports `dialkit` statically, so it MUST only be loaded in dev.
-// It's lazy-imported from Nav.tsx inside an `import.meta.env.DEV` branch,
-// which means in prod this entire module (and therefore the whole dialkit
-// graph) is dead code that Rollup eliminates.
-//
-// The component renders nothing — it exists purely to host the DialKit
-// panel for the Nav underline. The values flow out via `onChange`.
+// Dev-only DialKit host for Nav hover underline animation.
+// Statically imports dialkit — MUST only be loaded in dev via a lazy
+// dynamic import guarded by import.meta.env.DEV.
 import { useEffect } from 'react';
 import { useDialKit } from 'dialkit';
 import type { NavDials } from './nav-dials';
 
-// Slider tuple shape: [default, min, max]. TS widens inline numeric tuples
-// to `number[]`, which breaks DialKit's conditional type mapping — cast so
-// the inferred return type stays narrow.
 type Slider = [number, number, number];
 
 export default function NavDialsHost({
@@ -21,9 +12,10 @@ export default function NavDialsHost({
 }: {
   onChange: (dials: NavDials) => void;
 }) {
-  const dials = useDialKit('Nav Underline', {
+  const dials = useDialKit('Nav Hover', {
     duration: [0.25, 0.05, 1.0] as Slider,
     lineThickness: [1.5, 0.5, 4] as Slider,
+    lineOffsetY: [0, -10, 10] as Slider,
     easing: {
       type: 'select' as const,
       options: [
@@ -37,15 +29,14 @@ export default function NavDialsHost({
     },
   });
 
-  // Flow values up to Nav on every change. useEffect deps track the
-  // individual fields so we don't re-run on object-identity churn.
   useEffect(() => {
     onChange({
       duration: dials.duration,
       lineThickness: dials.lineThickness,
+      lineOffsetY: dials.lineOffsetY,
       easing: dials.easing,
     });
-  }, [dials.duration, dials.lineThickness, dials.easing, onChange]);
+  }, [dials.duration, dials.lineThickness, dials.lineOffsetY, dials.easing, onChange]);
 
   return null;
 }

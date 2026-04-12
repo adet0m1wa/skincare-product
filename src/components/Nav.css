@@ -72,17 +72,15 @@
   white-space: nowrap;
 }
 
-/* Underline sits at the container's bottom edge but is fully hidden
- * (opacity 0). Kept in the DOM so animation wiring can come back later
- * without restructuring. */
+/* Underline at the container's bottom edge. Visual state (opacity,
+ * transform, height, bottom offset, transition) is controlled by
+ * inline styles from Nav.tsx driven by DialKit in dev / static
+ * defaults in prod. Only structural + color props live here. */
 .nav-link-underline {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 1.5px;
   background-color: #1A1A1A;
-  opacity: 0;
   pointer-events: none;
 }
 
