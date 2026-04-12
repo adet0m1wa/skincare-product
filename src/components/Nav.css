@@ -72,15 +72,18 @@
   white-space: nowrap;
 }
 
-/* Underline at the container's bottom edge. Visual state (opacity,
- * transform, height, bottom offset, transition) is controlled by
- * inline styles from Nav.tsx driven by DialKit in dev / static
- * defaults in prod. Only structural + color props live here. */
+/* Underline at the container's bottom edge. Finalized animation values
+ * baked in: 0.19s ease-in-out, 1.5px thick, bottom: 0. Opacity and
+ * transform are driven by inline styles from Nav.tsx (hovered state). */
 .nav-link-underline {
   position: absolute;
   left: 0;
   right: 0;
+  bottom: 0;
+  height: 1.5px;
   background-color: #1A1A1A;
+  transform-origin: center;
+  transition: transform 0.19s ease-in-out, opacity 0.19s ease-in-out;
   pointer-events: none;
 }
 
