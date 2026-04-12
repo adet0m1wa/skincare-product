@@ -13,7 +13,7 @@ export default function NavDialsHost({
   onChange: (dials: NavDials) => void;
 }) {
   const dials = useDialKit('Nav Hover', {
-    duration: [0.25, 0.05, 1.0] as Slider,
+    duration: [0.19, 0.05, 1.0] as Slider,
     lineThickness: [1.5, 0.5, 4] as Slider,
     lineOffsetY: [0, -10, 10] as Slider,
     easing: {
@@ -25,7 +25,7 @@ export default function NavDialsHost({
         'linear',
         'cubic-bezier(0.4, 0, 0.2, 1)',
       ],
-      default: 'ease-out',
+      default: 'ease-in-out',
     },
   });
 

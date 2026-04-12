@@ -9,8 +9,8 @@ export type NavDials = {
 };
 
 export const NAV_DIAL_DEFAULTS: NavDials = {
-  duration: 0.25,
+  duration: 0.19,
   lineThickness: 1.5,
   lineOffsetY: 0,
-  easing: 'ease-out',
+  easing: 'ease-in-out',
 };
