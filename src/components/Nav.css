@@ -92,7 +92,12 @@
   gap: var(--space-sm);
 }
 
+/* Approach 1 — "Build My Regimen": fluid fill from bottom.
+ * A ::before pseudo fills from scaleY(0) to scaleY(1) on hover,
+ * origin bottom, with a 6px top border-radius for an organic
+ * leading edge. Text sits above via z-index. */
 .nav-cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -105,6 +110,34 @@
   line-height: 1;
   color: #0D0D0D;
   cursor: pointer;
+  overflow: hidden;
+  transition: color 0.35s ease-out;
+}
+
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #1A1A1A;
+  border-radius: 6px 6px 0 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s ease-out;
+  z-index: 0;
+}
+
+.nav-cta:hover {
+  color: #F7F5F0;
+}
+
+.nav-cta:hover::before {
+  transform: scaleY(1);
+}
+
+/* Text must stay above the pseudo-element fill */
+.nav-cta > * {
+  position: relative;
+  z-index: 1;
 }
 
 .nav-icon-btn {

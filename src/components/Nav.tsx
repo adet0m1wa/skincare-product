@@ -85,7 +85,7 @@ export function Nav() {
       {/* VAsBV — Nav/Right */}
       <div className="nav-right">
         <button type="button" className="nav-cta">
-          Build My Regimen
+          <span>Build My Regimen</span>
         </button>
         <button type="button" aria-label="Shopping bag" className="nav-icon-btn">
           <ShoppingBag size={22} weight="regular" />
