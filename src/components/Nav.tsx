@@ -84,10 +84,23 @@ export function Nav() {
 
       {/* VAsBV — Nav/Right */}
       <div className="nav-right">
-        <button type="button" className="nav-cta">
-          <span className="btn-label">Build My Regimen</span>
-          <span className="btn-label-mask" aria-hidden="true">
-            <span>Build My Regimen</span>
+        <button
+          type="button"
+          className="nav-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent px-6 py-3 cursor-pointer [transform:translateZ(0)]"
+        >
+          {/* Fill layer — rises from bottom */}
+          <span
+            className="absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:translate-y-0"
+            aria-hidden="true"
+          />
+          {/* Black text — always visible */}
+          <span className="relative z-10 text-[#0D0D0D]">Build My Regimen</span>
+          {/* White text clone — clipped to fill area */}
+          <span
+            className="absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+            aria-hidden="true"
+          >
+            Build My Regimen
           </span>
         </button>
         <button type="button" aria-label="Shopping bag" className="nav-icon-btn">

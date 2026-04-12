@@ -92,96 +92,15 @@
   gap: var(--space-sm);
 }
 
-/* "Build My Regimen" — fill-from-bottom hover with synced text mask.
- *
- * Markup:
- *   <button class="nav-cta">
- *     <span class="btn-label">Build My Regimen</span>
- *     <span class="btn-label-mask" aria-hidden>
- *       <span>Build My Regimen</span>
- *     </span>
- *   </button>
- *
- * ::before  = black fill, scaleY(0→1) from bottom
- * .btn-label = black text, always visible below the mask
- * .btn-label-mask = overflow:hidden wrapper with the same scaleY
- *   transform as ::before. Its child <span> is white text with a
- *   counter-scaleY so it stays at natural height during the animation.
- *   As both rise, the white text reveals over the fill while the
- *   black text below is hidden behind it. */
+/* "Build My Regimen" — hover animation is handled entirely by Tailwind
+ * utility classes in Nav.tsx (clip-path inset technique). Only structural
+ * button styling lives here. */
 .nav-cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  border: 1px solid #1A1A1A;
-  background-color: transparent;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.nav-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #1A1A1A;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.35s ease-out;
-  z-index: 1;
-}
-
-.nav-cta:hover::before {
-  transform: scaleY(1);
-}
-
-.nav-cta .btn-label {
-  position: relative;
-  z-index: 0;
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 500;
   font-size: var(--text-button);
   line-height: 1;
-  color: #0D0D0D;
   white-space: nowrap;
-}
-
-.nav-cta .btn-label-mask {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transform: scaleY(0);
-  transform-origin: bottom;
-  transition: transform 0.35s ease-out;
-  z-index: 2;
-}
-
-.nav-cta:hover .btn-label-mask {
-  transform: scaleY(1);
-}
-
-.nav-cta .btn-label-mask > span {
-  font-family: "DM Sans", system-ui, sans-serif;
-  font-weight: 500;
-  font-size: var(--text-button);
-  line-height: 1;
-  color: #F7F5F0;
-  white-space: nowrap;
-  /* Counter-scale: parent goes scaleY(0→1), child goes scaleY(∞→1).
-   * Product is always 1 so the white text stays at natural height
-   * instead of squishing during the animation. Using a large start
-   * value (100) that's imperceptibly close to ∞ at scaleY(0). */
-  transform: scaleY(100);
-  transform-origin: bottom;
-  transition: transform 0.35s ease-out;
-}
-
-.nav-cta:hover .btn-label-mask > span {
-  transform: scaleY(1);
 }
 
 .nav-icon-btn {
