@@ -67,53 +67,97 @@
   color: #5E5E5E;
 }
 
-/* "Shop now" — same fill-from-bottom pattern as Build My Regimen.
- * Text uses mix-blend-mode: difference for instant black→white
- * inversion as the fill sweeps over it. Hover animation is scoped
- * to >=1000px since below 1000px the button is already filled. */
+/* "Shop now" — fill-from-bottom hover with synced text mask.
+ * Same pattern as "Build My Regimen" in Nav.css.
+ *
+ * Markup:
+ *   <button class="hero-cta">
+ *     <span class="btn-label">Shop now</span>
+ *     <span class="btn-label-mask" aria-hidden>
+ *       <span>Shop now</span>
+ *     </span>
+ *   </button>
+ *
+ * Hover animation scoped to >=1000px — below 1000px the button is
+ * already filled #1A1A1A with #F7F5F0 text. */
 .hero-cta {
   position: relative;
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   margin-top: var(--hero-body-to-button);
   padding: var(--btn-padding-y) var(--btn-padding-x);
   border: 1px solid #1A1A1A;
   background-color: transparent;
-  font-family: "DM Sans", system-ui, sans-serif;
-  font-weight: 500;
-  font-size: var(--text-button);
-  line-height: 1;
-  color: #1A1A1A;
   cursor: pointer;
   overflow: hidden;
 }
 
-.hero-cta-label {
+.hero-cta .btn-label {
   position: relative;
-  z-index: 1;
-  color: #1A1A1A;
-  mix-blend-mode: difference;
+  z-index: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-button);
+  line-height: 1;
+  color: #0D0D0D;
+  white-space: nowrap;
 }
 
-/* Hover fill only above 1000px — below 1000px the button is already
- * filled #1A1A1A with #F7F5F0 text via the mobile media query. */
+.hero-cta .btn-label-mask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  z-index: 2;
+}
+
+.hero-cta .btn-label-mask > span {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-button);
+  line-height: 1;
+  color: #F7F5F0;
+  white-space: nowrap;
+  transform: scaleY(100);
+  transform-origin: bottom;
+}
+
+/* Hover fill + mask transitions — desktop only */
 @media (min-width: 1000px) {
   .hero-cta::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: #1A1A1A;
     transform: scaleY(0);
     transform-origin: bottom;
     transition: transform 0.35s ease-out;
+    z-index: 1;
   }
 
   .hero-cta:hover::before {
+    transform: scaleY(1);
+  }
+
+  .hero-cta .btn-label-mask {
+    transition: transform 0.35s ease-out;
+  }
+
+  .hero-cta:hover .btn-label-mask {
+    transform: scaleY(1);
+  }
+
+  .hero-cta .btn-label-mask > span {
+    transition: transform 0.35s ease-out;
+  }
+
+  .hero-cta:hover .btn-label-mask > span {
     transform: scaleY(1);
   }
 }

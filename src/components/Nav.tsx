@@ -85,7 +85,10 @@ export function Nav() {
       {/* VAsBV — Nav/Right */}
       <div className="nav-right">
         <button type="button" className="nav-cta">
-          <span>Build My Regimen</span>
+          <span className="btn-label">Build My Regimen</span>
+          <span className="btn-label-mask" aria-hidden="true">
+            <span>Build My Regimen</span>
+          </span>
         </button>
         <button type="button" aria-label="Shopping bag" className="nav-icon-btn">
           <ShoppingBag size={22} weight="regular" />

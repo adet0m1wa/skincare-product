@@ -30,7 +30,10 @@ export function Hero() {
 
           {/* Z9T6d — Hero/Left/CTA (bordered pill, no fill per Pencil) */}
           <button type="button" className="hero-cta">
-            <span className="hero-cta-label">Shop now</span>
+            <span className="btn-label">Shop now</span>
+            <span className="btn-label-mask" aria-hidden="true">
+              <span>Shop now</span>
+            </span>
           </button>
         </div>
       </div>
