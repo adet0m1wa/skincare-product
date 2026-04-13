@@ -178,6 +178,13 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 | Drag handle scale down | 240ms | cubic-bezier(0.4, 0, 0.2, 1) | Person → couple, at current position |
 | Drag handle press | 240ms | cubic-bezier(0.34, 1.56, 0.64, 1) | Scale × 1.15, release 240ms ease-out |
 
+### Concerns
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Image hover scale | 300ms | ease | scale(1.05), no scale on mobile |
+| Arrow reveal | 200ms | ease | opacity + translateX(-4px→0), hidden on mobile |
+| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Same as Nav/Hero buttons, hover text changes to "Let's find your fix" |
+
 ---
 
 ## 8. Image Treatment

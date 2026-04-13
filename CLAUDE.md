@@ -202,6 +202,14 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - At 100% (start): full "before" visible. At 0%: full "after" visible. At 50%: left half before, right half after.
 - After images crossfade in/out with the same 450ms ease as before images.
 
+### Concerns — Cards
+- 6 cards in a horizontal grid (desktop), 2-card snap scroll (mobile)
+- Image hover: scale 1.05, 300ms ease. No scale on mobile.
+- Label: underline via border-bottom 1px solid #0D0D0D, padding-bottom 2px
+- Arrow: hidden by default, on card hover slides in from left (opacity 0→1, translateX -4px→0, 200ms ease). Hidden on mobile.
+- "Got a unique concern?" button: text wipe fill (200ms, cubic-bezier(0.4,0,0.2,1)). Default text: "Got a unique concern?". Hover text: "Let's find your fix". Mobile: pre-filled #1A1A1A, no hover animation.
+- Mobile scroll: snap 2 cards at a time, scroll-snap-stop: always, peek of next card visible, hidden scrollbar
+
 ### Bestseller carousel
 - 5 items visible on desktop
 - Circular chevron navigation button on the right edge (Phosphor Icons chevron inside a circular frame with 1px border)

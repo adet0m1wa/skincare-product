@@ -1,6 +1,5 @@
 // Concerns — port of pencil-new.pen "Landing Page- new" Section 2 (WRRkE).
 // 6 concern cards in a horizontal grid, each with an image and label.
-import { useDialKit } from 'dialkit';
 import concernAging from '../assets/concerns/concern-aging.webp';
 import concernCongestion from '../assets/concerns/concern-congestion.webp';
 import concernTexture from '../assets/concerns/concern-texture.webp';

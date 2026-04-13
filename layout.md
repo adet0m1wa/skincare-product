@@ -69,7 +69,11 @@
 - Text sits below the image, not overlaid
 - Even spacing between cards
 
-**Interaction:** Cards are clickable — link to bestsellers section or sign-up gate.
+**Interactions:**
+- Cards: image scales 1.05 on hover, label arrow slides in from left on hover
+- Labels are underlined (border-bottom), arrow hidden by default
+- "Got a unique concern?" button uses text wipe fill — hover reveals "Let's find your fix"
+- Mobile: 2-card snap scroll with peek, no hover effects, button pre-filled dark
 
 **Reference:** reference-ordinary-concerns.png
 
