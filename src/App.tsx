@@ -1,6 +1,7 @@
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Concerns } from './components/Concerns';
+import { Bestsellers } from './components/Bestsellers';
 import './App.css';
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <main>
           <Hero />
           <Concerns />
+          <Bestsellers />
         </main>
       </div>
     </div>

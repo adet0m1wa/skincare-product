@@ -79,6 +79,17 @@
   --concerns-card-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
   --concerns-label-gap: clamp(0.625rem, calc(0.493rem + 0.563vw), 1rem);
   --concerns-title-size: clamp(1.5rem, calc(1.192rem + 1.315vw), 2.375rem);
+
+  /* Bestsellers section — Pencil: pad [100,0], gap 40, card gap 40,
+   * card inner gap 20, image 400x400, title 38px, desc 14px.
+   * Card width is 1/5 of available space at 1440. */
+  --bs-pad-y: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+  --bs-header-to-cards: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --bs-title-size: clamp(1.5rem, calc(1.192rem + 1.315vw), 2.375rem);
+  --bs-card-gap: clamp(12px, calc(0.5rem + 1vw), 24px);
+  --bs-card-inner-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --bs-card-width: clamp(10rem, calc(5.775rem + 18.028vw), 22rem);
+  --bs-desc-size: clamp(0.813rem, calc(0.769rem + 0.188vw), 0.875rem);
 }
 
 html {

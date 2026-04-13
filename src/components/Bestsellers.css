@@ -1,0 +1,247 @@
+/* Bestsellers — port of pencil-new.pen "Landing Page- new" Section 3 (7DBT4).
+ * Pencil values: width 1360, padding [100, 0], gap 40.
+ * Cards: gap 40, image 400x400 fit, card gap 20, button padding [12, 16].
+ * Chevron: 48x48 circle, absolute right edge.
+ * Fluid responsive with single breakpoint at <1000px. */
+
+.bestsellers-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--bs-pad-y) 40px;
+  gap: var(--bs-header-to-cards);
+  box-sizing: border-box;
+}
+
+/* Header row: title+subtitle left, "View more products" right */
+.bestsellers-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.bestsellers-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bestsellers-title {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--bs-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0D0D0D;
+}
+
+.bestsellers-subtitle {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: #5E5E5E;
+}
+
+.bestsellers-view-more {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-nav);
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+}
+
+/* Track wrapper — scrollable container */
+.bestsellers-track-wrap {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.bestsellers-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+/* Track */
+.bestsellers-track {
+  display: flex;
+  gap: var(--bs-card-gap);
+}
+
+/* Individual product card */
+.bestsellers-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--bs-card-inner-gap);
+  flex: 0 0 calc((100% - 2 * var(--bs-card-gap)) / 3.5);
+  min-width: 0;
+  scroll-snap-stop: always;
+}
+
+.bestsellers-card:first-child {
+  scroll-snap-align: start;
+}
+
+.bestsellers-card:nth-child(4) {
+  scroll-snap-align: start;
+}
+
+/* Image container — holds default + hover images stacked */
+.bestsellers-card-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+.bestsellers-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: opacity 300ms ease;
+}
+
+.bestsellers-card-image-default {
+  opacity: 1;
+  z-index: 1;
+}
+
+.bestsellers-card-image-hover {
+  opacity: 0;
+  z-index: 0;
+}
+
+.bestsellers-card:hover .bestsellers-card-image-default {
+  opacity: 0;
+}
+
+.bestsellers-card:hover .bestsellers-card-image-hover {
+  opacity: 1;
+}
+
+.bestsellers-card-desc {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--bs-desc-size);
+  line-height: 1.5;
+  color: #5E5E5E;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.bestsellers-card-name {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-body);
+  line-height: 1.3;
+  color: #0D0D0D;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.bestsellers-card-price {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1;
+  color: #1A1A1A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.bestsellers-card-btn {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--bs-desc-size);
+  line-height: 1;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ===== Below 1000px (shared) ===== */
+@media (max-width: 999px) {
+  .bestsellers-root {
+    padding: var(--bs-pad-y) 20px;
+  }
+  .bestsellers-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .bestsellers-card:hover .bestsellers-card-image-default {
+    opacity: 1;
+  }
+  .bestsellers-card:hover .bestsellers-card-image-hover {
+    opacity: 0;
+  }
+  .bestsellers-view-more {
+    background-color: #1A1A1A !important;
+  }
+  .bestsellers-view-more .bs-vm-text {
+    color: #F7F5F0 !important;
+  }
+  .bestsellers-view-more .bs-vm-fill {
+    display: none;
+  }
+  .bestsellers-view-more .bs-vm-clone {
+    display: none;
+  }
+  .bestsellers-card-btn {
+    background-color: #1A1A1A !important;
+  }
+  .bestsellers-card-btn .bs-btn-text {
+    color: #F7F5F0 !important;
+  }
+  .bestsellers-card-btn .bs-btn-fill {
+    display: none;
+  }
+  .bestsellers-card-btn .bs-btn-clone {
+    display: none;
+  }
+}
+
+/* ===== Tablet: 600px–999px ===== */
+@media (max-width: 999px) and (min-width: 600px) {
+  .bestsellers-card {
+    flex: 0 0 28%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+/* ===== Phone: <600px ===== */
+@media (max-width: 599px) {
+  .bestsellers-card {
+    flex: 0 0 42%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}

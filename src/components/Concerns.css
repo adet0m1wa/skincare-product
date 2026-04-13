@@ -126,7 +126,7 @@
   transform: translateX(0);
 }
 
-/* ===== Mobile: <1000px ===== */
+/* ===== Below 1000px (shared) ===== */
 @media (max-width: 999px) {
   .concerns-root {
     padding: var(--concerns-pad-top) 20px var(--concerns-pad-bottom) 20px;
@@ -157,14 +157,6 @@
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
   }
-  .concerns-card {
-    flex: 0 0 calc(45% - 10px);
-    scroll-snap-align: none;
-    scroll-snap-stop: always;
-  }
-  .concerns-card:nth-child(odd) {
-    scroll-snap-align: start;
-  }
   .concerns-card-arrow {
     opacity: 0;
   }
@@ -173,5 +165,23 @@
   }
   .concerns-card:hover .concerns-card-image {
     transform: none;
+  }
+}
+
+/* ===== Tablet: 600px–999px ===== */
+@media (max-width: 999px) and (min-width: 600px) {
+  .concerns-card {
+    flex: 0 0 28%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+/* ===== Phone: <600px ===== */
+@media (max-width: 599px) {
+  .concerns-card {
+    flex: 0 0 42%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
