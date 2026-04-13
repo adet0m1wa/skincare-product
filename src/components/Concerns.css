@@ -1,0 +1,177 @@
+/* Concerns — port of pencil-new.pen "Landing Page- new" Section 2 (WRRkE).
+ * Pencil values: width 1360, padding [200, 0, 100, 0], gap 40.
+ * Cards: 6 in a row, gap 20, image height 280, label gap 16.
+ * Fluid responsive with single breakpoint at <1000px. */
+
+.concerns-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Pencil padding: 200px top, 0 sides, 100px bottom at 1440.
+   * The section sits inside .page-frame (max 1440px) which already
+   * has no horizontal padding — hero handles its own 40px padding.
+   * Concerns match that with 0 side padding in Pencil, but the
+   * parent page-frame constrains width. We add horizontal padding
+   * to match the hero's 40px. */
+  padding: var(--concerns-pad-top) 40px var(--concerns-pad-bottom) 40px;
+  gap: calc(var(--concerns-header-to-cards) + 8px);
+  box-sizing: border-box;
+}
+
+/* Header row: title+subtitle left, "Got a unique concern?" right */
+.concerns-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.concerns-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.concerns-title {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--concerns-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0D0D0D;
+}
+
+.concerns-subtitle {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: #5E5E5E;
+}
+
+.concerns-link {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-nav);
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+}
+
+/* 6-column card grid */
+.concerns-cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--concerns-card-gap);
+  width: 100%;
+  scrollbar-width: none;
+}
+
+.concerns-cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual card */
+.concerns-card {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--concerns-label-gap) + 4px);
+  cursor: pointer;
+}
+
+.concerns-card-image-wrap {
+  overflow: hidden;
+}
+
+.concerns-card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease;
+}
+
+.concerns-card:hover .concerns-card-image {
+  transform: scale(1.05);
+}
+
+.concerns-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-body);
+  line-height: 1;
+  color: #0D0D0D;
+}
+
+.concerns-card-label-text {
+  border-bottom: 1px solid #0D0D0D;
+  padding-bottom: 2px;
+}
+
+.concerns-card-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.concerns-card:hover .concerns-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== Mobile: <1000px ===== */
+@media (max-width: 999px) {
+  .concerns-root {
+    padding: var(--concerns-pad-top) 20px var(--concerns-pad-bottom) 20px;
+  }
+  .concerns-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .concerns-link {
+    background-color: #1A1A1A !important;
+  }
+  .concerns-link .concerns-link-text {
+    color: #F7F5F0 !important;
+  }
+  .concerns-link .concerns-link-fill {
+    display: none;
+  }
+  .concerns-link .concerns-link-clone {
+    display: none;
+  }
+  .concerns-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 0 20px;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .concerns-card {
+    flex: 0 0 calc(45% - 10px);
+    scroll-snap-align: none;
+    scroll-snap-stop: always;
+  }
+  .concerns-card:nth-child(odd) {
+    scroll-snap-align: start;
+  }
+  .concerns-card-arrow {
+    opacity: 0;
+  }
+  .concerns-card:hover .concerns-card-arrow {
+    opacity: 0;
+  }
+  .concerns-card:hover .concerns-card-image {
+    transform: none;
+  }
+}

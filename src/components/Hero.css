@@ -73,6 +73,7 @@
 .hero-cta {
   align-self: flex-start;
   margin-top: var(--hero-body-to-button);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
   font-family: "DM Sans", system-ui, sans-serif;
   font-weight: 500;
   font-size: var(--text-button);
@@ -102,6 +103,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,16 +148,16 @@
   right: calc(var(--drag-size) / -2);
   top: 50%;
   transform: translateY(-50%);
+  z-index: 2;
   width: var(--drag-size);
   height: var(--drag-size);
   border-radius: 50%;
   border: 1px solid #1A1A1A;
   box-sizing: border-box;
-  opacity: 0.5;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background-color: #F7F5F0;
   pointer-events: none;
 }
 
@@ -166,7 +168,7 @@
    * control, not body content, so the 13px minimum rule doesn't apply. */
   font-size: 10px;
   line-height: 1;
-  color: #1A1A1A;
+  color: #0D0D0D;
 }
 
 /* ===== Mobile: <1000px ===== */

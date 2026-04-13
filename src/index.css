@@ -70,6 +70,15 @@
   /* Hero drag handle — circle scales fluidly, label stays fixed at
    * 13px to honor the 13px project-wide minimum font-size rule. */
   --drag-size: clamp(2rem, calc(1.824rem + 0.751vw), 2.813rem);
+
+  /* Concerns section — Pencil: pad 200/100, gap 40, card gap 20, label gap 16,
+   * title 38px. Fluid between 375px (min) and 1440px (max). */
+  --concerns-pad-top: clamp(5rem, calc(2.359rem + 11.268vw), 12.5rem);
+  --concerns-pad-bottom: clamp(3rem, calc(1.856rem + 4.883vw), 6.25rem);
+  --concerns-header-to-cards: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --concerns-card-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --concerns-label-gap: clamp(0.625rem, calc(0.493rem + 0.563vw), 1rem);
+  --concerns-title-size: clamp(1.5rem, calc(1.192rem + 1.315vw), 2.375rem);
 }
 
 html {
