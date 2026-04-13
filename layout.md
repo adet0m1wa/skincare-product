@@ -36,16 +36,18 @@
 - Navigation: 3 small square boxes at bottom center over the gradient. Active square is filled (#1A1A1A), inactive squares are outlined/muted.
 
 **Interactions:**
-- Square box navigation switches between the 3 images
-- Drag slider only appears on Images 2 and 3
-- Image 1 is static — no slider interaction
+- Square thumbnail navigation switches between 3 images with 450ms ease crossfade
+- Drag handle appears on images 2 and 3 only (scales up with bounce from right edge)
+- Drag handle moves horizontally across the image. At start (right edge): full "before" visible. Dragging left reveals "after" from the right via clip-path split.
+- Drag position persists when switching between images 2 and 3. Resets to right edge only when returning from couple.
+- Image 1 (couple) is static — no slider, no drag handle
 
 **References:** reference-kit-hero.png, reference-curology-hero.png
 
 **Assets:**
-- hero-couple.png (Image 1)
-- hero-female-before.png, hero-female-after.png (Image 2)
-- hero-male-before.png, hero-male-after.png (Image 3)
+- hero-couple.webp (Image 1)
+- hero-female-before.webp, hero-female-after.webp (Image 2)
+- hero-male-before.webp, hero-male-after.webp (Image 3)
 
 ---
 

@@ -91,7 +91,7 @@ These three files are the single source of truth. If something in this CLAUDE.md
 
 ### Color
 - Page background is always #F7F5F0 (ivory). Never pure white (#FFFFFF).
-- Text is always #0D0D0D or #6B6B65. Never pure black (#000000).
+- Text is always #0D0D0D or #5E5E5E. Never pure black (#000000).
 - The only colorful elements on the entire page are the bestseller hover backgrounds. Everything else is Obsidian & Ivory.
 - Button text on dark backgrounds uses #FFFFFF.
 
@@ -174,18 +174,33 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 ## Interactions — Code Phase
 
 ### Navigation
-- Underline animation: CSS transform-origin center, scaleX 0→1 on hover, 1→0 on leave. Duration ~250ms, ease-out.
+- Nav underline hover: scaleX 0→1 from center on hover, 1→0 on leave. Duration 0.19s, thickness 1.5px, offset Y 0, easing ease-in-out. HARDCODED — no DialKit.
+- Button text wipe fill (Build My Regimen + Shop now): dual-layer clip-path:inset() technique. Fill span translateY 100%→0, black text span z-10, ivory (#F7F5F0) text clone span with clip-path:inset(100% 0 0 0)→inset(0 0 0 0) z-20. Duration 200ms, easing cubic-bezier(0.4, 0, 0.2, 1). Safari fix: [transform:translateZ(0)] on button. HARDCODED — no DialKit.
+- Below 1000px: Shop now is pre-filled (#1A1A1A bg, #F7F5F0 text), fill/clone spans hidden. Build My Regimen hidden.
 
-### Hero image navigation
-- 3 square boxes at bottom of image column
-- Click switches image with a soft crossfade (~400ms)
-- Active box: filled #1A1A1A. Inactive: outlined/muted.
+### Hero — Image Navigation
+- 3 square thumbnails at bottom of image column
+- Click switches main image with crossfade: 450ms ease. All 5 images (3 before + 2 after) always in DOM, stacked absolutely, controlled via opacity 0/1.
+- Active thumbnail: opacity 0.3, no border. Inactive: 1px solid #1A1A1A border, full opacity.
+- Thumbnails and drag handle use z-index: 2 to sit above the image stack.
 
-### Before/after slider (Hero images 2 & 3)
-- Horizontal drag slider dividing the image into before (left) and after (right)
-- Slider handle: thin vertical line with a small circular grip
-- Drag is constrained horizontally within the image bounds
-- Default position: 50% (center)
+### Hero — Drag Handle
+- Circular handle positioned at right edge (100%) by default. Only interactive on images 2 and 3 (female/male). pointerEvents none on couple image.
+- Background: #F7F5F0, text: #0D0D0D, no opacity.
+- Scale animation on navigation:
+  - Couple → person: scale 0→1, 310ms cubic-bezier(0.34, 1.56, 0.64, 1) (bounce overshoot)
+  - Person → couple: scale 1→0 at current drag position, 240ms cubic-bezier(0.4, 0, 0.2, 1)
+  - Person → person: stays scale 1, no animation, drag position preserved
+  - Couple → person: drag resets to 100% (right edge)
+- Press bounce: scale × 1.15 on pointer down, 240ms cubic-bezier(0.34, 1.56, 0.64, 1). Release: 240ms ease-out.
+- Drag is horizontal only, 0–100% of container width. Uses pointer capture.
+- Cursor: grab (idle), grabbing (dragging).
+
+### Hero — Before/After Reveal
+- Only active on images 2 (female) and 3 (male). Image 1 (couple) has no reveal.
+- "After" image sits on top of "before" image, clipped via clipPath: inset(0 0 0 dragPercent%).
+- At 100% (start): full "before" visible. At 0%: full "after" visible. At 50%: left half before, right half after.
+- After images crossfade in/out with the same 450ms ease as before images.
 
 ### Bestseller carousel
 - 5 items visible on desktop

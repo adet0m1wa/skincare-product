@@ -13,7 +13,7 @@
 | `color.bg` | #F7F5F0 | Page background, left hero column, card backgrounds |
 | `color.accent` | #1A1A1A | Primary buttons, active nav indicators, filled elements |
 | `color.text` | #0D0D0D | Headlines, nav links, primary body text |
-| `color.textSecondary` | #6B6B65 | Supporting copy, subtitles, meta text, trust line |
+| `color.textSecondary` | #5E5E5E | Supporting copy, subtitles, meta text, hero body text |
 | `color.imageBg` | #E0DDD6 | Right hero column, image placeholder backgrounds |
 | `color.tagBg` | #1A1A1A0D | Tag pill backgrounds, subtle tinted surfaces |
 | `color.tagText` | #3A3A3A | Tag pill text |
@@ -162,7 +162,25 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 
 ---
 
-## 7. Image Treatment
+## 7. Animation Tokens (Locked Values)
+
+### Nav
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Underline hover | 0.19s | ease-in-out | scaleX from center, thickness 1.5px |
+| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | clip-path:inset() technique, both Build My Regimen and Shop now |
+
+### Hero
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Image crossfade | 450ms | ease | All 5 images (3 before + 2 after) |
+| Drag handle scale up | 310ms | cubic-bezier(0.34, 1.56, 0.64, 1) | Couple → person, bounce overshoot |
+| Drag handle scale down | 240ms | cubic-bezier(0.4, 0, 0.2, 1) | Person → couple, at current position |
+| Drag handle press | 240ms | cubic-bezier(0.34, 1.56, 0.64, 1) | Scale × 1.15, release 240ms ease-out |
+
+---
+
+## 8. Image Treatment
 
 - All product photography uses soft studio lighting, subtle shadows
 - All model photography uses warm natural lighting
@@ -174,7 +192,7 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 
 ---
 
-## 8. Responsive Behavior
+## 9. Responsive Behavior
 
 - Desktop: full two-column hero, 5-product carousel, 6 concern cards in a row
 - Tablet: hero stacks to single column (copy on top, image below), 3–4 concern cards per row, 3 products visible
@@ -182,7 +200,7 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 
 ---
 
-## 9. Brand Voice (for copy reference)
+## 10. Brand Voice (for copy reference)
 
 - Clean, confident, science-backed
 - Uses "us" naturally in sentences (the brand name is also a pronoun)
