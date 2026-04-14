@@ -181,9 +181,10 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 ### Concerns
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|
-| Image hover scale | 300ms | ease | scale(1.05), no scale on mobile |
+| Image hover scale | 300ms | ease | scale(1.05), overflow:hidden on wrapper, no scale on mobile |
 | Arrow reveal | 200ms | ease | opacity + translateX(-4px→0), hidden on mobile |
-| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Same as Nav/Hero buttons, hover text changes to "Let's find your fix" |
+| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Hover text changes to "Let's find your fix" |
+| Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth, scroll-snap-stop:always |
 
 ---
 

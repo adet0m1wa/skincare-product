@@ -1,0 +1,153 @@
+/* HowWeOperate — port of pencil-new.pen "Landing Page- new" Section 4 (eUzrb).
+ * Pencil values: width 1360, padding [70, 0], gap 40.
+ * Cards: 4 in a row, gap 40, image height 402, card inner gap 20.
+ * Fluid responsive with breakpoints at 1000px and 600px. */
+
+.hiw-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--hiw-pad-y) 40px;
+  gap: var(--hiw-header-to-cards);
+  box-sizing: border-box;
+}
+
+/* Header row: title left, CTA right */
+.hiw-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.hiw-title {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--hiw-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0D0D0D;
+}
+
+.hiw-cta {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-nav);
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 14px 28px;
+}
+
+/* 4-column card row */
+.hiw-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--hiw-card-gap);
+  width: 100%;
+}
+
+/* Individual step card */
+.hiw-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--hiw-card-inner-gap);
+}
+
+.hiw-card-image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+  overflow: hidden;
+  background-color: #E0DDD6;
+}
+
+.hiw-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hiw-card-number {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--hiw-number-size);
+  line-height: 1;
+  color: #0D0D0D;
+}
+
+.hiw-card-title {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--hiw-step-title-size);
+  line-height: 1.3;
+  color: #0D0D0D;
+}
+
+.hiw-card-desc {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--bs-desc-size);
+  line-height: 1.5;
+  color: #5E5E5E;
+}
+
+/* ===== Below 1000px (shared) ===== */
+@media (max-width: 999px) {
+  .hiw-root {
+    padding: var(--hiw-pad-y) 20px;
+  }
+  .hiw-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .hiw-cta {
+    background-color: #1A1A1A !important;
+  }
+  .hiw-cta .hiw-cta-text {
+    color: #F7F5F0 !important;
+  }
+  .hiw-cta .hiw-cta-fill {
+    display: none;
+  }
+  .hiw-cta .hiw-cta-clone {
+    display: none;
+  }
+  .hiw-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 0 20px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hiw-cards::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ===== Tablet: 600px–999px ===== */
+@media (max-width: 999px) and (min-width: 600px) {
+  .hiw-card {
+    flex: 0 0 28%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+/* ===== Phone: <600px ===== */
+@media (max-width: 599px) {
+  .hiw-card {
+    flex: 0 0 42%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}

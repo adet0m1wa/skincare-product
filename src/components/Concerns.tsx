@@ -1,5 +1,5 @@
 // Concerns — port of pencil-new.pen "Landing Page- new" Section 2 (WRRkE).
-// 6 concern cards in a horizontal grid, each with an image and label.
+// 6 concern cards. Desktop: 6-column grid. Mobile: native CSS scroll-snap.
 import concernAging from '../assets/concerns/concern-aging.webp';
 import concernCongestion from '../assets/concerns/concern-congestion.webp';
 import concernTexture from '../assets/concerns/concern-texture.webp';
@@ -18,6 +18,7 @@ const CONCERNS = [
 ];
 
 export function Concerns() {
+
   return (
     <section className="concerns-root" aria-labelledby="concerns-title">
       {/* PNzr4 — Concerns/Header */}

@@ -1,0 +1,75 @@
+/* ScienceBanner — paragraph + headline + marquee.
+ * Fluid responsive between 375px and 1440px. Breakpoint at 1000px. */
+
+.sb-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: var(--sb-pad-y) 40px 0 40px;
+  box-sizing: border-box;
+}
+
+.sb-headline {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--sb-headline-size);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0D0D0D;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.sb-marquee {
+  width: 100%;
+  margin-top: var(--sb-marquee-gap);
+  overflow: hidden;
+  border-top: 1px solid #0D0D0D0D;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.sb-marquee-track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  animation: sb-marquee-scroll 30s linear infinite;
+}
+
+.sb-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding-right: 16px;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  color: #5E5E5E;
+  flex-shrink: 0;
+}
+
+.sb-marquee-dot {
+  color: #0D0D0D;
+}
+
+@keyframes sb-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ===== Below 1000px ===== */
+@media (max-width: 999px) {
+  .sb-root {
+    padding: var(--sb-pad-y) 20px 0 20px;
+  }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .sb-marquee-track {
+    animation: none;
+  }
+}

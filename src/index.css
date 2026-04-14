@@ -90,6 +90,57 @@
   --bs-card-inner-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
   --bs-card-width: clamp(10rem, calc(5.775rem + 18.028vw), 22rem);
   --bs-desc-size: clamp(0.813rem, calc(0.769rem + 0.188vw), 0.875rem);
+
+  /* How We Operate section — Pencil: pad [70, 0], gap 40, card gap 40,
+   * card inner gap 20, number 32px, step title 17px, image h 402. */
+  --hiw-pad-y: clamp(2.5rem, calc(1.621rem + 3.756vw), 4.375rem);
+  --hiw-header-to-cards: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --hiw-title-size: clamp(1.5rem, calc(1.192rem + 1.315vw), 2.375rem);
+  --hiw-card-gap: clamp(1rem, calc(0.296rem + 3.005vw), 2.5rem);
+  --hiw-card-inner-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --hiw-number-size: clamp(1.25rem, calc(0.986rem + 1.127vw), 2rem);
+  --hiw-step-title-size: clamp(0.875rem, calc(0.831rem + 0.188vw), 1.063rem);
+
+  /* ScienceBanner section — paragraph, headline, marquee. */
+  --sb-pad-y: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+  --sb-headline-size: clamp(1.75rem, calc(1.222rem + 2.254vw), 3.125rem);
+  --sb-marquee-gap: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+
+  /* Team section — Pencil: card gap 20, card height 480, name 16px,
+   * role 13px. */
+  --team-pad-top: clamp(2rem, calc(1.297rem + 3.005vw), 3.125rem);
+  --team-pad-bottom: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+  --team-card-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --team-card-height: clamp(18rem, calc(13.775rem + 18.028vw), 30rem);
+  --team-name-size: clamp(0.875rem, calc(0.831rem + 0.188vw), 1rem);
+  --team-role-size: 0.813rem;
+
+  /* Testimonials section — Pencil: pad [100, 0], gap 40, card gap 20,
+   * card w 302, photo h 240, title 38px, name 16px, duration 14px. */
+  --ts-pad-y: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+  --ts-header-to-cards: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --ts-title-size: clamp(1.5rem, calc(1.192rem + 1.315vw), 2.375rem);
+  --ts-card-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --ts-card-inner-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --ts-name-size: clamp(0.875rem, calc(0.831rem + 0.188vw), 1rem);
+  --ts-duration-size: clamp(0.813rem, calc(0.769rem + 0.188vw), 0.875rem);
+
+  /* Blog section — Pencil: pad [100, 0], gap 40, card gap 40, inner 20,
+   * image h 328, title 38px, post title 17px. */
+  --blog-pad-y: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+  --blog-header-to-cards: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --blog-title-size: clamp(1.5rem, calc(1.192rem + 1.315vw), 2.375rem);
+  --blog-card-gap: clamp(1rem, calc(0.296rem + 3.005vw), 2.5rem);
+  --blog-card-inner-gap: clamp(0.75rem, calc(0.574rem + 0.751vw), 1.25rem);
+  --blog-post-title-size: clamp(0.938rem, calc(0.85rem + 0.376vw), 1.125rem);
+
+  /* Footer section — Pencil: pad [100, 40], gap 40, loop 994x666,
+   * signup head 26px, logo 100px italic. */
+  --ft-pad-y: clamp(3rem, calc(1.945rem + 4.507vw), 6.25rem);
+  --ft-gap: clamp(1.5rem, calc(1.148rem + 1.502vw), 2.5rem);
+  --ft-loop-height: clamp(30rem, calc(20.141rem + 42.06vw), 41.625rem);
+  --ft-logo-size: clamp(3rem, calc(1.769rem + 5.258vw), 6.25rem);
+  --ft-signup-head-size: clamp(1.125rem, calc(0.86rem + 1.132vw), 1.625rem);
 }
 
 html {

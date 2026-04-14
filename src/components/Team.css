@@ -1,0 +1,121 @@
+/* Team — port of pencil-new.pen "Landing Page- new" Section 6 (1clZZ).
+ * Pencil values: cards gap 20, height 480, info overlay with white gradient,
+ * info padding [32, 20, 24, 20], name 16px italic, role 13px.
+ * Fluid responsive with breakpoints at 1000px and 600px. */
+
+.team-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--team-pad-top) 40px var(--team-pad-bottom) 40px;
+  box-sizing: border-box;
+}
+
+/* 5-card row */
+.team-cards {
+  display: flex;
+  gap: var(--team-card-gap);
+  width: 100%;
+}
+
+/* Individual team card */
+.team-card {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--team-card-height);
+  overflow: hidden;
+  background-color: #E0DDD6;
+}
+
+.team-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient overlay on image — transparent at 50% height down to
+ * semi-opaque black at the bottom, so the name/role stay readable. */
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Name/role overlay at bottom */
+.team-card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px 20px 24px 20px;
+}
+
+.team-card-name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--team-name-size);
+  line-height: 1;
+  color: #FFFFFF;
+}
+
+.team-card-role {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--team-role-size);
+  line-height: 1;
+  color: #FFFFFF;
+}
+
+/* ===== Below 1000px (shared) ===== */
+@media (max-width: 999px) {
+  .team-root {
+    padding: var(--team-pad-top) 20px var(--team-pad-bottom) 20px;
+  }
+  .team-cards {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 0 20px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .team-cards::-webkit-scrollbar {
+    display: none;
+  }
+  .team-card {
+    flex: none;
+  }
+}
+
+/* ===== Tablet: 600px–999px ===== */
+@media (max-width: 999px) and (min-width: 600px) {
+  .team-card {
+    width: 28%;
+    min-width: 28%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+/* ===== Phone: <600px ===== */
+@media (max-width: 599px) {
+  .team-card {
+    width: 60%;
+    min-width: 60%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}

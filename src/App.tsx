@@ -2,6 +2,12 @@ import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Concerns } from './components/Concerns';
 import { Bestsellers } from './components/Bestsellers';
+import { HowWeOperate } from './components/HowWeOperate';
+import { ScienceBanner } from './components/ScienceBanner';
+import { Team } from './components/Team';
+import { Testimonials } from './components/Testimonials';
+import { Blog } from './components/Blog';
+import { Footer } from './components/Footer';
 import './App.css';
 
 export default function App() {
@@ -16,7 +22,13 @@ export default function App() {
           <Hero />
           <Concerns />
           <Bestsellers />
+          <HowWeOperate />
+          <ScienceBanner />
+          <Team />
+          <Testimonials />
+          <Blog />
         </main>
+        <Footer />
       </div>
     </div>
   );

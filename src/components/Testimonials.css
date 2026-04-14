@@ -1,0 +1,170 @@
+/* Testimonials — port of pencil-new.pen "Landing Page- new" Section 7 (NjoTT).
+ * Pencil values: padding [100, 0], gap 40, card gap 20, card width 302,
+ * photo height 240, title 38px, name 16px italic, duration 14px 500, quote 14px.
+ * Horizontal scroll with snap; hidden scrollbar. */
+
+.ts-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--ts-pad-y) 40px;
+  gap: var(--ts-header-to-cards);
+  box-sizing: border-box;
+}
+
+/* Header row: title+meta left, CTA right */
+.ts-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.ts-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ts-title {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: var(--ts-title-size);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0D0D0D;
+}
+
+.ts-meta {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--text-nav);
+  line-height: 1.5;
+  color: #5E5E5E;
+}
+
+.ts-cta {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--text-nav);
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 14px 28px;
+}
+
+/* Horizontal scroll track */
+.ts-cards {
+  display: flex;
+  gap: var(--ts-card-gap);
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ts-cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual testimonial card — 3 visible + peek = (100% - 3*gap) / 3.5 */
+.ts-card {
+  flex: 0 0 calc((100% - 3 * var(--ts-card-gap)) / 3.5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ts-card-inner-gap);
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.ts-card-photo-wrap {
+  width: 100%;
+  aspect-ratio: 302 / 240;
+  overflow: hidden;
+  background-color: #E0DDD6;
+}
+
+.ts-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ts-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ts-card-name {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--ts-name-size);
+  line-height: 1;
+  color: #0D0D0D;
+  text-transform: uppercase;
+}
+
+.ts-card-duration {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--ts-duration-size);
+  line-height: 1;
+  color: #0D0D0D;
+}
+
+.ts-card-quote {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--bs-desc-size);
+  line-height: 1.6;
+  color: #5E5E5E;
+}
+
+/* ===== Below 1000px (shared) ===== */
+@media (max-width: 999px) {
+  .ts-root {
+    padding: var(--ts-pad-y) 20px;
+  }
+  .ts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .ts-cta {
+    background-color: #1A1A1A !important;
+  }
+  .ts-cta .ts-cta-text {
+    color: #F7F5F0 !important;
+  }
+  .ts-cta .ts-cta-fill {
+    display: none;
+  }
+  .ts-cta .ts-cta-clone {
+    display: none;
+  }
+}
+
+/* ===== Tablet: 600px–999px — 2 cards + peek ===== */
+@media (max-width: 999px) and (min-width: 600px) {
+  .ts-card {
+    flex: 0 0 calc((100% - var(--ts-card-gap)) / 2.3);
+  }
+}
+
+/* ===== Phone: <600px — 1 card + peek ===== */
+@media (max-width: 599px) {
+  .ts-card {
+    flex: 0 0 80%;
+  }
+}
