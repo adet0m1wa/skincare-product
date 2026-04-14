@@ -63,7 +63,6 @@
   width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
 }
@@ -228,20 +227,54 @@
   }
 }
 
-/* ===== Tablet: 600px–999px ===== */
-@media (max-width: 999px) and (min-width: 600px) {
+/* ===== 900–999px (3.5 cards, 2 pages) ===== */
+@media (max-width: 999px) and (min-width: 900px) {
   .bestsellers-card {
-    flex: 0 0 28%;
+    flex: 0 0 calc((100% - 2 * var(--bs-card-gap)) / 3.5);
+    scroll-snap-align: none;
+    scroll-snap-stop: always;
+  }
+  .bestsellers-card:nth-child(1) { scroll-snap-align: start; }
+  .bestsellers-card:nth-child(3) { scroll-snap-align: start; }
+}
+
+/* ===== 600–899px (3 cards, 2 pages) ===== */
+@media (max-width: 899px) and (min-width: 800px) {
+  .bestsellers-card {
+    flex: 0 0 calc((100% - 2 * var(--bs-card-gap)) / 3);
+    scroll-snap-align: none;
+    scroll-snap-stop: always;
+  }
+  .bestsellers-card:nth-child(1) { scroll-snap-align: start; }
+  .bestsellers-card:nth-child(4) { scroll-snap-align: start; }
+}
+
+/* ===== 450–599px (2 cards, 3 pages) ===== */
+@media (max-width: 799px) and (min-width: 450px) {
+  .bestsellers-card {
+    flex: 0 0 calc((100% - 1 * var(--bs-card-gap)) / 2);
+    scroll-snap-align: none;
+    scroll-snap-stop: always;
+  }
+  .bestsellers-card:nth-child(1) { scroll-snap-align: start; }
+  .bestsellers-card:nth-child(3) { scroll-snap-align: start; }
+  .bestsellers-card:nth-child(5) { scroll-snap-align: start; }
+}
+
+/* ===== <450px (1 card, 5 pages) ===== */
+@media (max-width: 449px) {
+  .bestsellers-card {
+    flex: 0 0 100%;
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
-}
-
-/* ===== Phone: <600px ===== */
-@media (max-width: 599px) {
-  .bestsellers-card {
-    flex: 0 0 42%;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  .bestsellers-card-image-wrap {
+    width: 75%;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+  }
+  .bestsellers-card-btn {
+    width: 75%;
+    margin: 0 auto;
   }
 }
