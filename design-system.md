@@ -186,6 +186,13 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 | Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Hover text changes to "Let's find your fix" |
 | Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth, scroll-snap-stop:always |
 
+### Bestsellers
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Image hover crossfade | 300ms | ease | Default ↔ validation image, no hover on mobile |
+| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Both "View more products" and "Add to cart" |
+| Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth, scroll-snap-stop:always |
+
 ---
 
 ## 8. Image Treatment

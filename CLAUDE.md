@@ -214,13 +214,18 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - Phone (<600px): 2.5 cards visible, 3 snap pages (card 1, card 3, card 5)
 - Hidden scrollbar on all mobile viewports
 
-### Bestseller carousel
-- 5 items visible on desktop
-- Circular chevron navigation button on the right edge (Phosphor Icons chevron inside a circular frame with 1px border)
-- Scrolling slides first 2 out, revealing next 3
-- Smooth scroll animation ~400ms
-- Product cards: on hover, background transitions from white to the product's accent color/pattern (~300ms)
-- "Add to cart" button at the bottom of each card (bordered pill style)
+### Bestsellers — Product Carousel
+- Desktop (1000–1440px): 3.5 cards visible, 2 snap pages (card 1 and card 4). No chevrons — swipe only.
+- 900–999px: 3.5 cards, 2 pages
+- 800–899px: exactly 3 cards, 2 pages (card 1 and card 4)
+- 450–799px: exactly 2 cards, 3 pages (card 1, card 3, card 5)
+- <450px: 1 card full width, image 75% centered, button 75% centered, 5 pages (every card)
+- Image hover: crossfade between default and validation image, 300ms ease. No hover on mobile.
+- All text truncates (nowrap + ellipsis) — desc, name, price, button
+- Image: object-fit contain, white (#FFFFFF) background, aspect-ratio 3/4
+- "View more products" button: text wipe fill (200ms, cubic-bezier(0.4,0,0.2,1)). Mobile: pre-filled dark.
+- "Add to cart" button: same text wipe fill. Mobile: pre-filled dark.
+- Native CSS scroll snap, NO scroll-behavior:smooth. scroll-snap-stop:always.
 
 ### Testimonials carousel
 - Circular chevron navigation arrows (same style as bestsellers) on both left and right edges

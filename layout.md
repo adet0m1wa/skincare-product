@@ -87,11 +87,16 @@
 - Header row: "Bestsellers" heading on the left, "View more products →" link on the right (leads to sign-up gate)
 - Product carousel below
 
-**Carousel structure:**
-- 5 products visible at once in a row
-- Chevron arrow on the right to scroll
-- Scrolling slides the first 2 products out, revealing the next 3 (8 products total)
-- Smooth horizontal scroll animation
+**Carousel:**
+- Desktop: 3.5 cards visible, swipe scroll with 2 snap pages. No chevrons.
+- 900–999px: 3.5 cards, 2 pages
+- 800–899px: 3 cards, 2 pages
+- 450–799px: 2 cards, 3 pages
+- <450px: 1 card, image + button at 75% width centered, 5 pages
+- Native scroll snap, no smooth behavior
+- Product images: contain fit on white background, aspect 3:4
+- Hover: crossfade to validation image (300ms)
+- All card text truncates, no wrapping
 
 **Product card contents:**
 - Product image on a neutral white background (default state)
