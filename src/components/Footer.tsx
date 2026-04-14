@@ -2,7 +2,6 @@
 // Loop image panel (logo + signup form over crossfading imagery) beside a
 // nav panel with link columns + bottom row (legal links + copyright).
 import { useEffect, useState, type FormEvent } from 'react';
-import logoWhite from '../assets/logo/logo_white.png';
 import footerLoop1 from '../assets/footer/footer-loop-1.webp';
 import footerLoop2 from '../assets/footer/footer-loop-2.webp';
 import footerLoop3 from '../assets/footer/footer-loop-3.webp';
@@ -66,17 +65,6 @@ export function Footer() {
         <div className="ft-loop-overlay" aria-hidden />
 
         <div className="ft-loop-content">
-          {/* dQkU8 — Footer/LogoCol */}
-          <div className="ft-logo-col">
-            <div className="ft-logo-row">
-              <img src={logoWhite} alt="" className="ft-logo-mark" />
-              <span className="ft-logo-word">us</span>
-            </div>
-            <p className="ft-logo-tagline">
-              {'Every skin type.\nEvery concern. One standard.'}
-            </p>
-          </div>
-
           {/* erc1B — Footer/SignupCol */}
           <div className="ft-signup-col">
             <h3 className="ft-signup-head">

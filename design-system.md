@@ -22,6 +22,8 @@
 
 ### Hover background accent colors (Bestseller cards only)
 
+> **UPDATE:** Colorful patterned hover backgrounds have been replaced with clinical validation card images. The accent colors in this table are no longer used.
+
 | Product | Hover Background | Pattern |
 |---------|-----------------|---------|
 | Brightening Vitamin C Serum | Coral/orange | Wavy horizontal stripes |
@@ -189,9 +191,29 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 ### Bestsellers
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|
-| Image hover crossfade | 300ms | ease | Default ↔ validation image, no hover on mobile |
-| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Both "View more products" and "Add to cart" |
-| Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth, scroll-snap-stop:always |
+| Image hover crossfade | 300ms | ease | Product ↔ validation card. No hover on mobile |
+| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | "View more products" and "Add to cart" |
+| Mobile scroll snap | native | browser-controlled | Carousel breakpoints only (800+). <800px uses grid, no scroll. |
+
+### Science Banner
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Marquee scroll | 30s | linear | Infinite, translateX(0→-50%), duplicated items for seamless loop |
+
+### Team
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth |
+
+### Testimonials
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth |
+
+### Footer
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Image crossfade | 600ms | ease | 5 images cycling every 3.5s with 30% dark overlay |
 
 ---
 

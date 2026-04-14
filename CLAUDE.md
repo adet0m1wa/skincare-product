@@ -215,29 +215,71 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - Hidden scrollbar on all mobile viewports
 
 ### Bestsellers — Product Carousel
-- Desktop (1000–1440px): 3.5 cards visible, 2 snap pages (card 1 and card 4). No chevrons — swipe only.
+- Desktop (1000–1440px): 3.5 cards visible, 2 snap pages (card 1 and card 4). Swipe only — no chevrons.
 - 900–999px: 3.5 cards, 2 pages
 - 800–899px: exactly 3 cards, 2 pages (card 1 and card 4)
-- 450–799px: exactly 2 cards, 3 pages (card 1, card 3, card 5)
-- <450px: 1 card full width, image 75% centered, button 75% centered, 5 pages (every card)
-- Image hover: crossfade between default and validation image, 300ms ease. No hover on mobile.
-- All text truncates (nowrap + ellipsis) — desc, name, price, button
-- Image: object-fit contain, white (#FFFFFF) background, aspect-ratio 3/4
+- <800px: switches to 2-column grid (no horizontal scroll)
+- 450–799px: 2-column grid, 16px column gap, 36px row gap. Text wraps freely (no truncation). Name and desc min-height 3em for row alignment.
+- <450px: 2-column grid, 12px column gap, 32px row gap. Font sizes reduced (desc 11px, name 13px, price 13px, btn 12px).
+- Image: aspect-ratio 4:5, object-fit contain, white (#FFFFFF) background
+- Hover: crossfade between product image and clinical validation card, 300ms ease. No hover on mobile.
+- Old colorful patterned hover backgrounds REMOVED — replaced with validation images (e.g. "CLINICALLY TESTED — Dark spots reduced by 47% in 4 weeks")
 - "View more products" button: text wipe fill (200ms, cubic-bezier(0.4,0,0.2,1)). Mobile: pre-filled dark.
 - "Add to cart" button: same text wipe fill. Mobile: pre-filled dark.
-- Native CSS scroll snap, NO scroll-behavior:smooth. scroll-snap-stop:always.
+- All text truncates on desktop (nowrap + ellipsis). Mobile grid: text wraps freely, desc clamped at 2 lines.
+- Native CSS scroll snap on carousel breakpoints, NO scroll-behavior:smooth. scroll-snap-stop:always.
 
-### Testimonials carousel
-- Circular chevron navigation arrows (same style as bestsellers) on both left and right edges
-- Smooth horizontal scroll
+### How it Works — Step Cards
+- Desktop: 4-column grid
+- 800–999px: 3-card horizontal scroll, 2 snap pages (card 1 and card 4)
+- <800px: vertical stack — each step becomes a horizontal row with image left (120px square) and number + title + description stacked on the right. 40px gap between steps. 20px column gap, 8px row gap inside each step.
+- Description clamped to 3 lines max
+- No scroll-behavior:smooth on any breakpoint
+- "Get started" button removed
 
-### Team carousel
-- Horizontal scroll with peek effect at edges
-- Smooth drag/scroll behavior
+### Science Banner
+- Static "Grounded in science." / "Driven by purpose." headline (2 lines, centered, DM Serif Display, same size as other section headers)
+- Infinite horizontal marquee below: "Parabens Free • Cruelty Free • Vegan • Sulfate Free • Clinically Tested • Dermatologist Approved"
+- Marquee: 30s linear infinite, items duplicated twice for seamless loop, translateX(0) → translateX(-50%)
+- 1px top border (#0D0D0D0D) above marquee, 40px margin-top from headline
+- Original "Every formula passes through..." paragraph text REMOVED
 
-### Footer loop
-- Images crossfade every 3–4 seconds
-- Soft transition ~600ms
+### Team
+- 5 team member cards in a horizontal row on desktop
+- Each card: portrait photo with dark gradient overlay at the bottom (transparent at 50% → rgba(0,0,0,0.55) at bottom) for text legibility
+- Name (DM Serif Display italic) and role (DM Sans) overlaid at bottom of each card
+- David Okonkwo role shortened to "Product Dev. Director" to fit 3 lines matching other cards
+- Mobile (<1000px): horizontal swipe scroll with snap, same pattern as other sections
+
+### Testimonials
+- Section heading: "Real skin, real results" (or as per Pencil)
+- Horizontal scrollable row of testimonial cards
+- Desktop: 3 cards visible with peek
+- 600–999px: 2 cards with peek
+- <600px: 1 card with peek
+- Hidden scrollbar, scroll-snap-stop:always
+- Each card: before/after image pair, person name, duration, testimonial quote
+- No scroll-behavior:smooth
+
+### Blog
+- Section heading: "From the journal" + "Read more →" link
+- Desktop: 3-column grid
+- 600–999px: horizontal scroll, 2 snap pages (card 1 and card 3)
+- <600px: vertical stack, full-width cards, 32px gap, no horizontal scroll
+- Titles underlined via border-bottom 1px solid #0D0D0D, padding-bottom 2px — no truncation, wraps freely to 2 lines
+- Blog title font: var(--text-body) matching Concerns card labels
+- No scroll-behavior:smooth
+
+### Footer
+- Desktop: image panel (crossfading loop images, 600ms ease, 3.5s interval, 30% dark overlay) + nav panel side by side
+- Logo and tagline REMOVED from image panel
+- Signup form (heading, subtitle, email input + subscribe button) inside image panel, left-aligned, white text on dark overlay
+- Signup heading: DM Serif Display, left-aligned (not centered)
+- Email input + subscribe always horizontal EXCEPT <450px where they stack vertically with individual borders (no shared wrapper border), subscribe button aligned right
+- Nav panel: 2-column grid of link columns (Shop, Learn, Connect, Support, Company)
+- Bottom: Privacy / Terms / Accessibility links + copyright
+- All spacing uses clamp() for fluid scaling between 375px–1440px
+- Nav link hover: underline with 3px offset
 
 ---
 

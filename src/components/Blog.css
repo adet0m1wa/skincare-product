@@ -99,7 +99,6 @@
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     scroll-padding: 0 20px;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -110,20 +109,28 @@
   }
 }
 
-/* ===== Tablet: 600px–999px — 2 cards + peek ===== */
+/* ===== Tablet: 600px–999px — 2 cards + peek, 2 snap pages ===== */
 @media (max-width: 999px) and (min-width: 600px) {
   .blog-card {
     flex: 0 0 calc((100% - var(--blog-card-gap)) / 2.3);
-    scroll-snap-align: start;
+    scroll-snap-align: none;
     scroll-snap-stop: always;
   }
+  .blog-card:nth-child(1) { scroll-snap-align: start; }
+  .blog-card:nth-child(3) { scroll-snap-align: start; }
 }
 
-/* ===== Phone: <600px — 1 card + peek ===== */
+/* ===== Phone: <600px — vertical stack ===== */
 @media (max-width: 599px) {
+  .blog-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
   .blog-card {
-    flex: 0 0 80%;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    flex: none;
+    width: 100%;
   }
 }

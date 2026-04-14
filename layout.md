@@ -88,19 +88,20 @@
 - Product carousel below
 
 **Carousel:**
-- Desktop: 3.5 cards visible, swipe scroll with 2 snap pages. No chevrons.
+- Desktop: 3.5 cards with swipe, 2 snap pages. No chevrons.
 - 900–999px: 3.5 cards, 2 pages
 - 800–899px: 3 cards, 2 pages
-- 450–799px: 2 cards, 3 pages
-- <450px: 1 card, image + button at 75% width centered, 5 pages
-- Native scroll snap, no smooth behavior
-- Product images: contain fit on white background, aspect 3:4
-- Hover: crossfade to validation image (300ms)
-- All card text truncates, no wrapping
+- <800px: 2-column product grid (no horizontal scroll)
+- 450–799px: 2-column grid, text wraps freely, no truncation
+- <450px: 2-column grid with reduced font sizes
+- All card text wraps on mobile grid, no truncation
+- Native scroll snap at carousel breakpoints, no smooth behavior
+- Product images: contain fit on white background, aspect 4:5
+- Hover: crossfade to clinical validation card (e.g. 'CLINICALLY TESTED — Dark spots reduced by 47% in 4 weeks'). No colorful backgrounds.
 
 **Product card contents:**
 - Product image on a neutral white background (default state)
-- On hover: bold colorful patterned background reveals behind the product — each card has a unique accent color and pattern
+- On hover: crossfade to clinical validation card (e.g. 'CLINICALLY TESTED — Dark spots reduced by 47% in 4 weeks'). No colorful backgrounds.
 - Concern tag at top right corner of the card — e.g. "Aging", "Texture", "Redness", "Hydration", "Protection"
 - Below the image: product name, short description (1 line), price, star rating
 - "Add to cart" CTA button at the bottom of each card (bordered pill style, matching NIOD layout)
@@ -112,10 +113,7 @@
 4. Retinol Night Repair Cream — "Firms, repairs, reduces fine lines overnight"
 5. Daily Defense SPF 50 — "Shields, prevents damage, lightweight daily wear"
 
-**Chevron navigation:**
-- Circular frame with a chevron arrow inside (not rectangular)
-- Positioned at the right edge of the carousel
-- Uses Phosphor Icons for the chevron
+**Navigation:** No chevrons — swipe/scroll only on all viewports.
 
 **Products:**
 1. Brightening Vitamin C Serum — navy blue pump bottle (hover: coral/orange wavy stripes)
@@ -140,7 +138,7 @@
 
 **Layout:** Full-width section
 - Section heading: "How it works" — DM Serif Display, left-aligned
-- CTA button on the right: "Get started →" — bordered pill style
+- Mobile (<800px): vertical stack — image left (120px), text right. Description clamped to 3 lines.
 
 **Content:** 4 steps in a horizontal row, each with an image above and numbered step below
 
@@ -187,10 +185,21 @@
 - Rounded corners
 - Name in DM Sans medium, role in regular weight, both overlaid on the image
 - Subtle dark gradient at the bottom of each image for text legibility
+- Card images have dark gradient overlay (transparent → rgba(0,0,0,0.55)) for name/role legibility. David Okonkwo role: "Product Dev. Director".
 
 **Reference:** reference-ordinary-team-intro.png, reference-ordinary-team-carousel.png
 
 **Assets:** 5 team portrait images
+
+---
+
+## Section 5.5 — Science Banner
+
+**Layout:** Full-width, centered
+- Headline: "Grounded in science." / "Driven by purpose." — DM Serif Display, centered, 2 lines
+- Below: infinite horizontal marquee of trust signals
+- Items: "Parabens Free • Cruelty Free • Vegan • Sulfate Free • Clinically Tested • Dermatologist Approved"
+- 1px top border above marquee
 
 ---
 
@@ -224,7 +233,7 @@
 - Text content sits below the photo pair
 - Even spacing between testimonial groups
 
-**Interaction:** Scrollable with circular chevron navigation arrows (same style as bestsellers). Otherwise static — no drag sliders or interactive before/after. The hero handles that.
+**Interactions:** Desktop: 3 cards with peek. Tablet: 2 with peek. Phone: 1 with peek. Horizontal scroll with snap, no scroll-behavior:smooth.
 
 **Reference:** reference-curology-testimonials.png
 
@@ -239,6 +248,8 @@
 - "Read more →" link on the right
 
 **Content:** 3 blog post cards in a horizontal row
+
+**Interactions:** Desktop: 3-column grid. Tablet (600–999px): horizontal scroll, 2 snap pages. Phone (<600px): vertical stack, 32px gap. Titles underlined (border-bottom), no truncation.
 
 **Blog posts:**
 1. **"5 Ingredients Your Dermatologist Wants You to Avoid"** — Category: Ingredients. Image: flat lay of products with red X marks.
@@ -259,10 +270,11 @@
 
 **Layout:** Two parts stacked vertically
 
-**Part 1 — Pre-footer (top row, 3 columns):**
-- **Left column:** Large "us" logo (logo_black.png) — oversized
-- **Center column:** Email sign-up with incentive text ("Sign up and receive 15% off your first order"), email input field + "Subscribe" button
-- **Right column:** Looping images of 5 different people holding "us" products — auto-plays, changes every few seconds with a soft crossfade transition
+**Part 1 — Pre-footer (image panel + nav panel side by side):**
+- **Image panel:** Crossfading loop images with 30% dark overlay. No logo overlay.
+- **Signup form inside image panel:** Heading ("Sign up and receive 15% off your first order."), subtitle, email input + "Subscribe" button
+- Signup heading left-aligned. Email + subscribe horizontal always, except <450px: stack vertically with individual borders, subscribe aligned right.
+- All spacing uses clamp() for fluid scaling.
 
 **Part 2 — Footer nav (bottom):**
 - Multiple columns of navigation links organized by category
