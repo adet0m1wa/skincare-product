@@ -172,6 +172,8 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 |-----------|----------|--------|-------|
 | Underline hover | 0.19s | ease-in-out | scaleX from center, thickness 1.5px |
 | Button clip-path reveal | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Two-layer: default text (z-0) + hover span with bg+text (z-10). clip-path:inset(100% 0 0 0) → inset(0). Press: active:scale(0.97) at 80ms. |
+| Border appear | 300ms | ease | 1px rgba(13,13,13,0.08) on scroll >10px |
+| Hide/show | 300ms | cubic-bezier(0.23, 1, 0.32, 1) | translateY(-100%) on scroll down, 0 on scroll up. 100px threshold. |
 
 ### Hero
 | Animation | Duration | Easing | Notes |

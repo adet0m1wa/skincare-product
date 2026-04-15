@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: clamp(20px, calc(0.5rem + 1.5vw), 40px);
   /* Fluid gap between the copy column and the image column. The two
    * columns use flex: 615 0 0 / 745 0 0 so they divide whatever width
    * remains after this gap in the exact 615:745 ratio from Pencil. */

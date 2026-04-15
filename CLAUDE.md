@@ -177,6 +177,12 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - Nav underline hover: scaleX 0→1 from center on hover, 1→0 on leave. Enter 150ms, exit 300ms, both use var(--ease-default). Thickness 1.5px, offset Y 0.
 - Button clip-path two-layer: default text span (z-0) + hover span with bg+text (z-10). clip-path:inset(100% 0 0 0) → inset(0 0 0 0) on hover, 200ms cubic-bezier(0.4, 0, 0.2, 1). Fill and text are the same element — impossible to desync. Press feedback: active:scale-[0.97] at 80ms on all buttons. Mobile (<1000px): hover span forced visible via max-[999px]:[clip-path:inset(0)]. Default span stays in DOM to size the button — NOT hidden on mobile. Old three-layer CSS rules (targeting *-fill, *-clone class names) have been fully removed from all CSS files.
 - Safari fix: [transform:translateZ(0)] on button.
+- Sticky nav: position sticky, top 0, z-index 50, bg #F7F5F0
+- On scroll (>10px): 1px border-bottom rgba(13,13,13,0.08), transition 300ms ease
+- Hide on scroll down, show on scroll up (Option B): translateY(-100%) with 300ms ease-default. 100px threshold — nav always visible within first 100px of page.
+- Logo click: smooth scroll to top via window.scrollTo
+- Padding: 20px 40px desktop, 16px 20px mobile
+- Hero margin-top: clamp(20px, calc(0.5rem + 1.5vw), 40px) for spacing between nav and hero
 
 ### Hero — Image Navigation
 - 3 square thumbnails at bottom of image column
@@ -312,6 +318,8 @@ CSS uses longhand transition properties (transition-property, transition-duratio
 | Footer | NONE | — | — | — |
 
 Pattern: text elements cascade in sequence, images/cards start at 0ms but take the longest, always finishing last.
+
+Animations ONLY fire when scrolling DOWN. useReveal tracks scroll direction via lastScrollY ref. Scrolling up past an unrevealed section does nothing. Exception: hero fires on page load (scrollY === 0 treated as scrolling down).
 
 All reveals fire once on scroll-down only. Never replay.
 Reduced motion: fade-up and fade-in instantly visible, word reveal skipped.

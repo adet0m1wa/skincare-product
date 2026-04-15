@@ -18,8 +18,21 @@
    * each side of the links, no runaway space distribution. */
   gap: var(--nav-group-gap);
   background-color: #F7F5F0;
-  padding: 38px 40px 50px 40px;
+  padding: 20px 40px;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  transition: border-color 300ms ease, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-scrolled {
+  border-bottom: 1px solid rgba(13, 13, 13, 0.08);
+}
+
+.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .nav-left {
@@ -131,7 +144,7 @@
 /* ===== Mobile: <1000px ===== */
 @media (max-width: 999px) {
   .nav-root {
-    padding: 24px 20px 32px 20px;
+    padding: 16px 20px;
     justify-content: space-between;
   }
   .nav-left,

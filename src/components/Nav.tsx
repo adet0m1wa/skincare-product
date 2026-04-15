@@ -1,6 +1,6 @@
 // Nav — port of pencil-new.pen "Landing Page- new" Nav (P5EOr) with
 // responsive behavior + hover underline animation (hardcoded final values).
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { List, ShoppingBag } from '@phosphor-icons/react';
 import logoBlack from '../assets/logo/logo_black.png';
 import './Nav.css';
@@ -39,10 +39,35 @@ function NavLink({ label }: { label: string }) {
 }
 
 export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 10);
+      if (currentY > 100) {
+        setHidden(currentY > lastScrollY.current);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="nav-root">
+    <header className={`nav-root${scrolled ? ' nav-scrolled' : ''}${hidden ? ' nav-hidden' : ''}`}>
       {/* E2bh1 — Nav/Left: logo + italic wordmark */}
-      <div className="nav-left">
+      <div
+        className="nav-left"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        style={{ cursor: 'pointer' }}
+        role="button"
+        aria-label="Scroll to top"
+      >
         <img
           src={logoBlack}
           alt=""
