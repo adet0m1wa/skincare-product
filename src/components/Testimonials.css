@@ -141,18 +141,6 @@
     align-items: flex-start;
     gap: 16px;
   }
-  .ts-cta {
-    background-color: #1A1A1A !important;
-  }
-  .ts-cta .ts-cta-text {
-    color: #F7F5F0 !important;
-  }
-  .ts-cta .ts-cta-fill {
-    display: none;
-  }
-  .ts-cta .ts-cta-clone {
-    display: none;
-  }
 }
 
 /* ===== Tablet: 600px–999px — 2 cards + peek ===== */

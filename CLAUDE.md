@@ -175,7 +175,7 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 
 ### Navigation
 - Nav underline hover: scaleX 0→1 from center on hover, 1→0 on leave. Enter 150ms, exit 300ms, both use var(--ease-default). Thickness 1.5px, offset Y 0.
-- Button hover: clip-path stacked two-layer technique. Default span (dark text, z-0) + hover span (bg-[#1A1A1A] + text-[#F7F5F0] as one element, z-10, clip-path:inset(100% 0 0 0) → inset(0 0 0 0) on hover). Duration 200ms, easing cubic-bezier(0.4, 0, 0.2, 1). Fill and text are the same element — impossible to desync. Press feedback: active:scale-[0.97] at 80ms on all buttons. Mobile (<1000px): hover span forced visible via max-[999px]:[clip-path:inset(0)], default span hidden.
+- Button clip-path two-layer: default text span (z-0) + hover span with bg+text (z-10). clip-path:inset(100% 0 0 0) → inset(0 0 0 0) on hover, 200ms cubic-bezier(0.4, 0, 0.2, 1). Fill and text are the same element — impossible to desync. Press feedback: active:scale-[0.97] at 80ms on all buttons. Mobile (<1000px): hover span forced visible via max-[999px]:[clip-path:inset(0)]. Default span stays in DOM to size the button — NOT hidden on mobile. Old three-layer CSS rules (targeting *-fill, *-clone class names) have been fully removed from all CSS files.
 - Safari fix: [transform:translateZ(0)] on button.
 
 ### Hero — Image Navigation
@@ -288,24 +288,30 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 ### Scroll-Triggered Section Reveals
 
 Two utility classes in index.css:
-- `.fade-up` — opacity 0→1 + translateY(10px→0), 500ms var(--ease-default). For headings, subtitles, buttons.
-- `.fade-in` — opacity 0→1 only, 500ms var(--ease-default). For images, cards, marquee. No translateY.
+- `.fade-up` — opacity 0→1 + translateY(10px→0), 350ms var(--ease-default). For headings, subtitles, buttons.
+- `.fade-in` — opacity 0→1 only, 500ms default (overridden inline per section). For images, cards, marquee. No translateY.
 
 useReveal hook (src/hooks/useReveal.ts): IntersectionObserver with rootMargin `'0px 0px -30% 0px'`. Fires once, disconnects. Skips animation (instantly revealed) if prefers-reduced-motion is set.
 
-RevealHeading component (src/components/RevealHeading.tsx): word-level overflow:hidden + translateY(120%→0) reveal. Supports `lines` prop for multi-line headings (each line gets its own mask). Supports `externalRevealed` prop to sync with a parent IntersectionObserver instead of its own. staggerMs default 60ms per word. paddingBottom 0.15em on masks for descenders.
+RevealHeading component (src/components/RevealHeading.tsx): word-level overflow:hidden + translateY(120%→0) reveal at 350ms/word. Supports `lines` prop for multi-line headings (each line gets its own mask). Supports `externalRevealed` prop to sync with a parent IntersectionObserver instead of its own. staggerMs default 60ms per word. paddingBottom 0.15em on masks for descenders.
+
+Text animation duration: 350ms (fade-up and word reveal per word).
+Image/card animation duration: 1000–1200ms (fade-in, opacity only).
+CSS uses longhand transition properties (transition-property, transition-duration, transition-timing-function) to allow inline duration/delay overrides.
 
 | Section | Heading | Paragraph | Button | Images/Cards |
 |---------|---------|-----------|--------|-------------|
-| Hero | word reveal (load) | fade-up 100ms delay | fade-up 200ms delay | fade-in 0ms |
-| Concerns | fade-up 0ms | fade-up 100ms | fade-up 200ms | fade-in 0ms |
-| Bestsellers | fade-up 0ms | fade-up 100ms | fade-up 200ms | fade-in 0ms |
-| Science Banner | word reveal (scroll) | — | — | marquee fade-in 250ms @ 300ms delay |
-| Testimonials | fade-up 0ms | fade-up 100ms | fade-up 200ms | fade-in 0ms |
-| Blog | fade-up 0ms | — | fade-up 100ms | fade-in 0ms |
+| Hero | word reveal 0ms (350ms/word, 60ms stagger, ~650ms total) | fade-up delay 200ms (done 550ms) | fade-up delay 450ms (done 800ms) | fade-in 1200ms |
+| Concerns | fade-up 0ms (done 350ms) | fade-up delay 200ms (done 550ms) | fade-up delay 450ms (done 800ms) | fade-in 1200ms |
+| Bestsellers | fade-up 0ms (done 350ms) | fade-up delay 200ms (done 550ms) | fade-up delay 450ms (done 800ms) | fade-in 1200ms |
+| Science Banner | word reveal 0ms (~650ms total) | — | — | marquee fade-in delay 400ms, 1000ms duration |
+| Testimonials | fade-up 0ms (done 350ms) | fade-up delay 200ms (done 550ms) | fade-up delay 450ms (done 800ms) | fade-in 1200ms |
+| Blog | fade-up 0ms (done 350ms) | — | fade-up delay 200ms (done 550ms) | fade-in 1000ms |
 | How it Works | NONE | — | — | — |
 | Team | NONE | — | — | — |
 | Footer | NONE | — | — | — |
+
+Pattern: text elements cascade in sequence, images/cards start at 0ms but take the longest, always finishing last.
 
 All reveals fire once on scroll-down only. Never replay.
 Reduced motion: fade-up and fade-in instantly visible, word reveal skipped.

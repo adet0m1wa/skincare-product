@@ -77,7 +77,7 @@ export function Testimonials() {
           </h2>
           <p
             className={`ts-meta fade-up${headingReveal.revealed ? ' revealed' : ''}`}
-            style={{ transitionDelay: headingReveal.revealed ? '100ms' : '0ms' }}
+            style={{ transitionDelay: headingReveal.revealed ? '200ms' : '0ms' }}
           >
             Results may vary.
           </p>
@@ -85,9 +85,9 @@ export function Testimonials() {
         <button
           type="button"
           className={`ts-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${headingReveal.revealed ? ' revealed' : ''}`}
-          style={{ transitionDelay: headingReveal.revealed ? '200ms' : '0ms' }}
+          style={{ transitionDelay: headingReveal.revealed ? '450ms' : '0ms' }}
         >
-          <span className="ts-cta-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">Start your journey</span>
+          <span className="ts-cta-text relative z-0 text-[#0D0D0D]">Start your journey</span>
           <span
             className="ts-cta-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
             aria-hidden="true"
@@ -100,7 +100,7 @@ export function Testimonials() {
       {/* hJv2i — Testimonials/Cards */}
       <div
         className={`ts-cards fade-in${headingReveal.revealed ? ' revealed' : ''}`}
-        style={{ transitionDuration: '200ms' }}
+        style={{ transitionDuration: '1200ms' }}
       >
         {TESTIMONIALS.map((t) => (
           <article key={t.name} className="ts-card">

@@ -136,18 +136,6 @@
     align-items: flex-start;
     gap: 16px;
   }
-  .concerns-link {
-    background-color: #1A1A1A !important;
-  }
-  .concerns-link .concerns-link-text {
-    color: #F7F5F0 !important;
-  }
-  .concerns-link .concerns-link-fill {
-    display: none;
-  }
-  .concerns-link .concerns-link-clone {
-    display: none;
-  }
   .concerns-cards {
     display: flex;
     overflow-x: auto;

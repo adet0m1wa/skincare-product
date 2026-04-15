@@ -184,19 +184,4 @@
     flex: 0 0 auto;
     width: 100%;
   }
-  /* Shop now flips to an inverted fill below 1000px — solid ink bg,
-   * ivory text. Hover animation layers are hidden since the button
-   * is already in its "filled" state. */
-  .hero-cta {
-    background-color: #1A1A1A !important;
-  }
-  .hero-cta .hero-cta-text {
-    color: #F7F5F0 !important;
-  }
-  .hero-cta .hero-cta-fill {
-    display: none;
-  }
-  .hero-cta .hero-cta-clone {
-    display: none;
-  }
 }

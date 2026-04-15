@@ -94,18 +94,6 @@
     align-items: flex-start;
     gap: 16px;
   }
-  .blog-read-more {
-    background-color: #1A1A1A !important;
-  }
-  .blog-read-more span:nth-child(2) {
-    color: #F7F5F0 !important;
-  }
-  .blog-read-more span:first-child {
-    display: none;
-  }
-  .blog-read-more span:last-child {
-    display: none;
-  }
   .blog-cards {
     display: flex;
     overflow-x: auto;

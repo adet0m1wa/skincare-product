@@ -219,10 +219,10 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 ### Scroll-Triggered Reveals
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|
-| fade-up | 500ms | cubic-bezier(0.23, 1, 0.32, 1) | opacity + translateY(10px). Headings, subtitles, buttons. |
-| fade-in | 500ms | cubic-bezier(0.23, 1, 0.32, 1) | opacity only. Images, cards, marquee. |
-| Word reveal | 500ms per word | cubic-bezier(0.23, 1, 0.32, 1) | overflow:hidden + translateY(120%→0). 60ms stagger. Hero + Science Banner only. |
-| Stagger heading→para→btn | 0 / 100ms / 200ms | — | Delay offsets, not separate animations. |
+| fade-up | 350ms | cubic-bezier(0.23, 1, 0.32, 1) | opacity + translateY(10px). CSS longhand properties for inline override support. |
+| fade-in | 500ms default | cubic-bezier(0.23, 1, 0.32, 1) | opacity only. Overridden to 1000–1200ms per section via inline styles. CSS longhand. |
+| Word reveal | 350ms per word | cubic-bezier(0.23, 1, 0.32, 1) | overflow:hidden + translateY(120%→0). 60ms stagger. Hero + Science Banner only. |
+| Stagger heading→para→btn | 0 / 200ms / 450ms | — | Delay offsets. Blog uses 0 / 200ms (no paragraph). |
 
 Trigger: IntersectionObserver with rootMargin `'0px 0px -30% 0px'` via useReveal hook. Fires once on scroll-down, then disconnects. Reduced motion: fade-up/fade-in instantly visible, word reveal skipped.
 

@@ -50,7 +50,7 @@ export function ScienceBanner() {
         className={`sb-marquee fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
         aria-hidden
         ref={marqueeRef}
-        style={{ transitionDuration: '250ms', transitionDelay: '300ms' }}
+        style={{ transitionDuration: '1000ms', transitionDelay: '400ms' }}
       >
         <div className="sb-marquee-track">
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (

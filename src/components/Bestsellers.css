@@ -201,30 +201,6 @@
   .bestsellers-card:hover .bestsellers-card-image-hover {
     opacity: 0;
   }
-  .bestsellers-view-more {
-    background-color: #1A1A1A !important;
-  }
-  .bestsellers-view-more .bs-vm-text {
-    color: #F7F5F0 !important;
-  }
-  .bestsellers-view-more .bs-vm-fill {
-    display: none;
-  }
-  .bestsellers-view-more .bs-vm-clone {
-    display: none;
-  }
-  .bestsellers-card-btn {
-    background-color: #1A1A1A !important;
-  }
-  .bestsellers-card-btn .bs-btn-text {
-    color: #F7F5F0 !important;
-  }
-  .bestsellers-card-btn .bs-btn-fill {
-    display: none;
-  }
-  .bestsellers-card-btn .bs-btn-clone {
-    display: none;
-  }
 }
 
 /* ===== 900–999px (3.5 cards, 2 pages) ===== */

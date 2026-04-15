@@ -36,7 +36,7 @@ export function Bestsellers() {
           </h2>
           <p
             className={`bestsellers-subtitle fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
-            style={{ transitionDelay: sectionReveal.revealed ? '100ms' : '0ms' }}
+            style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
           >
             Loved most. Repeat purchased more than anything else we make.
           </p>
@@ -44,9 +44,9 @@ export function Bestsellers() {
         <button
           type="button"
           className={`bestsellers-view-more group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
-          style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
+          style={{ transitionDelay: sectionReveal.revealed ? '450ms' : '0ms' }}
         >
-          <span className="bs-vm-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">View more products</span>
+          <span className="bs-vm-text relative z-0 text-[#0D0D0D]">View more products</span>
           <span
             className="bs-vm-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
             aria-hidden="true"
@@ -59,7 +59,7 @@ export function Bestsellers() {
       {/* wtvUy — Bestsellers/Cards */}
       <div
         className={`bestsellers-track-wrap fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
-        style={{ transitionDuration: '200ms' }}
+        style={{ transitionDuration: '1200ms' }}
       >
         <div className="bestsellers-track">
           {PRODUCTS.map((p) => (
@@ -84,7 +84,7 @@ export function Bestsellers() {
                 type="button"
                 className="bestsellers-card-btn group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms]"
               >
-                <span className="bs-btn-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">Add to cart</span>
+                <span className="bs-btn-text relative z-0 text-[#0D0D0D]">Add to cart</span>
                 <span
                   className="bs-btn-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
                   aria-hidden="true"

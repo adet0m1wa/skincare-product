@@ -46,7 +46,7 @@ export function RevealHeading({
                     style={{
                       display: 'inline-block',
                       transform: revealed ? 'translateY(0)' : 'translateY(120%)',
-                      transition: revealed ? `transform 500ms cubic-bezier(0.23, 1, 0.32, 1) ${i * staggerMs}ms` : 'none',
+                      transition: revealed ? `transform 350ms cubic-bezier(0.23, 1, 0.32, 1) ${i * staggerMs}ms` : 'none',
                     }}
                   >
                     {word}

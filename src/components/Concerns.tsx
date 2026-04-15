@@ -34,7 +34,7 @@ export function Concerns() {
           </h2>
           <p
             className={`concerns-subtitle fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
-            style={{ transitionDelay: sectionReveal.revealed ? '100ms' : '0ms' }}
+            style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
           >
             Start with what your skin is telling you. We'll take it from there.
           </p>
@@ -42,9 +42,9 @@ export function Concerns() {
         <button
           type="button"
           className={`concerns-link group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
-          style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
+          style={{ transitionDelay: sectionReveal.revealed ? '450ms' : '0ms' }}
         >
-          <span className="concerns-link-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">
+          <span className="concerns-link-text relative z-0 text-[#0D0D0D]">
             Got a unique concern?
           </span>
           <span
@@ -59,7 +59,7 @@ export function Concerns() {
       {/* KJsRw — Concerns/Cards */}
       <div
         className={`concerns-cards fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
-        style={{ transitionDuration: '200ms' }}
+        style={{ transitionDuration: '1200ms' }}
       >
         {CONCERNS.map((c) => (
           <div key={c.label} className="concerns-card">

@@ -90,7 +90,7 @@ export function Hero() {
           {/* W8V99 — Hero/Left/Body */}
           <p
             className={`hero-body fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
-            style={{ transitionDelay: sectionReveal.revealed ? '100ms' : '0ms' }}
+            style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
           >
             Formulated by dermatologists, made for us — every skin type, every
             concern, one standard of care.
@@ -102,9 +102,9 @@ export function Hero() {
           <button
             type="button"
             className={`hero-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
-            style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
+            style={{ transitionDelay: sectionReveal.revealed ? '450ms' : '0ms' }}
           >
-            <span className="hero-cta-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">Shop now</span>
+            <span className="hero-cta-text relative z-0 text-[#0D0D0D]">Shop now</span>
             <span
               className="hero-cta-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
               aria-hidden="true"
@@ -119,7 +119,7 @@ export function Hero() {
       <div
         className={`hero-right fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
         ref={heroRightRef}
-        style={{ transitionDuration: '200ms' }}
+        style={{ transitionDuration: '1200ms' }}
       >
         {/* N7tAr — Hero/Right/Images — crossfade stack */}
         <img
