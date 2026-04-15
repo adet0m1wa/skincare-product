@@ -74,6 +74,7 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 - ALL body text, labels, buttons, and UI elements use DM Sans. No exceptions.
 - Never use Inter, Roboto, Arial, or system fonts anywhere.
 - Never use font weights above 500. Only 400 (regular) and 500 (medium).
+- Exception: Footer nav headings (.ft-nav-heading) use font-weight 600 — intentional override for visual hierarchy.
 - Uppercase text is ONLY used for tag pills and footer column headings. Nothing else.
 
 ---
@@ -170,7 +171,7 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|
 | Underline hover | 0.19s | ease-in-out | scaleX from center, thickness 1.5px |
-| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | clip-path:inset() technique, both Build My Regimen and Shop now |
+| Button clip-path reveal | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Two-layer: default text (z-0) + hover span with bg+text (z-10). clip-path:inset(100% 0 0 0) → inset(0). Press: active:scale(0.97) at 80ms. |
 
 ### Hero
 | Animation | Duration | Easing | Notes |
@@ -185,14 +186,14 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 |-----------|----------|--------|-------|
 | Image hover scale | 300ms | ease | scale(1.05), overflow:hidden on wrapper, no scale on mobile |
 | Arrow reveal | 200ms | ease | opacity + translateX(-4px→0), hidden on mobile |
-| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Hover text changes to "Let's find your fix" |
+| Button clip-path reveal | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Two-layer. Default text "Got a unique concern?" (z-0), hover text "Let's find your fix" on dark (z-10). Press: active:scale(0.97) at 80ms. |
 | Mobile scroll snap | native | browser-controlled | No scroll-behavior:smooth, scroll-snap-stop:always |
 
 ### Bestsellers
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|
 | Image hover crossfade | 300ms | ease | Product ↔ validation card. No hover on mobile |
-| Button text wipe fill | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | "View more products" and "Add to cart" |
+| Button clip-path reveal | 200ms | cubic-bezier(0.4, 0, 0.2, 1) | Two-layer, applies to "View more products" and "Add to cart". Press: active:scale(0.97) at 80ms. |
 | Mobile scroll snap | native | browser-controlled | Carousel breakpoints only (800+). <800px uses grid, no scroll. |
 
 ### Science Banner
@@ -214,6 +215,16 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|
 | Image crossfade | 600ms | ease | 5 images cycling every 3.5s with 30% dark overlay |
+
+### Scroll-Triggered Reveals
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| fade-up | 500ms | cubic-bezier(0.23, 1, 0.32, 1) | opacity + translateY(10px). Headings, subtitles, buttons. |
+| fade-in | 500ms | cubic-bezier(0.23, 1, 0.32, 1) | opacity only. Images, cards, marquee. |
+| Word reveal | 500ms per word | cubic-bezier(0.23, 1, 0.32, 1) | overflow:hidden + translateY(120%→0). 60ms stagger. Hero + Science Banner only. |
+| Stagger heading→para→btn | 0 / 100ms / 200ms | — | Delay offsets, not separate animations. |
+
+Trigger: IntersectionObserver with rootMargin `'0px 0px -30% 0px'` via useReveal hook. Fires once on scroll-down, then disconnects. Reduced motion: fade-up/fade-in instantly visible, word reveal skipped.
 
 ---
 

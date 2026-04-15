@@ -199,7 +199,6 @@
 - Headline: "Grounded in science." / "Driven by purpose." — DM Serif Display, centered, 2 lines
 - Below: infinite horizontal marquee of trust signals
 - Items: "Parabens Free • Cruelty Free • Vegan • Sulfate Free • Clinically Tested • Dermatologist Approved"
-- 1px top border above marquee
 
 ---
 
@@ -245,7 +244,7 @@
 
 **Layout:** Full-width section
 - Section heading: "From the journal" — DM Serif Display, left-aligned
-- "Read more →" link on the right
+- "Read more" button on the right (clip-path two-layer text wipe, no arrow)
 
 **Content:** 3 blog post cards in a horizontal row
 
@@ -280,10 +279,12 @@
 - Multiple columns of navigation links organized by category
 - Suggested columns: Skincare, Body Care, Sets, Learn, Connect
 - Each column has a bold category heading with regular-weight links underneath
+- Nav heading font-weight: 600 (intentional exception to the weight-500 rule, for visual hierarchy on column headings)
+- Nav row-gap: 48px between column rows; link gap: 18px between individual links
 - Bottom row: copyright text ("© 2026 us Skincare"), privacy policy, terms links
 
 **Style:**
-- Pre-footer has a subtle background color shift or a top border to separate it from the section above
+- Footer sits flush on page background — no top border on .ft-root
 - Footer nav text is small (13–14px), secondary color
 - Clean column alignment with even spacing
 

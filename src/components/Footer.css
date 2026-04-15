@@ -11,7 +11,6 @@
   width: 100%;
   padding: clamp(48px, calc(2rem + 4vw), 100px) clamp(20px, calc(0.5rem + 2.5vw), 40px);
   background-color: #F7F5F0;
-  border-top: 1px solid #0D0D0D0D;
   box-sizing: border-box;
 }
 
@@ -140,7 +139,8 @@
 .ft-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(20px, calc(0.5rem + 2vw), 40px) clamp(16px, calc(0.5rem + 1.5vw), 40px);
+  row-gap: 48px;
+  column-gap: clamp(16px, calc(0.5rem + 1.5vw), 40px);
 }
 
 .ft-nav-col:last-child:nth-child(odd) {
@@ -150,7 +150,7 @@
 .ft-nav-heading {
   margin: 0 0 14px 0;
   font-family: "DM Sans", system-ui, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 13px;
   line-height: 1;
   letter-spacing: 0.04em;
@@ -164,7 +164,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
 }
 
 .ft-nav-link {

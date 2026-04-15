@@ -83,8 +83,12 @@
   height: 1.5px;
   background-color: #1A1A1A;
   transform-origin: center;
-  transition: transform 0.19s ease-in-out, opacity 0.19s ease-in-out;
+  transition: transform 300ms var(--ease-default), opacity 300ms var(--ease-default);
   pointer-events: none;
+}
+
+.nav-link:hover .nav-link-underline {
+  transition: transform 150ms var(--ease-default), opacity 150ms var(--ease-default);
 }
 
 .nav-right {

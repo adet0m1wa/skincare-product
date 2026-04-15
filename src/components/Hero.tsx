@@ -3,6 +3,8 @@
 // Per the initial port instructions, no before/after drag interaction yet —
 // the uzHxA drag handle is visual-only.
 import { useState, useRef } from 'react';
+import { RevealHeading } from './RevealHeading';
+import { useReveal } from '../hooks/useReveal';
 import heroCouple from '../assets/hero/hero-couple.webp';
 import heroFemaleBefore from '../assets/hero/hero-female-before.webp';
 import heroMaleBefore from '../assets/hero/hero-male-before.webp';
@@ -17,6 +19,7 @@ export function Hero() {
   const [pressing, setPressing] = useState(false);
   const heroRightRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
+  const sectionReveal = useReveal();
 
   const scaleValue = prevIndex === null
     ? 0
@@ -29,16 +32,16 @@ export function Hero() {
   const scaleTransition = prevIndex === null
     ? undefined
     : prevIndex === 0 && activeIndex !== 0
-      ? 'transform 310ms cubic-bezier(0.34, 1.56, 0.64, 1), left 0s'
+      ? 'transform 300ms var(--ease-bounce), left 0s'
       : prevIndex !== 0 && activeIndex === 0
-        ? 'transform 240ms cubic-bezier(0.4, 0, 0.2, 1), left 0s'
+        ? 'transform 240ms var(--ease-default), left 0s'
         : undefined;
 
   const dragStyle: React.CSSProperties = {
     transform: `translateY(-50%) scale(${scaleValue * (pressing ? 1.15 : 1)})`,
     transition: pressing
-      ? 'transform 240ms cubic-bezier(0.34, 1.56, 0.64, 1), left 0s'
-      : scaleTransition ?? 'transform 240ms ease-out, left 0s',
+      ? 'transform 240ms var(--ease-bounce), left 0s'
+      : scaleTransition ?? 'transform 240ms var(--ease-default), left 0s',
     left: `calc(${dragPercent}% - var(--drag-size) / 2)`,
     right: 'auto',
     pointerEvents: activeIndex === 0 ? 'none' : 'auto',
@@ -73,14 +76,22 @@ export function Hero() {
     <section className="hero-root" aria-labelledby="hero-headline">
       {/* VHI4l — Hero/Left: copy column */}
       <div className="hero-left">
-        <div className="hero-left-stack">
+        <div className="hero-left-stack" ref={sectionReveal.ref}>
           {/* T7EqY — Hero/Left/Headline */}
-          <h1 id="hero-headline" className="hero-headline">
-            {'Your skin deserves\nmore than guesswork'}
-          </h1>
+          <RevealHeading
+            lines={["Your skin deserves", "more than guesswork"]}
+            tag="h1"
+            className="hero-headline"
+            id="hero-headline"
+            staggerMs={60}
+            externalRevealed={sectionReveal.revealed}
+          />
 
           {/* W8V99 — Hero/Left/Body */}
-          <p className="hero-body">
+          <p
+            className={`hero-body fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+            style={{ transitionDelay: sectionReveal.revealed ? '100ms' : '0ms' }}
+          >
             Formulated by dermatologists, made for us — every skin type, every
             concern, one standard of care.
           </p>
@@ -90,15 +101,12 @@ export function Hero() {
               duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]. */}
           <button
             type="button"
-            className="hero-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)]"
+            className={`hero-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+            style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
           >
+            <span className="hero-cta-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">Shop now</span>
             <span
-              className="hero-cta-fill absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0"
-              aria-hidden="true"
-            />
-            <span className="hero-cta-text relative z-10 text-[#0D0D0D]">Shop now</span>
-            <span
-              className="hero-cta-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+              className="hero-cta-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
               aria-hidden="true"
             >
               Shop now
@@ -108,37 +116,41 @@ export function Hero() {
       </div>
 
       {/* kZjmW — Hero/Right: image column with dots overlay + drag handle */}
-      <div className="hero-right" ref={heroRightRef}>
+      <div
+        className={`hero-right fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
+        ref={heroRightRef}
+        style={{ transitionDuration: '200ms' }}
+      >
         {/* N7tAr — Hero/Right/Images — crossfade stack */}
         <img
           src={heroCouple}
           alt="A couple holding us serum bottles, leaning together in warm natural light."
           className="hero-image"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 0 ? 1 : 0, zIndex: activeIndex === 0 ? 1 : 0, transition: 'opacity 450ms ease' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 0 ? 1 : 0, zIndex: activeIndex === 0 ? 1 : 0, transition: 'opacity 400ms cubic-bezier(0.23, 1, 0.32, 1)' }}
         />
         <img
           src={heroFemaleBefore}
           alt="Female skin before treatment."
           className="hero-image"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 1 ? 1 : 0, zIndex: activeIndex === 1 ? 1 : 0, transition: 'opacity 450ms ease' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 1 ? 1 : 0, zIndex: activeIndex === 1 ? 1 : 0, transition: 'opacity 400ms cubic-bezier(0.23, 1, 0.32, 1)' }}
         />
         <img
           src={heroMaleBefore}
           alt="Male skin before treatment."
           className="hero-image"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 2 ? 1 : 0, zIndex: activeIndex === 2 ? 1 : 0, transition: 'opacity 450ms ease' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 2 ? 1 : 0, zIndex: activeIndex === 2 ? 1 : 0, transition: 'opacity 400ms cubic-bezier(0.23, 1, 0.32, 1)' }}
         />
         <img
           src={heroFemaleAfter}
           alt="Female skin after treatment."
           className="hero-image"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 1 ? 1 : 0, zIndex: activeIndex === 1 ? 1 : 0, transition: 'opacity 450ms ease', clipPath: `inset(0 0 0 ${dragPercent}%)` }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 1 ? 1 : 0, zIndex: activeIndex === 1 ? 1 : 0, transition: 'opacity 400ms cubic-bezier(0.23, 1, 0.32, 1)', clipPath: `inset(0 0 0 ${dragPercent}%)` }}
         />
         <img
           src={heroMaleAfter}
           alt="Male skin after treatment."
           className="hero-image"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 2 ? 1 : 0, zIndex: activeIndex === 2 ? 1 : 0, transition: 'opacity 450ms ease', clipPath: `inset(0 0 0 ${dragPercent}%)` }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: activeIndex === 2 ? 1 : 0, zIndex: activeIndex === 2 ? 1 : 0, transition: 'opacity 400ms cubic-bezier(0.23, 1, 0.32, 1)', clipPath: `inset(0 0 0 ${dragPercent}%)` }}
         />
 
         {/* EyVnF — Hero/Right/Dots. Absolute at the bottom edge. */}

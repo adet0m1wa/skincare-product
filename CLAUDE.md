@@ -174,9 +174,9 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 ## Interactions — Code Phase
 
 ### Navigation
-- Nav underline hover: scaleX 0→1 from center on hover, 1→0 on leave. Duration 0.19s, thickness 1.5px, offset Y 0, easing ease-in-out. HARDCODED — no DialKit.
-- Button text wipe fill (Build My Regimen + Shop now): dual-layer clip-path:inset() technique. Fill span translateY 100%→0, black text span z-10, ivory (#F7F5F0) text clone span with clip-path:inset(100% 0 0 0)→inset(0 0 0 0) z-20. Duration 200ms, easing cubic-bezier(0.4, 0, 0.2, 1). Safari fix: [transform:translateZ(0)] on button. HARDCODED — no DialKit.
-- Below 1000px: Shop now is pre-filled (#1A1A1A bg, #F7F5F0 text), fill/clone spans hidden. Build My Regimen hidden.
+- Nav underline hover: scaleX 0→1 from center on hover, 1→0 on leave. Enter 150ms, exit 300ms, both use var(--ease-default). Thickness 1.5px, offset Y 0.
+- Button hover: clip-path stacked two-layer technique. Default span (dark text, z-0) + hover span (bg-[#1A1A1A] + text-[#F7F5F0] as one element, z-10, clip-path:inset(100% 0 0 0) → inset(0 0 0 0) on hover). Duration 200ms, easing cubic-bezier(0.4, 0, 0.2, 1). Fill and text are the same element — impossible to desync. Press feedback: active:scale-[0.97] at 80ms on all buttons. Mobile (<1000px): hover span forced visible via max-[999px]:[clip-path:inset(0)], default span hidden.
+- Safari fix: [transform:translateZ(0)] on button.
 
 ### Hero — Image Navigation
 - 3 square thumbnails at bottom of image column
@@ -208,7 +208,7 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - Image wrap has overflow:hidden to contain the scale
 - Label: underline via border-bottom 1px solid #0D0D0D, padding-bottom 2px
 - Arrow: hidden by default, on card hover slides in from left (opacity 0→1, translateX -4px→0, 200ms ease). Hidden on mobile.
-- "Got a unique concern?" button: text wipe fill (200ms, cubic-bezier(0.4,0,0.2,1)). Default text: "Got a unique concern?". Hover text: "Let's find your fix". Mobile: pre-filled #1A1A1A, no hover animation.
+- "Got a unique concern?" button: clip-path two-layer hover (200ms, cubic-bezier(0.4,0,0.2,1)). Default text: "Got a unique concern?" (z-0). Hover text: "Let's find your fix" on dark bg (z-10). Mobile: hover span forced visible, default hidden.
 - Mobile scroll: native CSS scroll snap, NO scroll-behavior:smooth. scroll-snap-stop:always prevents page skipping.
 - Tablet (600–999px): 3.5 cards visible, 2 snap pages (card 1 and card 4)
 - Phone (<600px): 2.5 cards visible, 3 snap pages (card 1, card 3, card 5)
@@ -224,8 +224,8 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - Image: aspect-ratio 4:5, object-fit contain, white (#FFFFFF) background
 - Hover: crossfade between product image and clinical validation card, 300ms ease. No hover on mobile.
 - Old colorful patterned hover backgrounds REMOVED — replaced with validation images (e.g. "CLINICALLY TESTED — Dark spots reduced by 47% in 4 weeks")
-- "View more products" button: text wipe fill (200ms, cubic-bezier(0.4,0,0.2,1)). Mobile: pre-filled dark.
-- "Add to cart" button: same text wipe fill. Mobile: pre-filled dark.
+- "View more products" button: clip-path two-layer hover (200ms, cubic-bezier(0.4,0,0.2,1)). Mobile: hover span forced visible.
+- "Add to cart" button: same clip-path two-layer. Mobile: hover span forced visible.
 - All text truncates on desktop (nowrap + ellipsis). Mobile grid: text wraps freely, desc clamped at 2 lines.
 - Native CSS scroll snap on carousel breakpoints, NO scroll-behavior:smooth. scroll-snap-stop:always.
 
@@ -241,7 +241,8 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - Static "Grounded in science." / "Driven by purpose." headline (2 lines, centered, DM Serif Display, same size as other section headers)
 - Infinite horizontal marquee below: "Parabens Free • Cruelty Free • Vegan • Sulfate Free • Clinically Tested • Dermatologist Approved"
 - Marquee: 30s linear infinite, items duplicated twice for seamless loop, translateX(0) → translateX(-50%)
-- 1px top border (#0D0D0D0D) above marquee, 40px margin-top from headline
+- IntersectionObserver pauses marquee animation (animation-play-state: paused) when off-screen
+- 40px margin-top from headline (top border REMOVED)
 - Original "Every formula passes through..." paragraph text REMOVED
 
 ### Team
@@ -262,7 +263,7 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 - No scroll-behavior:smooth
 
 ### Blog
-- Section heading: "From the journal" + "Read more →" link
+- Section heading: "From the journal" + "Read more" button (clip-path two-layer text wipe, no arrow, no <a> tag)
 - Desktop: 3-column grid
 - 600–999px: horizontal scroll, 2 snap pages (card 1 and card 3)
 - <600px: vertical stack, full-width cards, 32px gap, no horizontal scroll
@@ -272,14 +273,42 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 
 ### Footer
 - Desktop: image panel (crossfading loop images, 600ms ease, 3.5s interval, 30% dark overlay) + nav panel side by side
+- Border-top on .ft-root REMOVED (footer sits flush on page background)
 - Logo and tagline REMOVED from image panel
 - Signup form (heading, subtitle, email input + subscribe button) inside image panel, left-aligned, white text on dark overlay
 - Signup heading: DM Serif Display, left-aligned (not centered)
 - Email input + subscribe always horizontal EXCEPT <450px where they stack vertically with individual borders (no shared wrapper border), subscribe button aligned right
 - Nav panel: 2-column grid of link columns (Shop, Learn, Connect, Support, Company)
+- Nav heading font-weight: 600 — intentional exception to the "never use 600" rule for visual hierarchy on footer column headings
+- Nav row-gap: 48px between column rows; link gap: 18px between links within each column
 - Bottom: Privacy / Terms / Accessibility links + copyright
 - All spacing uses clamp() for fluid scaling between 375px–1440px
 - Nav link hover: underline with 3px offset
+
+### Scroll-Triggered Section Reveals
+
+Two utility classes in index.css:
+- `.fade-up` — opacity 0→1 + translateY(10px→0), 500ms var(--ease-default). For headings, subtitles, buttons.
+- `.fade-in` — opacity 0→1 only, 500ms var(--ease-default). For images, cards, marquee. No translateY.
+
+useReveal hook (src/hooks/useReveal.ts): IntersectionObserver with rootMargin `'0px 0px -30% 0px'`. Fires once, disconnects. Skips animation (instantly revealed) if prefers-reduced-motion is set.
+
+RevealHeading component (src/components/RevealHeading.tsx): word-level overflow:hidden + translateY(120%→0) reveal. Supports `lines` prop for multi-line headings (each line gets its own mask). Supports `externalRevealed` prop to sync with a parent IntersectionObserver instead of its own. staggerMs default 60ms per word. paddingBottom 0.15em on masks for descenders.
+
+| Section | Heading | Paragraph | Button | Images/Cards |
+|---------|---------|-----------|--------|-------------|
+| Hero | word reveal (load) | fade-up 100ms delay | fade-up 200ms delay | fade-in 0ms |
+| Concerns | fade-up 0ms | fade-up 100ms | fade-up 200ms | fade-in 0ms |
+| Bestsellers | fade-up 0ms | fade-up 100ms | fade-up 200ms | fade-in 0ms |
+| Science Banner | word reveal (scroll) | — | — | marquee fade-in 250ms @ 300ms delay |
+| Testimonials | fade-up 0ms | fade-up 100ms | fade-up 200ms | fade-in 0ms |
+| Blog | fade-up 0ms | — | fade-up 100ms | fade-in 0ms |
+| How it Works | NONE | — | — | — |
+| Team | NONE | — | — | — |
+| Footer | NONE | — | — | — |
+
+All reveals fire once on scroll-down only. Never replay.
+Reduced motion: fade-up and fade-in instantly visible, word reveal skipped.
 
 ---
 

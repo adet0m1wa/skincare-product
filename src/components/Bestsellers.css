@@ -112,7 +112,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  transition: opacity 300ms ease;
+  transition: opacity 180ms var(--ease-default);
 }
 
 .bestsellers-card-image-default {

@@ -65,15 +65,11 @@ export function Nav() {
       <div className="nav-right">
         <button
           type="button"
-          className="nav-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent px-6 py-3 cursor-pointer [transform:translateZ(0)]"
+          className="nav-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent px-6 py-3 cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms]"
         >
+          <span className="relative z-0 text-[#0D0D0D] max-[999px]:hidden">Build My Regimen</span>
           <span
-            className="absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0"
-            aria-hidden="true"
-          />
-          <span className="relative z-10 text-[#0D0D0D]">Build My Regimen</span>
-          <span
-            className="absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+            className="absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
             aria-hidden="true"
           >
             Build My Regimen

@@ -1,5 +1,6 @@
 // Bestsellers — port of pencil-new.pen "Landing Page- new" Section 3 (7DBT4).
 // Horizontal product carousel with snap scrolling.
+import { useReveal } from '../hooks/useReveal';
 import productSerum from '../assets/products/product-serum.webp';
 import productSerumHover from '../assets/products/product-serum-hover.webp';
 import productMoisturizer from '../assets/products/product-moisturizer.webp';
@@ -21,29 +22,33 @@ const PRODUCTS = [
 ];
 
 export function Bestsellers() {
+  const sectionReveal = useReveal();
   return (
     <section className="bestsellers-root" aria-labelledby="bestsellers-title">
       {/* J1Inq — Bestsellers/Header */}
       <div className="bestsellers-header">
-        <div className="bestsellers-header-left">
-          <h2 id="bestsellers-title" className="bestsellers-title">
+        <div className="bestsellers-header-left" ref={sectionReveal.ref}>
+          <h2
+            id="bestsellers-title"
+            className={`bestsellers-title fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+          >
             Bestsellers
           </h2>
-          <p className="bestsellers-subtitle">
+          <p
+            className={`bestsellers-subtitle fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+            style={{ transitionDelay: sectionReveal.revealed ? '100ms' : '0ms' }}
+          >
             Loved most. Repeat purchased more than anything else we make.
           </p>
         </div>
         <button
           type="button"
-          className="bestsellers-view-more group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)]"
+          className={`bestsellers-view-more group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+          style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
         >
+          <span className="bs-vm-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">View more products</span>
           <span
-            className="bs-vm-fill absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0"
-            aria-hidden="true"
-          />
-          <span className="bs-vm-text relative z-10 text-[#0D0D0D]">View more products</span>
-          <span
-            className="bs-vm-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+            className="bs-vm-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
             aria-hidden="true"
           >
             View more products
@@ -52,7 +57,10 @@ export function Bestsellers() {
       </div>
 
       {/* wtvUy — Bestsellers/Cards */}
-      <div className="bestsellers-track-wrap">
+      <div
+        className={`bestsellers-track-wrap fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
+        style={{ transitionDuration: '200ms' }}
+      >
         <div className="bestsellers-track">
           {PRODUCTS.map((p) => (
             <article key={p.name} className="bestsellers-card">
@@ -74,15 +82,11 @@ export function Bestsellers() {
               <span className="bestsellers-card-price">{p.price}</span>
               <button
                 type="button"
-                className="bestsellers-card-btn group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)]"
+                className="bestsellers-card-btn group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms]"
               >
+                <span className="bs-btn-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">Add to cart</span>
                 <span
-                  className="bs-btn-fill absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0"
-                  aria-hidden="true"
-                />
-                <span className="bs-btn-text relative z-10 text-[#0D0D0D]">Add to cart</span>
-                <span
-                  className="bs-btn-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+                  className="bs-btn-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
                   aria-hidden="true"
                 >
                   Add to cart

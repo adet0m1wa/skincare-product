@@ -1,5 +1,6 @@
 // Concerns — port of pencil-new.pen "Landing Page- new" Section 2 (WRRkE).
 // 6 concern cards. Desktop: 6-column grid. Mobile: native CSS scroll-snap.
+import { useReveal } from '../hooks/useReveal';
 import concernAging from '../assets/concerns/concern-aging.webp';
 import concernCongestion from '../assets/concerns/concern-congestion.webp';
 import concernTexture from '../assets/concerns/concern-texture.webp';
@@ -18,32 +19,36 @@ const CONCERNS = [
 ];
 
 export function Concerns() {
+  const sectionReveal = useReveal();
 
   return (
     <section className="concerns-root" aria-labelledby="concerns-title">
       {/* PNzr4 — Concerns/Header */}
       <div className="concerns-header">
-        <div className="concerns-header-left">
-          <h2 id="concerns-title" className="concerns-title">
+        <div className="concerns-header-left" ref={sectionReveal.ref}>
+          <h2
+            id="concerns-title"
+            className={`concerns-title fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+          >
             Common concerns, considered
           </h2>
-          <p className="concerns-subtitle">
+          <p
+            className={`concerns-subtitle fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+            style={{ transitionDelay: sectionReveal.revealed ? '100ms' : '0ms' }}
+          >
             Start with what your skin is telling you. We'll take it from there.
           </p>
         </div>
         <button
           type="button"
-          className="concerns-link group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)]"
+          className={`concerns-link group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${sectionReveal.revealed ? ' revealed' : ''}`}
+          style={{ transitionDelay: sectionReveal.revealed ? '200ms' : '0ms' }}
         >
-          <span
-            className="concerns-link-fill absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0"
-            aria-hidden="true"
-          />
-          <span className="concerns-link-text relative z-10 text-[#0D0D0D]">
+          <span className="concerns-link-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">
             Got a unique concern?
           </span>
           <span
-            className="concerns-link-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+            className="concerns-link-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
             aria-hidden="true"
           >
             Let's find your fix
@@ -52,7 +57,10 @@ export function Concerns() {
       </div>
 
       {/* KJsRw — Concerns/Cards */}
-      <div className="concerns-cards">
+      <div
+        className={`concerns-cards fade-in${sectionReveal.revealed ? ' revealed' : ''}`}
+        style={{ transitionDuration: '200ms' }}
+      >
         {CONCERNS.map((c) => (
           <div key={c.label} className="concerns-card">
             <div className="concerns-card-image-wrap">

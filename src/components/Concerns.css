@@ -92,7 +92,7 @@
   aspect-ratio: 1 / 1.3;
   object-fit: cover;
   display: block;
-  transition: transform 300ms ease;
+  transition: transform 180ms var(--ease-default);
 }
 
 .concerns-card:hover .concerns-card-image {
@@ -118,7 +118,7 @@
 .concerns-card-arrow {
   opacity: 0;
   transform: translateX(-4px);
-  transition: opacity 200ms ease, transform 200ms ease;
+  transition: opacity 160ms var(--ease-default), transform 160ms var(--ease-default);
 }
 
 .concerns-card:hover .concerns-card-arrow {

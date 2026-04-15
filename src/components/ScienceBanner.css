@@ -26,7 +26,6 @@
   width: 100%;
   margin-top: 40px;
   overflow: hidden;
-  border-top: 1px solid #0D0D0D0D;
   padding: 20px 0;
   box-sizing: border-box;
 }
@@ -59,6 +58,10 @@
 @keyframes sb-marquee-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+.sb-marquee-paused .sb-marquee-track {
+  animation-play-state: paused;
 }
 
 /* ===== Below 1000px ===== */

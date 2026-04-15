@@ -1,5 +1,6 @@
 // Testimonials — port of pencil-new.pen "Landing Page- new" Section 7 (NjoTT).
 // Horizontal scroll of 8 before/after testimonial cards with name + duration + quote.
+import { useReveal } from '../hooks/useReveal';
 import testimonial1 from '../assets/testimonials/testimonial-1.webp';
 import testimonial2 from '../assets/testimonials/testimonial-2.webp';
 import testimonial3 from '../assets/testimonials/testimonial-3.webp';
@@ -62,27 +63,33 @@ const TESTIMONIALS = [
 ];
 
 export function Testimonials() {
+  const headingReveal = useReveal();
   return (
     <section className="ts-root" aria-labelledby="ts-title">
       {/* u2rTm — Testimonials/Header */}
       <div className="ts-header">
-        <div className="ts-header-left">
-          <h2 id="ts-title" className="ts-title">
+        <div className="ts-header-left" ref={headingReveal.ref}>
+          <h2
+            id="ts-title"
+            className={`ts-title fade-up${headingReveal.revealed ? ' revealed' : ''}`}
+          >
             Real skin. Real results.
           </h2>
-          <p className="ts-meta">Results may vary.</p>
+          <p
+            className={`ts-meta fade-up${headingReveal.revealed ? ' revealed' : ''}`}
+            style={{ transitionDelay: headingReveal.revealed ? '100ms' : '0ms' }}
+          >
+            Results may vary.
+          </p>
         </div>
         <button
           type="button"
-          className="ts-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)]"
+          className={`ts-cta group relative inline-flex items-center justify-center overflow-hidden border border-[#1A1A1A] bg-transparent cursor-pointer [transform:translateZ(0)] active:scale-[0.97] active:transition-transform active:duration-[80ms] fade-up${headingReveal.revealed ? ' revealed' : ''}`}
+          style={{ transitionDelay: headingReveal.revealed ? '200ms' : '0ms' }}
         >
+          <span className="ts-cta-text relative z-0 text-[#0D0D0D] max-[999px]:hidden">Start your journey</span>
           <span
-            className="ts-cta-fill absolute inset-0 bg-[#1A1A1A] translate-y-full transition-transform duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0"
-            aria-hidden="true"
-          />
-          <span className="ts-cta-text relative z-10 text-[#0D0D0D]">Start your journey</span>
-          <span
-            className="ts-cta-clone absolute inset-0 z-20 flex items-center justify-center text-[#F7F5F0] pointer-events-none [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)]"
+            className="ts-cta-clone absolute inset-0 z-10 flex items-center justify-center bg-[#1A1A1A] text-[#F7F5F0] [clip-path:inset(100%_0_0_0)] transition-[clip-path] duration-200 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:[clip-path:inset(0_0_0_0)] max-[999px]:[clip-path:inset(0)]"
             aria-hidden="true"
           >
             Start your journey
@@ -91,7 +98,10 @@ export function Testimonials() {
       </div>
 
       {/* hJv2i — Testimonials/Cards */}
-      <div className="ts-cards">
+      <div
+        className={`ts-cards fade-in${headingReveal.revealed ? ' revealed' : ''}`}
+        style={{ transitionDuration: '200ms' }}
+      >
         {TESTIMONIALS.map((t) => (
           <article key={t.name} className="ts-card">
             <div className="ts-card-photo-wrap">
