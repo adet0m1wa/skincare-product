@@ -174,15 +174,77 @@ All images are in the `assets/` folder. Compressed images use `.webp` format. Us
 ## Interactions — Code Phase
 
 ### Navigation
-- Nav underline hover: scaleX 0→1 from center on hover, 1→0 on leave. Enter 150ms, exit 300ms, both use var(--ease-default). Thickness 1.5px, offset Y 0.
-- Button clip-path two-layer: default text span (z-0) + hover span with bg+text (z-10). clip-path:inset(100% 0 0 0) → inset(0 0 0 0) on hover, 200ms cubic-bezier(0.4, 0, 0.2, 1). Fill and text are the same element — impossible to desync. Press feedback: active:scale-[0.97] at 80ms on all buttons. Mobile (<1000px): hover span forced visible via max-[999px]:[clip-path:inset(0)]. Default span stays in DOM to size the button — NOT hidden on mobile. Old three-layer CSS rules (targeting *-fill, *-clone class names) have been fully removed from all CSS files.
-- Safari fix: [transform:translateZ(0)] on button.
-- Sticky nav: position sticky, top 0, z-index 50, bg #F7F5F0
-- On scroll (>10px): 1px border-bottom rgba(13,13,13,0.08), transition 300ms ease
-- Hide on scroll down, show on scroll up (Option B): translateY(-100%) with 300ms ease-default. 100px threshold — nav always visible within first 100px of page.
-- Logo click: smooth scroll to top via window.scrollTo
-- Padding: 20px 40px desktop, 16px 20px mobile
-- Hero margin-top: clamp(20px, calc(0.5rem + 1.5vw), 40px) for spacing between nav and hero
+
+Desktop: Radix NavigationMenu (@radix-ui/react-navigation-menu). delayDuration=150, skipDelayDuration=300.
+
+Nav structure:
+- Bestsellers — NavigationMenu.Link (direct link, scrolls to #bestsellers-title)
+- Skincare — Trigger + mega menu Content (By Product + By Concern columns + featured image)
+- Body + Hair — Trigger + mega menu Content (Body + Hair columns + featured image)
+- Sets — NavigationMenu.Link (direct link)
+- About — Trigger + small dropdown Content (5 links)
+
+Viewport positioning (JS-hybrid):
+- Wide dropdowns (Skincare, Body + Hair): viewport centered in nav-center
+- Narrow dropdowns (About): viewport left-aligns to its trigger via onValueChange + getBoundingClientRect
+- NARROW_ITEMS Set in Nav.tsx tracks which items get trigger-aligned positioning
+
+Animations:
+- Viewport open: 200ms cubic-bezier(0.22, 1, 0.36, 1), translateY(8px→0) + scale(0.96→1)
+- Viewport close: 150ms same easing
+- Viewport resize between dropdowns: 250ms via CSS transition on width/height using --radix-navigation-menu-viewport-width/height
+- Content directional slide: 200ms, data-motion="from-start/from-end/to-start/to-end", translateX(±30px) + opacity
+- Indicator: 6px tall container with overflow:hidden, 8×8px rotated square at top 60% (shadcn/ui pattern)
+
+Featured images:
+- src/assets/nav/nav-skincare-featured.webp (4 products on marble)
+- src/assets/nav/nav-bodyhair-featured.webp (hands with towel + eucalyptus)
+
+Sticky + hide/show nav: unchanged (position sticky, top 0, z-index 50, bg #F7F5F0, scroll direction tracking with 100px threshold, translateY(-100%) on scroll down).
+
+Logo click: smooth scroll to top via window.scrollTo.
+
+Nav button text wipe: unchanged (clip-path two-layer).
+
+### Mobile Menu
+
+Full-screen overlay (src/components/MobileMenu.tsx + MobileMenu.css). Triggered by hamburger button in nav-right. Hidden entirely on desktop via @media (min-width: 1000px) { display: none !important }.
+
+Structure:
+- Header: logo + X close button
+- Nav list: 5 items
+  - Bestsellers — direct link (scrolls to #bestsellers-title)
+  - Skincare — accordion (6 sub-links)
+  - Body + Hair — accordion (7 sub-links)
+  - Sets — direct link
+  - About — accordion (5 sub-links)
+- Footer CTA: "Build My Regimen" button
+
+Open/close animation:
+- Open: clip-path inset(0 0 100% 0) → inset(0), 350ms cubic-bezier(0.16, 1, 0.3, 1) — wipes down from top
+- Visibility hidden → visible synced with clip-path
+
+Link entrance:
+- Each item: opacity 0 + translateY(8px) → visible, 200ms cubic-bezier(0.22, 1, 0.36, 1)
+- Stagger: 100ms / 140ms / 180ms / 220ms / 260ms (40ms intervals, starting at 100ms delay)
+
+Accordion expand/collapse:
+- grid-template-rows: 0fr → 1fr technique, 250ms cubic-bezier(0.22, 1, 0.36, 1)
+- Inner div uses overflow: hidden to clip collapsed state cleanly
+- Only one accordion open at a time (state-managed)
+- Chevron: rotates 45deg → -135deg on expand
+
+Link typography:
+- Top-level: DM Serif Display, clamp(22px, calc(16px + 2vw), 32px), fluid scaling 22→32px
+- Sub-links: DM Sans 16px, color #5E5E5E
+
+Accessibility:
+- Body scroll locked when open (overflow: hidden)
+- Focus moves to first link on open, returns to hamburger on close
+- Escape key closes menu
+- aria-expanded on hamburger and accordion triggers
+- aria-controls linking hamburger to #mobile-menu
+- aria-hidden on overlay when closed
 
 ### Hero — Image Navigation
 - 3 square thumbnails at bottom of image column

@@ -175,6 +175,23 @@ These accent colors appear ONLY on hover state of bestseller product cards. They
 | Border appear | 300ms | ease | 1px rgba(13,13,13,0.08) on scroll >10px |
 | Hide/show | 300ms | cubic-bezier(0.23, 1, 0.32, 1) | translateY(-100%) on scroll down, 0 on scroll up. 100px threshold. |
 
+### Mobile Menu
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Overlay open | 350ms | cubic-bezier(0.16, 1, 0.3, 1) | clip-path inset(0 0 100% 0) → inset(0) |
+| Link entrance | 200ms | cubic-bezier(0.22, 1, 0.36, 1) | opacity + translateY(8px), staggered 40ms |
+| Accordion expand | 250ms | cubic-bezier(0.22, 1, 0.36, 1) | grid-template-rows 0fr → 1fr |
+| Chevron rotation | 250ms | cubic-bezier(0.22, 1, 0.36, 1) | 45deg → -135deg |
+
+### Desktop Dropdowns (Radix NavigationMenu)
+| Animation | Duration | Easing | Notes |
+|-----------|----------|--------|-------|
+| Viewport open | 200ms | cubic-bezier(0.22, 1, 0.36, 1) | translateY(8px→0) + scale(0.96→1) |
+| Viewport close | 150ms | cubic-bezier(0.22, 1, 0.36, 1) | reverse of open |
+| Viewport resize | 250ms | cubic-bezier(0.22, 1, 0.36, 1) | width/height via Radix CSS vars |
+| Content slide | 200ms | cubic-bezier(0.22, 1, 0.36, 1) | translateX(±30px) + opacity |
+| Indicator | 250ms | ease | width/transform, 6px container + 8×8px rotated arrow |
+
 ### Hero
 | Animation | Duration | Easing | Notes |
 |-----------|----------|--------|-------|

@@ -1,47 +1,41 @@
-// Nav — port of pencil-new.pen "Landing Page- new" Nav (P5EOr) with
-// responsive behavior + hover underline animation (hardcoded final values).
-import { useState, useEffect, useRef } from 'react';
+// Nav — sticky header with Radix NavigationMenu for desktop dropdowns.
+// Scroll behavior (scrolled border, hide/show on scroll direction) kept as-is.
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { List, ShoppingBag } from '@phosphor-icons/react';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import logoBlack from '../assets/logo/logo_black.png';
+import navSkincareFeatured from '../assets/nav/nav-skincare-featured.webp';
+import navBodyhairFeatured from '../assets/nav/nav-bodyhair-featured.webp';
+import { MobileMenu } from './MobileMenu';
 import './Nav.css';
 
-const LINKS = ['Bestsellers', 'Skincare', 'Body + Hair', 'Sets', 'About'];
-
-// Each NavLink wraps text in a container with equal top/bottom padding
-// (12px each side of 15px text → 39px tall container). The underline
-// sits at the container's bottom edge, aligned to the Build My Regimen
-// button's bottom border.
-function NavLink({ label }: { label: string }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <a
-      href="#"
-      className="nav-link"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
-      onBlur={() => setHovered(false)}
-    >
-      <span className="nav-link-text">{label}</span>
-      {/* Underline bar — final values baked in:
-          duration 0.19s, thickness 1.5px, offset 0, easing ease-in-out */}
-      <span
-        aria-hidden
-        className="nav-link-underline"
-        style={{
-          opacity: hovered ? 1 : 0,
-          transform: `scaleX(${hovered ? 1 : 0})`,
-        }}
-      />
-    </a>
-  );
-}
+const NARROW_ITEMS = new Set(['about']);
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
+  const navCenterRef = useRef<HTMLElement>(null);
+  const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const [viewportStyle, setViewportStyle] = useState<React.CSSProperties>({});
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleValueChange = useCallback((value: string) => {
+    if (!value || !navCenterRef.current) {
+      setViewportStyle({});
+      return;
+    }
+    if (!NARROW_ITEMS.has(value)) {
+      setViewportStyle({ left: '0', right: '0', display: 'flex', justifyContent: 'center' });
+      return;
+    }
+    const trigger = triggerRefs.current[value];
+    if (!trigger || !navCenterRef.current) return;
+    const rootRect = navCenterRef.current.getBoundingClientRect();
+    const triggerRect = trigger.getBoundingClientRect();
+    const triggerLeft = triggerRect.left - rootRect.left;
+    setViewportStyle({ left: `${triggerLeft}px`, right: 'auto', display: 'block', justifyContent: 'initial' });
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -59,7 +53,9 @@ export function Nav() {
   }, []);
 
   return (
-    <header className={`nav-root${scrolled ? ' nav-scrolled' : ''}${hidden ? ' nav-hidden' : ''}`}>
+    <header
+      className={`nav-root${scrolled ? ' nav-scrolled' : ''}${hidden ? ' nav-hidden' : ''}`}
+    >
       {/* E2bh1 — Nav/Left: logo + italic wordmark */}
       <div
         className="nav-left"
@@ -79,12 +75,142 @@ export function Nav() {
         <span className="nav-wordmark">us</span>
       </div>
 
-      {/* UwwL2 — Nav/Center: 5 links (hidden on mobile via CSS) */}
-      <nav aria-label="Primary" className="nav-center">
-        {LINKS.map((label) => (
-          <NavLink key={label} label={label} />
-        ))}
-      </nav>
+      {/* UwwL2 — Nav/Center: Radix NavigationMenu */}
+      <NavigationMenu.Root
+        className="nav-center"
+        delayDuration={150}
+        skipDelayDuration={300}
+        ref={navCenterRef}
+        onValueChange={handleValueChange}
+      >
+        <NavigationMenu.List className="nav-menu-list">
+          {/* Bestsellers — direct link, no dropdown */}
+          <NavigationMenu.Item>
+            <NavigationMenu.Link
+              className="nav-link"
+              href="#bestsellers-title"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById('bestsellers-title')
+                  ?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <span className="nav-link-text">Bestsellers</span>
+            </NavigationMenu.Link>
+          </NavigationMenu.Item>
+
+          {/* Skincare — mega menu */}
+          <NavigationMenu.Item value="skincare">
+            <NavigationMenu.Trigger
+              className="nav-link nav-link-trigger"
+              ref={(el) => { triggerRefs.current.skincare = el; }}
+            >
+              <span className="nav-link-text">Skincare</span>
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className="nav-dropdown-content nav-dropdown-mega">
+              <div className="nav-mega-grid">
+                <div className="nav-mega-col">
+                  <span className="nav-mega-heading">By Product</span>
+                  <ul className="nav-mega-links">
+                    <li><a href="#">Cleansers</a></li>
+                    <li><a href="#">Serums</a></li>
+                    <li><a href="#">Moisturizers</a></li>
+                    <li><a href="#">Eye Care</a></li>
+                    <li><a href="#">SPF</a></li>
+                    <li><a href="#">Masks &amp; Treatments</a></li>
+                  </ul>
+                </div>
+                <div className="nav-mega-col">
+                  <span className="nav-mega-heading">By Concern</span>
+                  <ul className="nav-mega-links">
+                    <li><a href="#">Aging</a></li>
+                    <li><a href="#">Acne</a></li>
+                    <li><a href="#">Dryness</a></li>
+                    <li><a href="#">Redness</a></li>
+                    <li><a href="#">Texture</a></li>
+                    <li><a href="#">Dark Spots</a></li>
+                  </ul>
+                </div>
+                <div className="nav-mega-featured">
+                  <img src={navSkincareFeatured} alt="" className="nav-mega-featured-img" />
+                  <a href="#" className="nav-mega-featured-link">Shop All Skincare</a>
+                </div>
+              </div>
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
+
+          {/* Body + Hair — mega menu */}
+          <NavigationMenu.Item value="bodyhair">
+            <NavigationMenu.Trigger
+              className="nav-link nav-link-trigger"
+              ref={(el) => { triggerRefs.current.bodyhair = el; }}
+            >
+              <span className="nav-link-text">Body + Hair</span>
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className="nav-dropdown-content nav-dropdown-mega">
+              <div className="nav-mega-grid">
+                <div className="nav-mega-col">
+                  <span className="nav-mega-heading">Body</span>
+                  <ul className="nav-mega-links">
+                    <li><a href="#">Body Wash</a></li>
+                    <li><a href="#">Body Lotion</a></li>
+                    <li><a href="#">Scrubs &amp; Exfoliants</a></li>
+                    <li><a href="#">Hand Care</a></li>
+                  </ul>
+                </div>
+                <div className="nav-mega-col">
+                  <span className="nav-mega-heading">Hair</span>
+                  <ul className="nav-mega-links">
+                    <li><a href="#">Shampoo</a></li>
+                    <li><a href="#">Conditioner</a></li>
+                    <li><a href="#">Scalp Care</a></li>
+                    <li><a href="#">Leave-In Treatments</a></li>
+                  </ul>
+                </div>
+                <div className="nav-mega-featured">
+                  <img src={navBodyhairFeatured} alt="" className="nav-mega-featured-img" />
+                  <a href="#" className="nav-mega-featured-link">Shop All Body + Hair</a>
+                </div>
+              </div>
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
+
+          {/* Sets — direct link, no dropdown */}
+          <NavigationMenu.Item>
+            <NavigationMenu.Link className="nav-link" href="#">
+              <span className="nav-link-text">Sets</span>
+            </NavigationMenu.Link>
+          </NavigationMenu.Item>
+
+          {/* About — small dropdown */}
+          <NavigationMenu.Item value="about">
+            <NavigationMenu.Trigger
+              className="nav-link nav-link-trigger"
+              ref={(el) => { triggerRefs.current.about = el; }}
+            >
+              <span className="nav-link-text">About</span>
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className="nav-dropdown-content nav-dropdown-small">
+              <ul className="nav-small-links">
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Ingredients</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Journal</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
+
+          <NavigationMenu.Indicator className="nav-indicator">
+            <div className="nav-indicator-arrow" />
+          </NavigationMenu.Indicator>
+        </NavigationMenu.List>
+
+        <div className="nav-viewport-position" style={viewportStyle}>
+          <NavigationMenu.Viewport className="nav-viewport" />
+        </div>
+      </NavigationMenu.Root>
 
       {/* VAsBV — Nav/Right */}
       <div className="nav-right">
@@ -103,10 +229,19 @@ export function Nav() {
         <button type="button" aria-label="Shopping bag" className="nav-icon-btn">
           <ShoppingBag size={22} weight="regular" />
         </button>
-        <button type="button" aria-label="Open menu" className="nav-mobile-toggle">
+        <button
+          type="button"
+          aria-label="Open menu"
+          className="nav-mobile-toggle"
+          onClick={() => setMobileMenuOpen(true)}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
+        >
           <List size={22} weight="regular" />
         </button>
       </div>
+
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </header>
   );
 }
