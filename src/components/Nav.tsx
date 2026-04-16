@@ -19,8 +19,10 @@ export function Nav() {
   const triggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const [viewportStyle, setViewportStyle] = useState<React.CSSProperties>({});
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeValue, setActiveValue] = useState<string>('');
 
   const handleValueChange = useCallback((value: string) => {
+    setActiveValue(value);
     if (!value || !navCenterRef.current) {
       setViewportStyle({});
       return;
@@ -79,8 +81,9 @@ export function Nav() {
       <NavigationMenu.Root
         className="nav-center"
         delayDuration={150}
-        skipDelayDuration={300}
+        skipDelayDuration={0}
         ref={navCenterRef}
+        value={activeValue}
         onValueChange={handleValueChange}
       >
         <NavigationMenu.List className="nav-menu-list">
@@ -89,6 +92,7 @@ export function Nav() {
             <NavigationMenu.Link
               className="nav-link"
               href="#bestsellers-title"
+              onMouseEnter={() => setActiveValue('')}
               onClick={(e) => {
                 e.preventDefault();
                 document
@@ -178,7 +182,11 @@ export function Nav() {
 
           {/* Sets — direct link, no dropdown */}
           <NavigationMenu.Item>
-            <NavigationMenu.Link className="nav-link" href="#">
+            <NavigationMenu.Link
+              className="nav-link"
+              href="#"
+              onMouseEnter={() => setActiveValue('')}
+            >
               <span className="nav-link-text">Sets</span>
             </NavigationMenu.Link>
           </NavigationMenu.Item>
