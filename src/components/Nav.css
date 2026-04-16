@@ -84,6 +84,14 @@
   line-height: 1;
   color: #0D0D0D;
   white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 150ms ease;
+}
+
+.nav-link:hover .nav-link-text,
+.nav-link-trigger:hover .nav-link-text,
+.nav-link-trigger[data-state="open"] .nav-link-text {
+  opacity: 1;
 }
 
 /* Underline at the container's bottom edge. Finalized animation values
