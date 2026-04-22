@@ -81,7 +81,7 @@ export function Nav() {
       <NavigationMenu.Root
         className="nav-center"
         delayDuration={150}
-        skipDelayDuration={0}
+        skipDelayDuration={300}
         ref={navCenterRef}
         value={activeValue}
         onValueChange={handleValueChange}

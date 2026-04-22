@@ -230,9 +230,7 @@
   animation: navViewportIn 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-viewport[data-state="closed"] {
-  animation: none;
-  opacity: 0;
-  pointer-events: none;
+  animation: navViewportOut 150ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @keyframes navViewportIn {
